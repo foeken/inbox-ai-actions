@@ -1,0 +1,141 @@
+[
+  {
+    "description" : "",
+    "displayName" : "Email Processor",
+    "forceConfigurable" : false,
+    "icon" : "folder",
+    "id" : "A90A243A-74F0-4BAF-801E-220B943B878F",
+    "identifier" : "emailProcessor",
+    "instructions" : "",
+    "order" : 3,
+    "type" : "folder",
+    "variables" : [
+
+    ]
+  },
+  {
+    "actions" : [
+      "D78DE3C3-30D2-4150-A544-E45FB8BA3132",
+      "10000000-0000-0000-0000-000000000001"
+    ],
+    "allowMultipleTurns" : false,
+    "description" : "Categorize incoming email",
+    "displayName" : "Process Email",
+    "folderId" : "A90A243A-74F0-4BAF-801E-220B943B878F",
+    "forceConfigurable" : false,
+    "icon" : "envelope.arrow.triangle.branch",
+    "id" : "AABCB62E-96D3-421F-839C-8D831CD67D8C",
+    "identifier" : "processEmail",
+    "instructions" : "",
+    "modalities" : [
+      "text"
+    ],
+    "order" : 0,
+    "output" : "ignored",
+    "prompt" : "Categorize this email I ({{ settings.name }}) received below.\n\n- Anything commercial that has HTML (and not personally directed at me) → Junk\n- Literally anything from a recruiter → Junk\n- Product Updates, Newsletters, etc → Junk\n\n- TestFlight invitations, email verifications, OTP codes → Relevant\n- A direct request from someone (not automated, except for signing requests)→ Task\n\nWhen categorizing as \"Other\", also send a notification why, else do not notify.\n\nEmail:\n{{ originalInput | process }}",
+    "type" : "askAI",
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "The prompt you want to send to this AI",
+        "id" : "96A5A882-ED4E-49FE-B173-19AFD3A3EC51",
+        "label" : "",
+        "name" : "prompt",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ],
+    "waitTime" : 15
+  },
+  {
+    "cases" : [
+      {
+        "id" : "E4567522-ED3F-46AF-92A3-DB45E32C96EB",
+        "key" : "Junk",
+        "parameter" : "",
+        "value" : "00000000-0000-0000-0000-000000000106"
+      },
+      {
+        "id" : "73D3A4EA-5902-4F6D-B6B9-B40512D2C330",
+        "key" : "Task",
+        "parameter" : "",
+        "value" : "70CCB2C9-7247-41FD-A081-9547EA8B4FB7"
+      },
+      {
+        "id" : "C58B99FD-E629-4C24-B25F-0E0D0E454AEB",
+        "key" : "Relevant",
+        "parameter" : "red",
+        "value" : "00000000-0000-0000-0000-000000000102"
+      },
+      {
+        "id" : "F9FEE14A-A703-4B61-93DE-F44539868DFC",
+        "key" : "Other",
+        "parameter" : "",
+        "value" : "00000000-0000-0000-0000-000000000108"
+      }
+    ],
+    "description" : "Choose the value that matches best",
+    "displayName" : "Email Categories",
+    "folderId" : "A90A243A-74F0-4BAF-801E-220B943B878F",
+    "forceConfigurable" : false,
+    "icon" : "arrow.trianglehead.branch",
+    "id" : "D78DE3C3-30D2-4150-A544-E45FB8BA3132",
+    "identifier" : "emailCategories",
+    "instructions" : "",
+    "order" : 1,
+    "type" : "switchAction",
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "The value to match against the switch cases",
+        "id" : "C2EEDF66-93C0-4FF7-A510-67C346B67FD5",
+        "label" : "Value",
+        "name" : "value",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  },
+  {
+    "actions" : [
+      "10000000-0000-0000-0000-000000000003",
+      "10000000-0000-0000-0000-000000000001"
+    ],
+    "allowMultipleTurns" : false,
+    "description" : "This action extracts tasks and sends them to Apple Reminders",
+    "displayName" : "Extract Tasks & Add",
+    "folderId" : "F33D5730-514E-4D8C-A280-62BEEDCDAB2E",
+    "forceConfigurable" : false,
+    "icon" : "brain",
+    "id" : "70CCB2C9-7247-41FD-A081-9547EA8B4FB7",
+    "identifier" : "extractTasksAdd",
+    "instructions" : "",
+    "modalities" : [
+      "text"
+    ],
+    "order" : 15,
+    "output" : "ignored",
+    "prompt" : "Today is {{date.weekday}}, {{date.today}} {{time.now}}.\n\nExtract all tasks for {{settings.name}} from the input below (and optionally the image), assume the input is directed at the receiver of the tasks. \n\nIf you see a name that you assume is the requester, include that. Include the source of the task if you can figure that out (i.e Mail, Slack). Tasks are ALWAYS in English, and NEVER contain newlines.\n\nRead the assignment again: Extract tasks, requester, and source. In English, no newlines.\n\nExample task names:\n- Perform x for y (via Slack)\n- Read x\n- Sign document x (via Mail)\n\nALWAYS extract tasks AND send a notification with the name of the task(s)\n\nInput:\n{{ originalInput | process }}",
+    "type" : "askAI",
+    "variables" : [
+
+    ],
+    "waitTime" : 15
+  },
+  {
+    "description" : "",
+    "displayName" : "Apple Reminders",
+    "forceConfigurable" : false,
+    "icon" : "folder",
+    "id" : "F33D5730-514E-4D8C-A280-62BEEDCDAB2E",
+    "identifier" : "appleReminders",
+    "instructions" : "",
+    "order" : 4,
+    "type" : "folder",
+    "variables" : [
+
+    ]
+  }
+]

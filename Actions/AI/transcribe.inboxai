@@ -1,0 +1,38 @@
+[
+  {
+    "actions" : [
+
+    ],
+    "allowMultipleTurns" : false,
+    "description" : "",
+    "displayName" : "Transcribe",
+    "forceConfigurable" : false,
+    "icon" : "message.badge.waveform",
+    "id" : "FC60F7F8-F7D6-40FF-8826-77B5B546BBCA",
+    "identifier" : "transcribe",
+    "instructions" : "",
+    "modalities" : [
+      "text"
+    ],
+    "model" : "gpt-4o-mini",
+    "nextActionId" : "10000000-0000-0000-0000-000000000004",
+    "order" : 3,
+    "output" : "ignored",
+    "prompt" : "Rewrite the following text with grammar & spelling fixes, do not change the tone or words used. The input is transcribed using TTS, so can contain strange words, fix them using the entities you have, but never change their meaning, only if they are close\/sound like them.\n\nEntities:\n- Dinant\n\nInput\nI think uhm about the best way to move forward is is like so to ask dinoont\n\nOutput:\nI think the best way to move forward is to ask Dinant.\n\nEntities:\n{% for entity in screen.text | extractEntities %}- {{entity}}\n{% endfor %}\n\nInput:\n{{originalInput}}\n\nOutput:",
+    "provider" : "OpenAI",
+    "type" : "askAI",
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "The prompt you want to send to this AI",
+        "id" : "4616C187-38EC-470E-BF37-5FB8F50AA44D",
+        "label" : "",
+        "name" : "prompt",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ],
+    "waitTime" : 15
+  }
+]

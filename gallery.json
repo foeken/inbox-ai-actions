@@ -1,16 +1,36 @@
 [
+    {
+        "title" : "AI Actions",
+        "description" : "Ready built AI actions to help you get started.",
+        "large" : true,
+        "actions" : [
+            {
+                "title" : "Transcribe Text",
+                "actions" : ["transcribe.inboxai"],
+                "icon" : "message.badge.waveform"
+            },
+            {
+                "title" : "Simple Email Processor",
+                "actions" : [
+                    "appleReminders.inboxai", 
+                    "emailProcessor.inboxai"
+                ],
+                "icon" : "envelope.arrow.triangle.branch"
+            }
+        ]
+    },
     {        
         "title" : "Apple Applications",
-        "description" : "Interact with native Apple applications.",
+        "description" : "Actions to help your AI interact with native Apple applications.",
         "actions" : [
             {
                 "title" : "Apple Notes",
-                "action" : "appleNotes.inboxai",
+                "actions" : ["appleNotes.inboxai"],
                 "icon" : "note.text.badge.plus"
             },
             {
                 "title" : "Apple Reminders",
-                "action" : "appleReminders.inboxai",
+                "actions" : ["appleReminders.inboxai"],
                 "icon" : "list.bullet"
             }
         ]
@@ -21,47 +41,47 @@
         "actions" : [
             {
                 "title" : "Obsidian",
-                "action" : "obsidian.inboxai",
+                "actions" : ["obsidian.inboxai"],
                 "icon" : "note.text.badge.plus"
             },
             {
                 "title" : "Notion",
-                "action" : "notion.inboxai",
+                "actions" : ["notion.inboxai"],
                 "icon" : "note.text.badge.plus"
             },
             {
                 "title" : "Tana",
-                "action" : "tana.inboxai",
+                "actions" : ["tana.inboxai"],
                 "icon" : "list.bullet.indent"
             },
             {
                 "title" : "Todoist",
-                "action" : "todoist.inboxai",
+                "actions" : ["todoist.inboxai"],
                 "icon" : "checklist.unchecked"
             },
             {
                 "title" : "WorkFlowy",
-                "action" : "workflowy.inboxai",
+                "actions" : ["workflowy.inboxai"],
                 "icon" : "list.bullet.indent"
             },
             {
                 "title" : "Reflect",
-                "action" : "reflect.inboxai",
+                "actions" : ["reflect.inboxai"],
                 "icon" : "note.text.badge.plus"
             },
             {
                 "title" : "Slite",
-                "action" : "slite.inboxai",
+                "actions" : ["slite.inboxai"],
                 "icon" : "note.text.badge.plus"
             },            
             {
                 "title" : "Apple Notes",
-                "action" : "appleNotes.inboxai",
+                "actions" : ["appleNotes.inboxai"],
                 "icon" : "note.text.badge.plus"
             },            
             {
                 "title" : "Apple Reminders",
-                "action" : "appleReminders.inboxai",
+                "actions" : ["appleReminders.inboxai"],
                 "icon" : "list.bullet"
             }
         ]
@@ -72,7 +92,7 @@
         "actions" : [            
             {
                 "title" : "Fantastical",
-                "action" : "fantastical.inboxai",
+                "actions" : ["fantastical.inboxai"],
                 "icon" : "calendar.badge.plus"
             }            
         ]
@@ -83,22 +103,22 @@
         "actions" : [
             {                
                 "title" : "Ask ChatGPT",
-                "action" : "askChatgpt.inboxai",
+                "actions" : ["askChatgpt.inboxai"],
                 "icon" : "questionmark.bubble"
             },
             {
                 "title" : "Search Google",
-                "action" : "searchGoogle.inboxai",
+                "actions" : ["searchGoogle.inboxai"],
                 "icon" : "doc.text.magnifyingglass"
             },
             {
                 "title" : "Ask Claude",
-                "action" : "askClaude.inboxai",
+                "actions" : ["askClaude.inboxai"],
                 "icon" : "questionmark.bubble"
             },
             {
                 "title" : "Ask Perplexity",
-                "action" : "askPerplexity.inboxai",
+                "actions" : ["askPerplexity.inboxai"],
                 "icon" : "questionmark.bubble"
             }            
         ]
@@ -109,32 +129,32 @@
         "actions" : [
             {
                 "title" : "Open Application",
-                "action" : "openApplication.inboxai",
+                "actions" : ["openApplication.inboxai"],
                 "icon" : "macwindow.and.cursorarrow"
             },
             {
                 "title" : "Open Browser",
-                "action" : "openBrowser.inboxai",
+                "actions" : ["openBrowser.inboxai"],
                 "icon" : "safari"
             },
             {
                 "title" : "Draft Email",
-                "action" : "draftEmail.inboxai",
+                "actions" : ["draftEmail.inboxai"],
                 "icon" : "envelope"
             },
             {                
                 "title" : "Run Apple Shortcut",
-                "action" : "runAppleShortcut.inboxai",
+                "actions" : ["runAppleShortcut.inboxai"],
                 "icon" : "command"
             },
             {
                 "title" : "Run AppleScript",
-                "action" : "runAppleScript.inboxai",
+                "actions" : ["runAppleScript.inboxai"],
                 "icon" : "applescript"
             },            
             {
                 "title" : "Call x-callback URLs",
-                "action" : "callXCallbackUrl.inboxai",
+                "actions" : ["callXCallbackUrl.inboxai"],
                 "icon" : "square.and.arrow.up"
             }
         ]
@@ -145,12 +165,12 @@
         "actions" : [
             {
                 "title" : "EXA.ai",
-                "action" : "exa.inboxai",
+                "actions" : ["exa.inboxai"],
                 "icon" : "doc.text.magnifyingglass"
             },
             {
                 "title" : "EventLink",
-                "action" : "eventlink.inboxai",
+                "actions" : ["eventlink.inboxai"],
                 "icon" : "calendar"
             }
         ]
@@ -161,12 +181,12 @@
         "actions" : [
             {
                 "title" : "Get HTTP Content",
-                "action" : "getHttpContent.inboxai",
+                "actions" : ["getHttpContent.inboxai"],
                 "icon" : "link"
             },
             {
                 "title" : "Output to File",
-                "action" : "outputToFile.inboxai",
+                "actions" : ["outputToFile.inboxai"],
                 "icon" : "square.and.pencil"
             }
         ]
