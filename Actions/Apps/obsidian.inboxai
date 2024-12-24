@@ -1,0 +1,98 @@
+[
+  {    
+    "description" : "",
+    "displayName" : "Obsidian",
+    "forceConfigurable" : false,
+    "icon" : "folder",
+    "id" : "30E1CF2C-C707-4A8A-A5AE-A86FF2CC573B",
+    "identifier" : "Obsidian",
+    "instructions" : "",
+    "order" : 43,
+    "type" : "folder",
+    "variables" : [
+
+    ]
+  },
+  {
+    "actions" : [
+      "6F55ED1C-F4C2-438D-ACCC-4F4B6986BECA",
+      "18AED962-9DD1-4CE6-BAE8-6E95AE0B4B13",
+      "10000000-0000-0000-0000-000000000001"
+    ],
+    "allowMultipleTurns" : false,    
+    "description" : "This action extracts tasks and sends them to Obsidian",
+    "displayName" : "Extract Tasks & Add",
+    "folderId" : "30E1CF2C-C707-4A8A-A5AE-A86FF2CC573B",
+    "forceConfigurable" : false,
+    "icon" : "brain",
+    "id" : "FEF02ED8-E15B-482B-9C9F-CBE2EB0EC2F7",
+    "identifier" : "extractTasksAdd",
+    "instructions" : "",
+    "modalities" : [
+      "text"
+    ],
+    "order" : 25,
+    "output" : "ignored",
+    "prompt" : "Extract all tasks for {{settings.name}} from the input below, assume the input is directed at the receiver of the tasks. \n\nIf you see a name that you assume is the requester, include that.\n\nUse the Obsidian to send markdown content to the daily note. Just the tasks, no headers.\n\nExample tasks:\n- [ ] Perform x for y\n- [ ] Read x\n- [ ] Sign document x\n\nALWAYS extract tasks AND send a notification with the name of the task(s)\n\nInput:\n{{ originalInput | process }}",
+    "type" : "askAI",
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "The prompt you want to send to this AI",
+        "id" : "90F5909F-560D-47B2-A195-3573A2A11E83",
+        "label" : "",
+        "name" : "prompt",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ],
+    "waitTime" : 15
+  },
+  {    
+    "command" : "open --background \"obsidian:\/\/adv-uri?vault={{ vault | default:\"Obsidian Vault\" | percentEncode }}&daily=true&mode=append&{% if heading %}heading={{ heading | percentEncode }}{% endif %}&data={{ content | percentEncode }}{% if originalInput | match:\"message-id: (<.+?>)\" %}{{ \" ([Source](message:\" | percentEncode }}{{ originalInput | match:\"message-id: (<.+?>)\" | percentEncode }}{{ \"))\" | percentEncode }}{% endif %}\"",
+    "description" : "Append data to the daily note of an Obsidian Vault",
+    "displayName" : "Append to Daily Note",
+    "folderId" : "30E1CF2C-C707-4A8A-A5AE-A86FF2CC573B",
+    "forceConfigurable" : false,
+    "icon" : "note.text.badge.plus",
+    "id" : "18AED962-9DD1-4CE6-BAE8-6E95AE0B4B13",
+    "identifier" : "appendToDailyNote",
+    "instructions" : "Append content to your daily note in Obsidian. Requires [Advanced URI Plugin](obsidian:\/\/show-plugin?id=obsidian-advanced-uri).",
+    "order" : 26,
+    "type" : "terminalCommand",
+    "useSSH" : false,
+    "variables" : [
+      {
+        "ai" : false,
+        "description" : "Your Obsidian Vault name, defaults to \"Obsidian Vault\"",
+        "id" : "F40DF066-FEA8-424F-B23F-3FC57EAC62C1",
+        "label" : "Vault",
+        "name" : "vault",
+        "required" : false,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : true,
+        "description" : "The string to append",
+        "id" : "BA130E59-F7F0-435F-9B34-69C52E58E8A2",
+        "label" : "Label",
+        "name" : "content",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : false,
+        "description" : "The heading to place the tasks under",
+        "id" : "8E0FF915-BE50-499D-B588-6E0C17074678",
+        "label" : "Heading",
+        "name" : "heading",
+        "required" : false,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  }
+]

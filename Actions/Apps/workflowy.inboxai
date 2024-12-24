@@ -1,0 +1,105 @@
+[
+  {
+    "buildNumber" : "1",
+    "description" : "",
+    "displayName" : "Workflowy",
+    "forceConfigurable" : false,
+    "icon" : "folder",
+    "id" : "ED85DAAD-2E94-4C7B-B9E1-74C330094A18",
+    "identifier" : "workflowy",
+    "instructions" : "",
+    "order" : 46,
+    "type" : "folder",
+    "variables" : [
+
+    ]
+  },
+  {
+    "actions" : [
+      "10000000-0000-0000-0000-000000000001",
+      "E5DA57CA-D462-4FF8-8349-C769CE057E3C"
+    ],
+    "allowMultipleTurns" : false,
+    "buildNumber" : "1",
+    "description" : "This action extracts tasks and sends them to Workflowy",
+    "displayName" : "Extract Tasks & Add",
+    "folderId" : "ED85DAAD-2E94-4C7B-B9E1-74C330094A18",
+    "forceConfigurable" : false,
+    "icon" : "brain",
+    "id" : "A52A87FA-691B-4ED5-9D10-2B00D6235D2D",
+    "identifier" : "extractTasksAdd",
+    "instructions" : "",
+    "modalities" : [
+      "text"
+    ],
+    "order" : 19,
+    "output" : "ignored",
+    "prompt" : "Today is {{ date.weekday }}, {{ date.today }} {{ time.now }}.\n\nExtract all tasks for {{ settings.name }} from the input below (and optionally the image), assume the input is directed at the receiver of the tasks. \n\nIf you see a name that you assume is the requester, include that. Include the source of the task if you can figure that out (i.e Mail, Slack). Tasks are ALWAYS in English, and NEVER contain newlines.\n\nRead the assignment again: Extract tasks, requester, and source. In English, no newlines.\n\nExample tasks:\n- Perform x for y (via Slack)\n- Read x\n- Sign document x (via Mail)\n\nALWAYS extract tasks AND send a notification with the name of the task(s)\n\nInput:\n{{ originalInput | process }}",
+    "type" : "askAI",
+    "variables" : [
+
+    ],
+    "waitTime" : 15
+  },
+  {
+    "buildNumber" : "1",
+    "description" : "Add a bullet in Workflowy",
+    "displayName" : "Create bullet",
+    "folderId" : "ED85DAAD-2E94-4C7B-B9E1-74C330094A18",
+    "forceConfigurable" : false,
+    "headers" : [
+      {
+        "id" : "5AF4F248-ED52-49AA-B81D-2D303A61DEAD",
+        "key" : "Authorization",
+        "value" : "Bearer {{ secretApiKey }}"
+      },
+      {
+        "id" : "C4DA9250-3346-41B4-A57A-5FC7D6AB9C8B",
+        "key" : "Content-Type",
+        "value" : "application\/json"
+      }
+    ],
+    "icon" : "note.text.badge.plus",
+    "id" : "E5DA57CA-D462-4FF8-8349-C769CE057E3C",
+    "identifier" : "createBullet",
+    "instructions" : "Sends bullets to Workflowy. Create your API key [here](https:\/\/workflowy.com\/api-key\/)",
+    "method" : "POST",
+    "nextActionId" : "10000000-0000-0000-0000-000000000007",
+    "order" : 20,
+    "payload" : "{\n  \"new_bullet_title\": \"{{ title | jsonEscape }}\",\n  \"save_location_url\": \"{{ saveLocationUrl | jsonEscape }}\"\n}",
+    "type" : "makeAPIRequest",
+    "url" : "https:\/\/workflowy.com\/api\/bullets\/create\/",
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "The title of the bullet",
+        "id" : "E90688FF-CB5C-452C-A11B-D5AEA9356E86",
+        "label" : "Title",
+        "name" : "title",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : false,
+        "description" : "Your API Key",
+        "id" : "EFE30BB2-69CC-4322-A2D1-1681C0C7D918",
+        "label" : "Api Key",
+        "name" : "secretApiKey",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : false,
+        "description" : "Save location URL (e.g. workflowy.com\/#\/x2f8ae43c8fb) (Defaults to inbox)",
+        "id" : "6821DDBB-4256-479D-93AE-9DD4B8750BE0",
+        "label" : "Location",
+        "name" : "saveLocationUrl",
+        "required" : false,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "command" : "open \"https:\/\/chatgpt.com?q={{ query | percentEncode }}\"",
+    "description" : "Ask ChatGPT, opens a ChatGPT window for the user",
+    "displayName" : "Ask ChatGPT",
+    "folderId" : "A017BA42-8192-4A46-9389-06518E4124F0",
+    "forceConfigurable" : false,
+    "icon" : "questionmark.bubble",
+    "id" : "8FBFBA4C-C98C-44DB-91A6-CCD346155EFA",
+    "identifier" : "askChatgpt",
+    "instructions" : "",
+    "order" : 8,
+    "type" : "terminalCommand",
+    "useSSH" : false,
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "The question or start of conversation",
+        "id" : "DFF47445-708B-41A2-9A8C-E9B0E1C9FA3A",
+        "label" : "Query",
+        "name" : "query",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  },
+  {    
+    "description" : "",
+    "displayName" : "Websites",
+    "forceConfigurable" : false,
+    "icon" : "folder",
+    "id" : "A017BA42-8192-4A46-9389-06518E4124F0",
+    "identifier" : "websites",
+    "instructions" : "",
+    "order" : 52,
+    "type" : "folder",
+    "variables" : [
+
+    ]
+  }
+]

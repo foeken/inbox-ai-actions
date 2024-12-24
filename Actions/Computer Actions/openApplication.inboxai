@@ -1,0 +1,43 @@
+[
+  {
+    "command" : "open -a \"{{ application | doubleQuoteEscape }}\"",
+    "description" : "Open any MacOS application",
+    "displayName" : "Open application",
+    "folderId" : "8CDE4C57-7328-4637-B416-773C368511C9",
+    "forceConfigurable" : false,
+    "icon" : "macwindow.and.cursorarrow",
+    "id" : "D3AC26EE-6E03-400F-AF82-5262B8AE59DE",
+    "identifier" : "openApplication",
+    "instructions" : "",
+    "nextActionId" : "10000000-0000-0000-0000-000000000007",
+    "order" : 2,
+    "type" : "terminalCommand",
+    "useSSH" : false,
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "Use the name of the MacOS application in the OS (it is passed to open -a)",
+        "id" : "D51124AB-44F1-4B65-BDAD-A2B2594F0229",
+        "label" : "Application",
+        "name" : "application",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  },
+  {
+    "description" : "",
+    "displayName" : "Computer Actions",
+    "forceConfigurable" : false,
+    "icon" : "folder",
+    "id" : "AA933D08-3148-46F3-82E3-D71276BDCCFD",
+    "identifier" : "computerActions",
+    "instructions" : "",
+    "order" : 18,
+    "type" : "folder",
+    "variables" : [
+
+    ]
+  }
+]

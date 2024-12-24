@@ -1,0 +1,243 @@
+[
+  {    
+    "description" : "",
+    "displayName" : "Tana",
+    "forceConfigurable" : false,
+    "icon" : "folder",
+    "id" : "B9635D37-8551-42F0-A1C4-BAB835D5DD25",
+    "identifier" : "tana",
+    "instructions" : "",
+    "order" : 47,
+    "type" : "folder",
+    "variables" : [
+
+    ]
+  },
+  {
+    "actions" : [
+      "DB190A51-89ED-4141-B320-5593E04C0D95",
+      "10000000-0000-0000-0000-000000000001"
+    ],
+    "allowMultipleTurns" : false,    
+    "description" : "This action extracts tasks and sends them to Tana",
+    "displayName" : "Extract Tasks & Add",
+    "folderId" : "B9635D37-8551-42F0-A1C4-BAB835D5DD25",
+    "forceConfigurable" : false,
+    "icon" : "brain",
+    "id" : "7EA7DC67-3E96-49A1-A40F-48611F7B3CD9",
+    "identifier" : "extractTasksAdd",
+    "instructions" : "",
+    "modalities" : [
+      "text"
+    ],
+    "order" : 13,
+    "output" : "ignored",
+    "prompt" : "Today is {{ date.weekday }}, {{ date.today }} {{ time.now }}.\n\nExtract all tasks for {{ settings.name }} from the input below (and optionally the image), assume the input is directed at the receiver of the tasks. \n\nIf you see a name that you assume is the requester, include that. Include the source of the task if you can figure that out (i.e Mail, Slack). Tasks are ALWAYS in English, and NEVER contain newlines.\n\nRead the assignment again: Extract tasks, requester, and source. In English, no newlines.\n\nExample tasks:\n- Perform x for y (via Slack)\n- Read x\n- Sign document x (via Mail)\n\nALWAYS extract tasks AND send a notification with the name of the task(s)\n\nInput:\n{{ originalInput | process }}",
+    "type" : "askAI",
+    "variables" : [
+
+    ],
+    "waitTime" : 15
+  },
+  {  
+    "description" : "Add a node to Tana.",
+    "displayName" : "Create Task (API)",
+    "folderId" : "B9635D37-8551-42F0-A1C4-BAB835D5DD25",
+    "forceConfigurable" : false,
+    "headers" : [
+      {
+        "id" : "0BBCD19C-12E1-4BDE-B754-BF7BF8C4CAC9",
+        "key" : "Content-Type",
+        "value" : "application\/json"
+      },
+      {
+        "id" : "D8895C27-9F76-4625-B1D1-D881CA4AFAB0",
+        "key" : "Authorization",
+        "value" : "Bearer {{secretApiKey}}"
+      }
+    ],
+    "icon" : "checklist.unchecked",
+    "id" : "DB190A51-89ED-4141-B320-5593E04C0D95",
+    "identifier" : "createTaskApi",
+    "instructions" : "Uses the Tana Input API to add nodes. Optionally with your given Supertag and fills a source field.",
+    "method" : "POST",
+    "nextActionId" : "10000000-0000-0000-0000-000000000007",
+    "order" : 15,
+    "payload" : "{\n  \"targetNodeId\": \"{{targetNodeId|default:\"INBOX\"}}\",\n  \"nodes\": [\n    {% for task in tasks %}{\n      \"name\": \"{{ task | jsonEscape }}\",\n      \"supertags\": [ {% if supertagId %}{\"id\": \"{{supertagId}}\"}{% endif %} ],\n      \"children\": [ {% if fieldId %}{ \"type\": \"field\", \"attributeId\": \"{{ fieldId }}\", \"children\": [{% if originalInput | match:\"message-id: <(.+?)>\" %}{ \"name\": \"message:&lt;{{ originalInput | match:\"message-id: <(.+?)>\" }}&gt;\"}{% endif %}] }{% endif %} ]\n    }{% if forloop.counter != forloop.length %},{% endif %}{% endfor %}      \n  ]\n}\n",
+    "type" : "makeAPIRequest",
+    "url" : "https:\/\/europe-west1-tagr-prod.cloudfunctions.net\/addToNodeV2",
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "One or more tasks (No newlines supported)",
+        "id" : "5448018F-EF70-426A-BAA4-598221EADDB0",
+        "label" : "",
+        "name" : "tasks",
+        "required" : true,
+        "type" : "array",
+        "value" : ""
+      },
+      {
+        "ai" : false,
+        "description" : "Your Tana Workspace API Key",
+        "id" : "44463E85-CB39-496E-AF3C-A5868E563645",
+        "label" : "API Key",
+        "name" : "secretApiKey",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : false,
+        "description" : "Enter the destination id for the tasks (Defaults to your inbox)",
+        "id" : "09A4C01D-6569-4D94-890C-FB73AACBAB10",
+        "label" : "Destination ID",
+        "name" : "targetNodeId",
+        "required" : false,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : false,
+        "description" : "Enter the supertag id of your task supertag (Optional)",
+        "id" : "573BB78D-F241-4496-B876-1706FB5935D9",
+        "label" : "Supertag ID",
+        "name" : "supertagId",
+        "required" : false,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : false,
+        "description" : "Enter the field id where to put extra context (Optional)",
+        "id" : "9EC07298-5741-42E1-9EEA-952E54CF21F0",
+        "label" : "Field ID",
+        "name" : "fieldId",
+        "required" : false,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  },
+  {
+    "buildNumber" : "1",
+    "description" : "Add a node to Tana",
+    "displayName" : "Create Node (API)",
+    "folderId" : "B9635D37-8551-42F0-A1C4-BAB835D5DD25",
+    "forceConfigurable" : false,
+    "headers" : [
+      {
+        "id" : "0BBCD19C-12E1-4BDE-B754-BF7BF8C4CAC9",
+        "key" : "Content-Type",
+        "value" : "application\/json"
+      },
+      {
+        "id" : "D8895C27-9F76-4625-B1D1-D881CA4AFAB0",
+        "key" : "Authorization",
+        "value" : "Bearer {{secretApiKey}}"
+      }
+    ],
+    "icon" : "list.bullet.indent",
+    "id" : "D5EA418A-E4D1-438D-ABB9-44F52D91070A",
+    "identifier" : "createNodeApi",
+    "instructions" : "",
+    "method" : "POST",
+    "nextActionId" : "10000000-0000-0000-0000-000000000007",
+    "order" : 16,
+    "payload" : "{\n  \"targetNodeId\": \"{{targetNodeId|default:\"INBOX\"}}\",\n  \"nodes\": [{\n      \"name\": \"{{ content | jsonEscape }}\",\n      \"supertags\": [ {% if supertagId %}{\"id\": \"{{supertagId}}\"}{% endif %} ]}\n   ]\n}\n",
+    "type" : "makeAPIRequest",
+    "url" : "https:\/\/europe-west1-tagr-prod.cloudfunctions.net\/addToNodeV2",
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "The content of the node. No newlines supported.",
+        "id" : "5448018F-EF70-426A-BAA4-598221EADDB0",
+        "label" : "Content",
+        "name" : "content",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : false,
+        "description" : "Your Tana Workspace API Key",
+        "id" : "44463E85-CB39-496E-AF3C-A5868E563645",
+        "label" : "API Key",
+        "name" : "secretApiKey",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : true,
+        "description" : "Enter the destination node id for the tasks (Defaults to your inbox)",
+        "id" : "09A4C01D-6569-4D94-890C-FB73AACBAB10",
+        "label" : "Destination",
+        "name" : "targetNodeId",
+        "required" : false,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : true,
+        "description" : "Enter the supertag id for your node (Optional)",
+        "id" : "573BB78D-F241-4496-B876-1706FB5935D9",
+        "label" : "Supertag",
+        "name" : "supertagId",
+        "required" : false,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  },
+  {    
+    "description" : "Use the Tana API. Docs: https:\/\/tana.inc\/docs\/input-api",
+    "displayName" : "Use API",
+    "folderId" : "B9635D37-8551-42F0-A1C4-BAB835D5DD25",
+    "forceConfigurable" : false,
+    "headers" : [
+      {
+        "id" : "0BBCD19C-12E1-4BDE-B754-BF7BF8C4CAC9",
+        "key" : "Content-Type",
+        "value" : "application\/json"
+      },
+      {
+        "id" : "D8895C27-9F76-4625-B1D1-D881CA4AFAB0",
+        "key" : "Authorization",
+        "value" : "Bearer {{secretApiKey}}"
+      }
+    ],
+    "icon" : "network",
+    "id" : "08E6497A-EBDC-4B26-A048-3EB84807BFEA",
+    "identifier" : "useApi",
+    "instructions" : "This is a high-level action allowing the AI to use the API itself.",
+    "method" : "POST",
+    "nextActionId" : "10000000-0000-0000-0000-000000000007",
+    "order" : 18,
+    "payload" : "{{ json }}",
+    "type" : "makeAPIRequest",
+    "url" : "https:\/\/europe-west1-tagr-prod.cloudfunctions.net\/addToNodeV2",
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "The API json to send. Example: { \"targetNodeId\": \"INBOX\", \"nodes\": [{ \"name\": \"Example Task\", \"supertags\": [{ \"id\": \"12345\" }], \"children\": [{ \"type\": \"field\", \"attributeId\": \"67890\", \"children\": [{ \"name\": \"example-value\" }] }] }] }",
+        "id" : "5448018F-EF70-426A-BAA4-598221EADDB0",
+        "label" : "JSON",
+        "name" : "json",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : false,
+        "description" : "Your Tana Workspace API Key",
+        "id" : "44463E85-CB39-496E-AF3C-A5868E563645",
+        "label" : "API Key",
+        "name" : "secretApiKey",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  }
+]

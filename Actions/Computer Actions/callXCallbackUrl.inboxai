@@ -1,0 +1,52 @@
+[
+  {    
+    "command" : "open \"shortcuts:\/\/x-callback-url\/run-shortcut?name={{ name | percentEncode }}&input=text&text={{ text | percentEncode }}\"",
+    "description" : "Runs a x-callback-url",
+    "displayName" : "Call x-callback-url",
+    "folderId" : "90B14339-54F0-4962-8322-A90A4BA86169",
+    "forceConfigurable" : false,
+    "icon" : "square.and.arrow.up",
+    "id" : "50C9ADE6-3B4B-4AB2-9CB5-33AE3189029E",
+    "identifier" : "callXCallbackUrl",
+    "instructions" : "",
+    "order" : 12,
+    "type" : "terminalCommand",
+    "useSSH" : false,
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "The name of the Apple Shortcut",
+        "id" : "DFF47445-708B-41A2-9A8C-E9B0E1C9FA3A",
+        "label" : "Shortcut",
+        "name" : "shortcut",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : true,
+        "description" : "The text to send to the Shortcut",
+        "id" : "F88C3D3F-69C2-499A-8E41-52710070AC57",
+        "label" : "Text",
+        "name" : "text",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  },
+  {    
+    "description" : "",
+    "displayName" : "Computer Actions",
+    "forceConfigurable" : false,
+    "icon" : "folder",
+    "id" : "AA933D08-3148-46F3-82E3-D71276BDCCFD",
+    "identifier" : "computerActions",
+    "instructions" : "",
+    "order" : 51,
+    "type" : "folder",
+    "variables" : [
+
+    ]
+  }
+]

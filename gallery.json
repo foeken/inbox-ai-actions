@@ -1,0 +1,174 @@
+[
+    {        
+        "title" : "Apple Applications",
+        "description" : "Interact with native Apple applications.",
+        "actions" : [
+            {
+                "title" : "Apple Notes",
+                "action" : "appleNotes.inboxai",
+                "icon" : "note.text.badge.plus"
+            },
+            {
+                "title" : "Apple Reminders",
+                "action" : "appleReminders.inboxai",
+                "icon" : "list.bullet"
+            }
+        ]
+    },
+    {
+        "title" : "Note Taking & Task Management",
+        "description" : "Take notes and manage tasks using your favorite note taking apps.",
+        "actions" : [
+            {
+                "title" : "Obsidian",
+                "action" : "obsidian.inboxai",
+                "icon" : "note.text.badge.plus"
+            },
+            {
+                "title" : "Notion",
+                "action" : "notion.inboxai",
+                "icon" : "note.text.badge.plus"
+            },
+            {
+                "title" : "Tana",
+                "action" : "tana.inboxai",
+                "icon" : "list.bullet.indent"
+            },
+            {
+                "title" : "Todoist",
+                "action" : "todoist.inboxai",
+                "icon" : "checklist.unchecked"
+            },
+            {
+                "title" : "WorkFlowy",
+                "action" : "workflowy.inboxai",
+                "icon" : "list.bullet.indent"
+            },
+            {
+                "title" : "Reflect",
+                "action" : "reflect.inboxai",
+                "icon" : "note.text.badge.plus"
+            },
+            {
+                "title" : "Slite",
+                "action" : "slite.inboxai",
+                "icon" : "note.text.badge.plus"
+            },            
+            {
+                "title" : "Apple Notes",
+                "action" : "appleNotes.inboxai",
+                "icon" : "note.text.badge.plus"
+            },            
+            {
+                "title" : "Apple Reminders",
+                "action" : "appleReminders.inboxai",
+                "icon" : "list.bullet"
+            }
+        ]
+    },
+    {
+        "title" : "Calendar",
+        "description" : "Add events to your calendar.",
+        "actions" : [            
+            {
+                "title" : "Fantastical",
+                "action" : "fantastical.inboxai",
+                "icon" : "calendar.badge.plus"
+            }            
+        ]
+    },
+    {        
+        "title" : "Websites",
+        "description" : "Open popular websites and search engines in your browser.",
+        "actions" : [
+            {                
+                "title" : "Ask ChatGPT",
+                "action" : "askChatgpt.inboxai",
+                "icon" : "questionmark.bubble"
+            },
+            {
+                "title" : "Search Google",
+                "action" : "searchGoogle.inboxai",
+                "icon" : "doc.text.magnifyingglass"
+            },
+            {
+                "title" : "Ask Claude",
+                "action" : "askClaude.inboxai",
+                "icon" : "questionmark.bubble"
+            },
+            {
+                "title" : "Ask Perplexity",
+                "action" : "askPerplexity.inboxai",
+                "icon" : "questionmark.bubble"
+            }            
+        ]
+    },
+    {
+        "title" : "Computer Actions",
+        "description" : "Run applications and perform actions on your computer.",
+        "actions" : [
+            {
+                "title" : "Open Application",
+                "action" : "openApplication.inboxai",
+                "icon" : "macwindow.and.cursorarrow"
+            },
+            {
+                "title" : "Open Browser",
+                "action" : "openBrowser.inboxai",
+                "icon" : "safari"
+            },
+            {
+                "title" : "Draft Email",
+                "action" : "draftEmail.inboxai",
+                "icon" : "envelope"
+            },
+            {                
+                "title" : "Run Apple Shortcut",
+                "action" : "runAppleShortcut.inboxai",
+                "icon" : "command"
+            },
+            {
+                "title" : "Run AppleScript",
+                "action" : "runAppleScript.inboxai",
+                "icon" : "applescript"
+            },            
+            {
+                "title" : "Call x-callback URLs",
+                "action" : "callXCallbackUrl.inboxai",
+                "icon" : "square.and.arrow.up"
+            }
+        ]
+    },    
+    {
+        "title" : "APIs",
+        "description" : "Useful APIs to help you get things done.",
+        "actions" : [
+            {
+                "title" : "EXA.ai",
+                "action" : "exa.inboxai",
+                "icon" : "doc.text.magnifyingglass"
+            },
+            {
+                "title" : "EventLink",
+                "action" : "eventlink.inboxai",
+                "icon" : "calendar"
+            }
+        ]
+    },
+    {
+        "title" : "Utilities",
+        "description" : "Useful utilities to help you get things done.",
+        "actions" : [
+            {
+                "title" : "Get HTTP Content",
+                "action" : "getHttpContent.inboxai",
+                "icon" : "link"
+            },
+            {
+                "title" : "Output to File",
+                "action" : "outputToFile.inboxai",
+                "icon" : "square.and.pencil"
+            }
+        ]
+    }       
+]

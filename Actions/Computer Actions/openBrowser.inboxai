@@ -1,0 +1,43 @@
+[
+  {    
+    "command" : "open \"{{ url }}\"",
+    "description" : "Open a browser on a specific (percent-encoded) url",
+    "displayName" : "Open Browser",
+    "folderId" : "AA933D08-3148-46F3-82E3-D71276BDCCFD",
+    "forceConfigurable" : false,
+    "icon" : "safari",
+    "id" : "D3889625-134E-4846-841C-474E0EBE5C6A",
+    "identifier" : "openBrowser",
+    "instructions" : "",
+    "order" : 4,
+    "type" : "terminalCommand",
+    "useSSH" : false,
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "The URL to open for the user",
+        "id" : "D8A381B2-92DF-4683-A482-F5088FA53A3D",
+        "label" : "URL",
+        "name" : "url",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  },
+  {
+    "buildNumber" : "1",
+    "description" : "",
+    "displayName" : "Computer Actions",
+    "forceConfigurable" : false,
+    "icon" : "folder",
+    "id" : "AA933D08-3148-46F3-82E3-D71276BDCCFD",
+    "identifier" : "computerActions",
+    "instructions" : "",
+    "order" : 55,
+    "type" : "folder",
+    "variables" : [
+
+    ]
+  }
+]

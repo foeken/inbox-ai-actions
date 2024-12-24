@@ -1,0 +1,42 @@
+[
+  {    
+    "command" : "open \"https:\/\/claude.ai\/new?q={{ query | percentEncode }}\"",
+    "description" : "Ask Claude, opens a Claude window for the user",
+    "displayName" : "Ask Claude",
+    "folderId" : "A017BA42-8192-4A46-9389-06518E4124F0",
+    "forceConfigurable" : false,
+    "icon" : "questionmark.bubble",
+    "id" : "C1493D3E-8E29-402E-8EB8-81127E1311FA",
+    "identifier" : "askClaude",
+    "instructions" : "",
+    "order" : 7,
+    "type" : "terminalCommand",
+    "useSSH" : false,
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "The question or query",
+        "id" : "DFF47445-708B-41A2-9A8C-E9B0E1C9FA3A",
+        "label" : "Query",
+        "name" : "query",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  },
+  {
+    "description" : "",
+    "displayName" : "Websites",
+    "forceConfigurable" : false,
+    "icon" : "folder",
+    "id" : "A017BA42-8192-4A46-9389-06518E4124F0",
+    "identifier" : "websites",
+    "instructions" : "",
+    "order" : 52,
+    "type" : "folder",
+    "variables" : [
+
+    ]
+  }
+]

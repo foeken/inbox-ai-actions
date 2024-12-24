@@ -1,0 +1,73 @@
+[
+  {
+    "buildNumber" : "1",
+    "description" : "",
+    "displayName" : "EventLink",
+    "forceConfigurable" : false,
+    "icon" : "folder",
+    "id" : "D246BE7D-4EC9-48C4-9C81-48A9C50DFFF6",
+    "identifier" : "eventlink",
+    "instructions" : "",
+    "order" : 51,
+    "type" : "folder",
+    "variables" : [
+
+    ]
+  },
+  {
+    "buildNumber" : "1",
+    "description" : "Get calendar for specific period by date and offset",
+    "displayName" : "Get Calendar API",
+    "folderId" : "D246BE7D-4EC9-48C4-9C81-48A9C50DFFF6",
+    "forceConfigurable" : false,
+    "headers" : [
+      {
+        "id" : "A43E262B-AFF6-46D7-A69F-7261B6BA2FC9",
+        "key" : "Authorization",
+        "value" : "{{secretHeader}}"
+      }
+    ],
+    "icon" : "calendar",
+    "id" : "05BDB848-94A0-4AA5-960F-07A700DD57A8",
+    "identifier" : "getCalendarApi",
+    "instructions" : "Get your calendar for a given period using [EventLink](https:\/\/eventlink.host\/app)",
+    "method" : "GET",
+    "nextActionId" : "10000000-0000-0000-0000-000000000007",
+    "order" : 27,
+    "payload" : "",
+    "type" : "makeAPIRequest",
+    "url" : "http:\/\/localhost:8080\/events.json?offset={{offset|default:14}}&date={% if date %}{{date}}{{else}}{{date.today}}{% endif %}&truncate=true&filterField=notes,attendees,location,recurrence,identifier",
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "The date",
+        "id" : "3EA6AE05-6886-4F9C-9FFD-617EAC6C0BE8",
+        "label" : "Date",
+        "name" : "date",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : true,
+        "description" : "The amount of days to fetch",
+        "id" : "D7CCEC75-30D3-4A57-86F0-C6CCBE5EFE27",
+        "label" : "Days",
+        "name" : "offset",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : false,
+        "description" : "The full authorization header (including Bearer)",
+        "id" : "76B04D8C-6F3D-4375-82A0-50BFA71E8ED2",
+        "label" : "Authorization Header",
+        "name" : "secretHeader",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "buildNumber" : "1",
+    "command" : "echo \"{{ input | doubleQuoteEscape }}\" > {{ run.id }}.txt",
+    "description" : "Output to a file in your Sandbox directory",
+    "displayName" : "Output to file",
+    "folderId" : "8CDE4C57-7328-4637-B416-773C368511C9",
+    "forceConfigurable" : false,
+    "icon" : "square.and.pencil",
+    "id" : "9242D00A-C46F-41D7-B8B0-3B6449B7BAFF",
+    "identifier" : "outputToFile",
+    "instructions" : "",
+    "order" : 3,
+    "type" : "terminalCommand",
+    "useSSH" : false,
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "Description",
+        "id" : "050B5890-90D8-4F97-B3E3-6EE4CA21957E",
+        "label" : "Input",
+        "name" : "input",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  },
+  {
+    "buildNumber" : "1",
+    "description" : "",
+    "displayName" : "Utilities",
+    "forceConfigurable" : false,
+    "icon" : "folder",
+    "id" : "8CDE4C57-7328-4637-B416-773C368511C9",
+    "identifier" : "utilities",
+    "instructions" : "",
+    "order" : 56,
+    "type" : "folder",
+    "variables" : [
+
+    ]
+  }
+]

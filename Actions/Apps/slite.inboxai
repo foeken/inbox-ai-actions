@@ -1,0 +1,63 @@
+[
+  {
+    "buildNumber" : "1",
+    "description" : "",
+    "displayName" : "Slite",
+    "forceConfigurable" : false,
+    "icon" : "folder",
+    "id" : "4BA541B7-C346-47DD-9D10-CEDC9B13B941",
+    "identifier" : "slite",
+    "instructions" : "",
+    "order" : 50,
+    "type" : "folder",
+    "variables" : [
+
+    ]
+  },
+  {
+    "buildNumber" : "1",
+    "description" : "Ask Slite a question about your knowledgebase",
+    "displayName" : "Slite API",
+    "folderId" : "4BA541B7-C346-47DD-9D10-CEDC9B13B941",
+    "forceConfigurable" : false,
+    "headers" : [
+      {
+        "id" : "8FB15992-8BC2-46C8-814C-8B7E860E57C2",
+        "key" : "x-slite-api-key",
+        "value" : "{{secretApiKey}}"
+      }
+    ],
+    "icon" : "network",
+    "id" : "C3EC8AB2-51D6-44CA-8698-5F3239B66D89",
+    "identifier" : "sliteApi",
+    "instructions" : "Ask Slite a question about your knowledgebase. Can be integrated to allow your AI to lookup information.",
+    "method" : "GET",
+    "nextActionId" : "10000000-0000-0000-0000-000000000007",
+    "order" : 29,
+    "payload" : "",
+    "type" : "makeAPIRequest",
+    "url" : "https:\/\/api.slite.com\/v1\/ask?question={{question}}",
+    "variables" : [
+      {
+        "ai" : false,
+        "description" : "Your Slite API key",
+        "id" : "84609DA4-7C55-4FDC-AFEA-4AB46A3BEB9E",
+        "label" : "API Key",
+        "name" : "secretApiKey",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : true,
+        "description" : "The question to ask the Slite knowledgebase",
+        "id" : "2A83060F-4B18-4809-9601-144FB18AC661",
+        "label" : "Question",
+        "name" : "question",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  }
+]

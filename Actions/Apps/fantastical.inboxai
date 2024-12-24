@@ -1,0 +1,42 @@
+[
+  {
+    "description" : "",
+    "displayName" : "Fantastical",
+    "forceConfigurable" : false,
+    "icon" : "folder",
+    "id" : "FC05A1AA-7DD3-4980-AA2C-8E505FBD6239",
+    "identifier" : "fantastical",
+    "instructions" : "",
+    "order" : 50,
+    "type" : "folder",
+    "variables" : [
+
+    ]
+  },
+  {
+    "command" : "open \"x-fantastical3:\/\/parse?sentence={{ sentence | percentEncode }}\"",
+    "description" : "Draft a new event with Fantastical",
+    "displayName" : "Draft Fantastical Event",
+    "folderId" : "FC05A1AA-7DD3-4980-AA2C-8E505FBD6239",
+    "forceConfigurable" : false,
+    "icon" : "calendar.badge.plus",
+    "id" : "286B9E26-EC56-4D76-B2BE-2B7B491A1209",
+    "identifier" : "draftFantasticalEvent",
+    "instructions" : "",
+    "order" : 45,
+    "type" : "terminalCommand",
+    "useSSH" : false,
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "A sentence describing the event. i.e. Dinner next friday at 6pm",
+        "id" : "33153730-99B5-4532-9EF5-BF6268D34F1F",
+        "label" : "Sentence",
+        "name" : "sentence",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  }
+]

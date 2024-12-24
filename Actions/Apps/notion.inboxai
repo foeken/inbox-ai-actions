@@ -1,0 +1,109 @@
+[
+  {
+    "buildNumber" : "1",
+    "description" : "",
+    "displayName" : "Notion",
+    "forceConfigurable" : false,
+    "icon" : "folder",
+    "id" : "6C0526D0-2A2B-483C-91BC-276A54CD7D56",
+    "identifier" : "notion",
+    "instructions" : "",
+    "order" : 49,
+    "type" : "folder",
+    "variables" : [
+
+    ]
+  },
+  {
+    "actions" : [
+      "8C980B81-DCDB-40C3-B749-04904C124B07",
+      "10000000-0000-0000-0000-000000000001"
+    ],
+    "allowMultipleTurns" : false,
+    "buildNumber" : "1",
+    "description" : "This action extracts tasks and sends them to Notion",
+    "displayName" : "Extract Tasks & Add",
+    "folderId" : "6C0526D0-2A2B-483C-91BC-276A54CD7D56",
+    "forceConfigurable" : false,
+    "icon" : "brain",
+    "id" : "141794CB-2A87-49FB-83F1-054DEFB9B618",
+    "identifier" : "extractTasksAdd",
+    "instructions" : "",
+    "modalities" : [
+      "text"
+    ],
+    "order" : 23,
+    "output" : "ignored",
+    "prompt" : "Today is {{ date.weekday }}, {{ date.today }} {{ time.now }}.\n\nExtract all tasks for {{ settings.name }} from the input below (and optionally the image), assume the input is directed at the receiver of the tasks. \n\nIf you see a name that you assume is the requester, include that. Include the source of the task if you can figure that out (i.e Mail, Slack). Tasks are ALWAYS in English, and NEVER contain newlines.\n\nRead the assignment again: Extract tasks, requester, and source. In English, no newlines.\n\nExample tasks:\n- Perform x for y (via Slack)\n- Read x\n- Sign document x (via Mail)\n\nALWAYS extract tasks AND send a notification with the name of the task(s)\n\nInput:\n{{ originalInput | process }}",
+    "type" : "askAI",
+    "variables" : [
+
+    ],
+    "waitTime" : 15
+  },
+  {
+    "buildNumber" : "1",
+    "description" : "Create a Task in Notion",
+    "displayName" : "Create Task (API)",
+    "folderId" : "6C0526D0-2A2B-483C-91BC-276A54CD7D56",
+    "forceConfigurable" : false,
+    "headers" : [
+      {
+        "id" : "AF59FA92-A1B1-40F1-A74A-31F72376DFBB",
+        "key" : "Authorization",
+        "value" : "Bearer {{ secretKey }}"
+      },
+      {
+        "id" : "4EA574CD-9F62-4BB4-885F-3F2E2C117077",
+        "key" : "Content-Type",
+        "value" : "application\/json"
+      },
+      {
+        "id" : "DC275D99-02B9-4072-B029-110121841404",
+        "key" : "Notion-Version",
+        "value" : "2022-06-28"
+      }
+    ],
+    "icon" : "checklist.unchecked",
+    "id" : "8C980B81-DCDB-40C3-B749-04904C124B07",
+    "identifier" : "createTaskApi",
+    "instructions" : "Create an Internal Notion Integration called Inbox AI [here](https:\/\/www.notion.so\/profile\/integrations) and get an Integration Secret. Connect your database with Inbox AI.",
+    "method" : "POST",
+    "order" : 24,
+    "payload" : "{\n  \"parent\": { \"database_id\": \"{{ databaseId }}\" },\n  \"properties\": {\n     \"Name\": { \"title\": [{ \"text\": { \"content\": \"{{ task }}\" } }] },\n     \"Status\": { \"status\": { \"name\": \"Not started\" } }\n   }\n}",
+    "type" : "makeAPIRequest",
+    "url" : "https:\/\/api.notion.com\/v1\/pages",
+    "variables" : [
+      {
+        "ai" : false,
+        "description" : "Your Notion Internal Integration Secret",
+        "id" : "2AD9A35A-5A54-4FB1-921B-5F664FF8FEEB",
+        "label" : "Integration Secret",
+        "name" : "secretKey",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : false,
+        "description" : "The ID of your tasks database",
+        "id" : "6DB21472-E2D8-4CFB-8991-73F823C55508",
+        "label" : "Database ID",
+        "name" : "databaseId",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : true,
+        "description" : "The task",
+        "id" : "8F242684-DEB0-4588-9B60-A73A6DC29E4F",
+        "label" : "Task",
+        "name" : "task",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  }
+]

@@ -1,0 +1,43 @@
+[
+  {    
+    "command" : "osascript {% for line in script | splitNewlines %}-e \"{{ line | doubleQuoteEscape }}\" {% endfor %}",
+    "description" : "Run an AppleScript using osascript",
+    "displayName" : "Run Apple Script",
+    "folderId" : "90B14339-54F0-4962-8322-A90A4BA86169",
+    "forceConfigurable" : false,
+    "icon" : "applescript",
+    "id" : "7B0FD82B-C3BB-477D-9623-3C1F86713E2A",
+    "identifier" : "runAppleScript",
+    "instructions" : "",
+    "nextActionId" : "10000000-0000-0000-0000-000000000007",
+    "order" : 1,
+    "type" : "terminalCommand",
+    "useSSH" : true,
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "The AppleScript to run",
+        "id" : "409B4FE8-D8E7-485E-B64A-4501C7364191",
+        "label" : "Script",
+        "name" : "script",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  },
+  {    
+    "description" : "",
+    "displayName" : "Computer Actions",
+    "forceConfigurable" : false,
+    "icon" : "folder",
+    "id" : "AA933D08-3148-46F3-82E3-D71276BDCCFD",
+    "identifier" : "computerActions",
+    "instructions" : "",
+    "order" : 53,
+    "type" : "folder",
+    "variables" : [
+
+    ]
+  }
+]

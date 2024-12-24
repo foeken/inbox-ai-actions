@@ -1,0 +1,44 @@
+[
+  {    
+    "command" : "curl -sL \"{{ url | doubleQuoteEscape }}\"",
+    "description" : "Gets the content of a HTTP link with Curl",
+    "displayName" : "Get HTTP Content",
+    "folderId" : "8CDE4C57-7328-4637-B416-773C368511C9",
+    "forceConfigurable" : false,
+    "icon" : "link",
+    "id" : "BDFDDE9B-05B1-483D-BA2D-20B292C6055B",
+    "identifier" : "getHttpLink",
+    "instructions" : "",
+    "nextActionId" : "10000000-0000-0000-0000-000000000007",
+    "order" : 9,
+    "type" : "terminalCommand",
+    "useSSH" : false,
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "The URL to get",
+        "id" : "DFF47445-708B-41A2-9A8C-E9B0E1C9FA3A",
+        "label" : "URL",
+        "name" : "url",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  },
+  {
+    "buildNumber" : "1",
+    "description" : "",
+    "displayName" : "Utilities",
+    "forceConfigurable" : false,
+    "icon" : "folder",
+    "id" : "8CDE4C57-7328-4637-B416-773C368511C9",
+    "identifier" : "utilities",
+    "instructions" : "",
+    "order" : 56,
+    "type" : "folder",
+    "variables" : [
+
+    ]
+  }
+]

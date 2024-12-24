@@ -1,0 +1,62 @@
+[
+  {    
+    "command" : "open \"mailto:{{ recipient | doubleQuoteEscape }}?subject={{ subject | percentEncode }}&body={{ body | percentEncode }}\"",
+    "description" : "Draft a new email",
+    "displayName" : "Draft Email",
+    "folderId" : "AA933D08-3148-46F3-82E3-D71276BDCCFD",
+    "forceConfigurable" : false,
+    "icon" : "envelope",
+    "id" : "3E868F4C-FD25-468E-BF02-897688CA4239",
+    "identifier" : "draftEmail",
+    "instructions" : "",
+    "order" : 10,
+    "type" : "terminalCommand",
+    "useSSH" : false,
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "Email address of the recipient",
+        "id" : "DA97292A-1D29-44AA-B37F-4E3615D6889E",
+        "label" : "Recipient",
+        "name" : "recipient",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : true,
+        "description" : "Subject of the email",
+        "id" : "8B6464D0-5F79-4DDF-892E-EA51B7AFEEF2",
+        "label" : "Subject",
+        "name" : "subject",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : true,
+        "description" : "Body of the email",
+        "id" : "47EE07A1-BE65-417E-88E3-2ED437B14862",
+        "label" : "Body",
+        "name" : "body",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  },
+  {    
+    "description" : "",
+    "displayName" : "Computer Actions",
+    "forceConfigurable" : false,
+    "icon" : "folder",
+    "id" : "AA933D08-3148-46F3-82E3-D71276BDCCFD",
+    "identifier" : "computerActions",
+    "instructions" : "",
+    "order" : 55,
+    "type" : "folder",
+    "variables" : [
+
+    ]
+  }
+]

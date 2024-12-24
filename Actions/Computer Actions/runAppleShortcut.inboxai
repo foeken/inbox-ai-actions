@@ -1,0 +1,53 @@
+[
+  {    
+    "command" : "echo \"{{ text | doubleQuoteEscape }}\" > {{ dir.tmp }}\/{{run.id}} && echo $(shortcuts run \"{{ shortcut | doubleQuoteEscape }}\" -i {{ dir.tmp }}\/{{run.id}}) && rm {{ dir.tmp }}\/{{run.id}}",
+    "description" : "Runs a specific Apple Shortcut",
+    "displayName" : "Run Apple Shortcut",
+    "folderId" : "90B14339-54F0-4962-8322-A90A4BA86169",
+    "forceConfigurable" : false,
+    "icon" : "command",
+    "id" : "A2DCB45A-03B9-4BB8-A5D2-97C0FD63FE66",
+    "identifier" : "runAppleShortcut",
+    "instructions" : "",
+    "nextActionId" : "10000000-0000-0000-0000-000000000007",
+    "order" : 0,
+    "type" : "terminalCommand",
+    "useSSH" : false,
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "The name of the Apple Shortcut",
+        "id" : "DFF47445-708B-41A2-9A8C-E9B0E1C9FA3A",
+        "label" : "Shortcut",
+        "name" : "shortcut",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : true,
+        "description" : "The text to send to the Shortcut",
+        "id" : "F88C3D3F-69C2-499A-8E41-52710070AC57",
+        "label" : "Text",
+        "name" : "text",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  },
+  {
+    "description" : "",
+    "displayName" : "Computer Actions",
+    "forceConfigurable" : false,
+    "icon" : "folder",
+    "id" : "AA933D08-3148-46F3-82E3-D71276BDCCFD",
+    "identifier" : "computerActions",
+    "instructions" : "",
+    "order" : 51,
+    "type" : "folder",
+    "variables" : [
+
+    ]
+  }
+]

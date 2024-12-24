@@ -1,0 +1,99 @@
+[
+  {    
+    "description" : "",
+    "displayName" : "Apple Notes",
+    "forceConfigurable" : false,
+    "icon" : "folder",
+    "id" : "FBE77EE9-B85D-4B98-81B1-8F9F955C7B92",
+    "identifier" : "appleNotes",
+    "instructions" : "",
+    "order" : 42,
+    "type" : "folder",
+    "variables" : [
+
+    ]
+  },
+  {    
+    "command" : "echo \"{{ input | doubleQuoteEscape }}\" > {{ dir.tmp }}\/{{run.id}} && shortcuts run \"{{ shortcut | default:\"Create Note\" | doubleQuoteEscape }}\" -i {{ dir.tmp }}\/{{run.id}} && rm {{ dir.tmp }}\/{{run.id}}",
+    "description" : "Create a new note in Apple Notes",
+    "displayName" : "Create Note",
+    "folderId" : "FBE77EE9-B85D-4B98-81B1-8F9F955C7B92",
+    "forceConfigurable" : true,
+    "icon" : "note.text.badge.plus",
+    "id" : "4CE759A0-1B8F-407F-A362-FFD2524538BF",
+    "identifier" : "createNote",
+    "instructions" : "Download and Install the [Create Note](https:\/\/www.icloud.com\/shortcuts\/7d6c0e6860024e3f9437eb962912cdcf) Shortcut to get this to work.",
+    "order" : 21,
+    "type" : "terminalCommand",
+    "useSSH" : false,
+    "variables" : [
+      {
+        "ai" : false,
+        "description" : "The name of your shortcut, defaults to \"Create Note\"",
+        "id" : "DFF47445-708B-41A2-9A8C-E9B0E1C9FA3A",
+        "label" : "Shortcut",
+        "name" : "shortcut",
+        "required" : false,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : true,
+        "description" : "The input to send to the Shortcut",
+        "id" : "F88C3D3F-69C2-499A-8E41-52710070AC57",
+        "label" : "Input",
+        "name" : "input",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  },
+  {
+    "buildNumber" : "1",
+    "command" : "echo \"{{ note | doubleQuoteEscape }}____{{ input | doubleQuoteEscape }}\" > {{ dir.tmp }}\/{{run.id}} && shortcuts run \"{{ shortcut | default:\"Append to Note\" | doubleQuoteEscape }}\" -i {{ dir.tmp }}\/{{run.id}} && rm {{ dir.tmp }}\/{{run.id}}",
+    "description" : "Append to an existing note in Apple Notes",
+    "displayName" : "Append to Note",
+    "folderId" : "FBE77EE9-B85D-4B98-81B1-8F9F955C7B92",
+    "forceConfigurable" : false,
+    "icon" : "note.text.badge.plus",
+    "id" : "511314A2-E648-4EFC-8B51-1DD950A0C8BE",
+    "identifier" : "appendToNote",
+    "instructions" : "Download and Install the [Append to Note](https:\/\/www.icloud.com\/shortcuts\/783ff172fa90497fa5fd825331ccbf4b) Shortcut to get this to work.",
+    "order" : 22,
+    "type" : "terminalCommand",
+    "useSSH" : false,
+    "variables" : [
+      {
+        "ai" : false,
+        "description" : "The name of your shortcut, defaults to \"Append to Note\"",
+        "id" : "DFF47445-708B-41A2-9A8C-E9B0E1C9FA3A",
+        "label" : "Shortcut",
+        "name" : "shortcut",
+        "required" : false,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : false,
+        "description" : "The name\/title of the note",
+        "id" : "1E0A7391-94FC-4BC5-874A-3DA43C534399",
+        "label" : "Note",
+        "name" : "note",
+        "required" : false,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : true,
+        "description" : "The input to send to the Shortcut",
+        "id" : "F88C3D3F-69C2-499A-8E41-52710070AC57",
+        "label" : "Input",
+        "name" : "input",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  }
+]

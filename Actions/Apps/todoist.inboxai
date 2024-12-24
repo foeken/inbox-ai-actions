@@ -1,0 +1,111 @@
+[
+  {    
+    "description" : "",
+    "displayName" : "Todoist",
+    "forceConfigurable" : false,
+    "icon" : "folder",
+    "id" : "948AA799-B00C-4F9F-AE46-D55D6DCC4D97",
+    "identifier" : "todoist",
+    "instructions" : "",
+    "order" : 45,
+    "type" : "folder",
+    "variables" : [
+
+    ]
+  },
+  {
+    "actions" : [
+      "11D61252-7538-433E-B83C-1C457CF78040",
+      "10000000-0000-0000-0000-000000000001"
+    ],
+    "allowMultipleTurns" : false,    
+    "description" : "This action extracts tasks and sends them to Todoist",
+    "displayName" : "Extract Tasks & Add",
+    "folderId" : "948AA799-B00C-4F9F-AE46-D55D6DCC4D97",
+    "forceConfigurable" : false,
+    "icon" : "brain",
+    "id" : "683BACD4-415E-490D-8655-7E7D049D3389",
+    "identifier" : "extractTasksAdd",
+    "instructions" : "",
+    "modalities" : [
+      "text"
+    ],
+    "order" : 30,
+    "output" : "ignored",
+    "prompt" : "Today is {{ date.weekday }}, {{ date.today }} {{ time.now }}.\n\nExtract all tasks for {{ settings.name }} from the input below (and optionally the image), assume the input is directed at the receiver of the tasks. \n\nIf you see a name that you assume is the requester, include that. Include the source of the task if you can figure that out (i.e Mail, Slack) as a label. Do not use other labels. Tasks are ALWAYS in English, and NEVER contain newlines.\n\nRead the assignment again: Extract tasks, requester, and source. In English, no newlines.\n\nExample tasks:\n- Perform x for y (Label: Slack)\n- Read x\n- Sign document x (Label: Mail)\n\nALWAYS extract tasks AND send a notification with the name of the task(s)\n\nInput:\n{{ originalInput | process }}",
+    "type" : "askAI",
+    "variables" : [
+
+    ],
+    "waitTime" : 15
+  },
+  {    
+    "description" : "Add a task to Todoist",
+    "displayName" : "Create Task (API)",
+    "folderId" : "948AA799-B00C-4F9F-AE46-D55D6DCC4D97",
+    "forceConfigurable" : true,
+    "headers" : [
+      {
+        "id" : "A76D1D9E-4490-418E-96A7-4FA32EBAD5FA",
+        "key" : "Content-Type",
+        "value" : "application\/json"
+      },
+      {
+        "id" : "4FC37D09-4DAE-4FBA-BC38-853666C27234",
+        "key" : "Authorization",
+        "value" : "Bearer {{secretToken}}"
+      }
+    ],
+    "icon" : "checklist.unchecked",
+    "id" : "11D61252-7538-433E-B83C-1C457CF78040",
+    "identifier" : "createTaskApi",
+    "instructions" : "Uses the Todoist API to add tasks.",
+    "method" : "POST",
+    "order" : 31,
+    "payload" : "{\n  \"content\": \"{{ task | jsonEscape }}\", \n  \"due_string\": \"{{ dueString }}\", \n  \"priority\": 2, \n  \"labels\": [{% for label in labels %}\"{{ label }}\"{% if forloop.counter != forloop.length %},{% endif %}{% endfor %}]\n}",
+    "type" : "makeAPIRequest",
+    "url" : "https:\/\/api.todoist.com\/rest\/v2\/tasks",
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "The task to add",
+        "id" : "FB118F7A-1E56-4B8E-B5C5-3DD9F3841FFC",
+        "label" : "Task",
+        "name" : "task",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : true,
+        "description" : "Human readable string of the due date (i.e Today). Keep empty for no due date.",
+        "id" : "6A65B214-A874-41EB-BBD7-EE666CB26452",
+        "label" : "Due",
+        "name" : "dueString",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : true,
+        "description" : "A set of text labels for your task",
+        "id" : "16CA481B-7754-48D9-9540-6281779A13EC",
+        "label" : "Labels",
+        "name" : "labels",
+        "required" : true,
+        "type" : "array",
+        "value" : ""
+      },
+      {
+        "ai" : false,
+        "description" : "Your Todoist Integration Token",
+        "id" : "0EED9C78-0D1F-400D-9945-6CA99B11D5A0",
+        "label" : "API Token",
+        "name" : "secretToken",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  }
+]

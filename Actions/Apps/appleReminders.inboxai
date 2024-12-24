@@ -1,0 +1,42 @@
+[
+  {    
+    "description" : "",
+    "displayName" : "Apple Reminders",
+    "forceConfigurable" : false,
+    "icon" : "folder",
+    "id" : "F33D5730-514E-4D8C-A280-62BEEDCDAB2E",
+    "identifier" : "appleReminders",
+    "instructions" : "",
+    "order" : 41,
+    "type" : "folder",
+    "variables" : [
+
+    ]
+  },
+  {
+    "actions" : [
+      "10000000-0000-0000-0000-000000000003",
+      "10000000-0000-0000-0000-000000000001"
+    ],
+    "allowMultipleTurns" : false,    
+    "description" : "This action extracts tasks and sends them to Apple Reminders",
+    "displayName" : "Extract Tasks & Add",
+    "folderId" : "F33D5730-514E-4D8C-A280-62BEEDCDAB2E",
+    "forceConfigurable" : false,
+    "icon" : "brain",
+    "id" : "70CCB2C9-7247-41FD-A081-9547EA8B4FB7",
+    "identifier" : "extractTasksAdd",
+    "instructions" : "",
+    "modalities" : [
+      "text"
+    ],
+    "order" : 28,
+    "output" : "ignored",
+    "prompt" : "Today is {{date.weekday}}, {{date.today}} {{time.now}}.\n\nExtract all tasks for {{settings.name}} from the input below (and optionally the image), assume the input is directed at the receiver of the tasks. \n\nIf you see a name that you assume is the requester, include that. Include the source of the task if you can figure that out (i.e Mail, Slack). Tasks are ALWAYS in English, and NEVER contain newlines.\n\nRead the assignment again: Extract tasks, requester, and source. In English, no newlines.\n\nExample task names:\n- Perform x for y (via Slack)\n- Read x\n- Sign document x (via Mail)\n\nALWAYS extract tasks AND send a notification with the name of the task(s)\n\nInput:\n{{ originalInput | process }}",
+    "type" : "askAI",
+    "variables" : [
+
+    ],
+    "waitTime" : 15
+  }
+]

@@ -1,0 +1,194 @@
+[
+  {
+    "buildNumber" : "1",
+    "description" : "",
+    "displayName" : "Reflect",
+    "forceConfigurable" : false,
+    "icon" : "folder",
+    "id" : "222273F7-7F1D-4912-9BAD-8110B26D9AD1",
+    "identifier" : "reflect",
+    "instructions" : "",
+    "order" : 48,
+    "type" : "folder",
+    "variables" : [
+
+    ]
+  },
+  {
+    "actions" : [
+      "10000000-0000-0000-0000-000000000001",
+      "2984E316-6AB5-4BA7-999D-BA5A008FEF3A"
+    ],
+    "allowMultipleTurns" : false,
+    "buildNumber" : "1",
+    "description" : "This action extracts tasks and sends them to Reflect",
+    "displayName" : "Extract Tasks & Add",
+    "folderId" : "222273F7-7F1D-4912-9BAD-8110B26D9AD1",
+    "forceConfigurable" : false,
+    "icon" : "brain",
+    "id" : "B4188611-44D4-4F51-A981-4DAFA063CE1B",
+    "identifier" : "extractTasksAdd",
+    "instructions" : "",
+    "modalities" : [
+      "text"
+    ],
+    "order" : 32,
+    "output" : "ignored",
+    "prompt" : "Today is {{ date.weekday }}, {{ date.today }} {{ time.now }}.\n\nExtract all tasks for {{ settings.name }} from the input below (and optionally the image), assume the input is directed at the receiver of the tasks. \n\nIf you see a name that you assume is the requester, include that. Include the source of the task if you can figure that out (i.e Mail, Slack). Tasks are ALWAYS in English, and NEVER contain newlines.\n\nRead the assignment again: Extract tasks, requester, and source. In English, no newlines.\n\nExample tasks:\n- Perform x for y (via Slack)\n- Read x\n- Sign document x (via Mail)\n\nALWAYS extract tasks AND send a notification with the name of the task(s)\n\nInput:\n{{ originalInput | process }}",
+    "type" : "askAI",
+    "variables" : [
+
+    ],
+    "waitTime" : 15
+  },
+  {
+    "buildNumber" : "1",
+    "description" : "Uses the Refect API to add a task to the daily note",
+    "displayName" : "Create Task (API)",
+    "folderId" : "222273F7-7F1D-4912-9BAD-8110B26D9AD1",
+    "forceConfigurable" : false,
+    "headers" : [
+      {
+        "id" : "E64E3893-FC61-4BB1-872F-9F4BCA5DACD7",
+        "key" : "Authorization",
+        "value" : "Bearer {{ secretAccessToken }}"
+      },
+      {
+        "id" : "F9B289ED-0325-4883-9CF9-28C49DA3C9BE",
+        "key" : "Content-Type",
+        "value" : "application\/json"
+      }
+    ],
+    "icon" : "checklist.unchecked",
+    "id" : "2984E316-6AB5-4BA7-999D-BA5A008FEF3A",
+    "identifier" : "createTaskApi",
+    "instructions" : "Create a Reflect [access token](https:\/\/reflect.app\/developer\/oauth). First create the oAuth app, use https:\/\/inbox-ai.app as URLs.",
+    "method" : "PUT",
+    "order" : 33,
+    "payload" : "{\n  {% if targetDate %}\"date\": \"{{ targetDate | jsonEscape }}\",{% endif %}\n  \"text\": \"{% for task in tasks %} + {{ task | jsonEscape }}\\n{% endfor %}\",\n  \"transform_type\": \"list-append\",\n  \"list_name\": \"{{ list | jsonEscape }}\"\n}",
+    "type" : "makeAPIRequest",
+    "url" : "https:\/\/reflect.app\/api\/graphs\/{{ graphId }}\/daily-notes",
+    "variables" : [
+      {
+        "ai" : false,
+        "description" : "Your access token",
+        "id" : "D60B9B60-C3BE-46B4-8A87-2771FB6F77FB",
+        "label" : "Access Token",
+        "name" : "secretAccessToken",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : false,
+        "description" : "The name of your graph",
+        "id" : "1AAE610B-4B1B-4E96-A03D-A42EB5169876",
+        "label" : "Graph ID",
+        "name" : "graphId",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : false,
+        "description" : "Name of the list to append to. To backlink, use the format [[List Name]]. (Optional)",
+        "id" : "38C6C0FA-7085-44F7-BD43-C42142C794CB",
+        "label" : "List Name",
+        "name" : "list",
+        "required" : false,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : true,
+        "description" : "Date of the daily note. ISO 8601 format. Defaults to today.",
+        "id" : "671E3A21-B3CB-49D2-A5BF-DB2799154EDA",
+        "label" : "Date",
+        "name" : "targetDate",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : true,
+        "description" : "The tasks",
+        "id" : "DAEACBAD-819F-413D-AF1B-7BD880559ECA",
+        "label" : "Tasks",
+        "name" : "tasks",
+        "required" : true,
+        "type" : "array",
+        "value" : ""
+      }
+    ]
+  },
+  {
+    "buildNumber" : "1",
+    "description" : "Uses the Refect API to add a note",
+    "displayName" : "Create Note (API)",
+    "folderId" : "222273F7-7F1D-4912-9BAD-8110B26D9AD1",
+    "forceConfigurable" : false,
+    "headers" : [
+      {
+        "id" : "E64E3893-FC61-4BB1-872F-9F4BCA5DACD7",
+        "key" : "Authorization",
+        "value" : "Bearer {{ secretAccessToken }}"
+      },
+      {
+        "id" : "F9B289ED-0325-4883-9CF9-28C49DA3C9BE",
+        "key" : "Content-Type",
+        "value" : "application\/json"
+      }
+    ],
+    "icon" : "note.text.badge.plus",
+    "id" : "50DB39FE-A87F-4FCB-A059-05A910AAD370",
+    "identifier" : "createNoteApi",
+    "instructions" : "",
+    "method" : "POST",
+    "order" : 34,
+    "payload" : "{\n  \"subject\": \"{{ subject | jsonEscape }}\",\n  \"content_markdown\": \"{{ content | jsonEscape }}\"\n}",
+    "type" : "makeAPIRequest",
+    "url" : "https:\/\/reflect.app\/api\/graphs\/{{ graphId }}\/notes",
+    "variables" : [
+      {
+        "ai" : false,
+        "description" : "Your access token",
+        "id" : "D60B9B60-C3BE-46B4-8A87-2771FB6F77FB",
+        "label" : "Access Token",
+        "name" : "secretAccessToken",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : false,
+        "description" : "The name of your graph",
+        "id" : "1AAE610B-4B1B-4E96-A03D-A42EB5169876",
+        "label" : "Graph ID",
+        "name" : "graphId",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : true,
+        "description" : "The subject of the note",
+        "id" : "DAEACBAD-819F-413D-AF1B-7BD880559ECA",
+        "label" : "Subject",
+        "name" : "subject",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : true,
+        "description" : "The content of the note in markdown",
+        "id" : "B00D4F31-9371-47BE-B549-AA45D217297A",
+        "label" : "Content",
+        "name" : "content",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  }
+]

@@ -1,0 +1,126 @@
+[
+  {
+    "description" : "",
+    "displayName" : "Exa",
+    "forceConfigurable" : false,
+    "icon" : "folder",
+    "id" : "97D1AAB3-E848-494F-BAB7-0A99FA917B7A",
+    "identifier" : "exa",
+    "instructions" : "",
+    "order" : 52,
+    "type" : "folder",
+    "variables" : [
+
+    ]
+  },
+  {
+    "description" : "Search the web with an Exa prompt-engineered query",
+    "displayName" : "Search Web",
+    "folderId" : "97D1AAB3-E848-494F-BAB7-0A99FA917B7A",
+    "forceConfigurable" : false,
+    "headers" : [
+      {
+        "id" : "C804CFED-F122-4311-A0CD-7E8042606D2D",
+        "key" : "Accept",
+        "value" : "application\/json"
+      },
+      {
+        "id" : "B1C9D0B6-C4E4-4217-BAD5-1F8CD00AD82E",
+        "key" : "Content-Type",
+        "value" : "application\/json"
+      },
+      {
+        "id" : "F6205442-499E-43CE-BC86-015398155637",
+        "key" : "x-api-key",
+        "value" : "{{ secretApiKey }}"
+      }
+    ],
+    "icon" : "doc.text.magnifyingglass",
+    "id" : "0B9AC65C-49A8-4D8F-8ABA-B17E328BA607",
+    "identifier" : "searchWeb",
+    "instructions" : "Use the [Exa](https:\/\/exa.ai) API to search the web for results",
+    "method" : "POST",
+    "nextActionId" : "10000000-0000-0000-0000-000000000007",
+    "order" : 5,
+    "payload" : "{\n    \"query\": \"{{ query | jsonEscape }}\",\n    \"type\": \"auto\",\n    \"livecrawl\": \"always\"\n}",
+    "type" : "makeAPIRequest",
+    "url" : "https:\/\/api.exa.ai\/search",
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "Natural language query",
+        "id" : "8C8BE389-FABF-4EDC-9245-26DA8B1C2AD1",
+        "label" : "Query",
+        "name" : "query",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : false,
+        "description" : "The API key",
+        "id" : "D65E03B1-5660-4030-B31C-F4B5A69535EE",
+        "label" : "API Key",
+        "name" : "secretApiKey",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  },
+  {    
+    "description" : "Returns the contents of a webpage using Exa",
+    "displayName" : "Get Contents",
+    "folderId" : "97D1AAB3-E848-494F-BAB7-0A99FA917B7A",
+    "forceConfigurable" : false,
+    "headers" : [
+      {
+        "id" : "C804CFED-F122-4311-A0CD-7E8042606D2D",
+        "key" : "Accept",
+        "value" : "application\/json"
+      },
+      {
+        "id" : "B1C9D0B6-C4E4-4217-BAD5-1F8CD00AD82E",
+        "key" : "Content-Type",
+        "value" : "application\/json"
+      },
+      {
+        "id" : "F6205442-499E-43CE-BC86-015398155637",
+        "key" : "x-api-key",
+        "value" : "{{ secretApiKey }}"
+      }
+    ],
+    "icon" : "link",
+    "id" : "74ED0F59-0601-4CF0-BE1C-C942415CB1B0",
+    "identifier" : "getContents",
+    "instructions" : "Use the [Exa](https:\/\/exa.ai) API to get web contents",
+    "method" : "POST",
+    "nextActionId" : "10000000-0000-0000-0000-000000000007",
+    "order" : 14,
+    "payload" : "{\n    \"ids\": [\"{{ url | jsonEscape }}\"],\n    \"text\": true,\n    \"livecrawl\": \"always\"\n}",
+    "type" : "makeAPIRequest",
+    "url" : "https:\/\/api.exa.ai\/contents",
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "URL to get",
+        "id" : "8C8BE389-FABF-4EDC-9245-26DA8B1C2AD1",
+        "label" : "URL",
+        "name" : "url",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : false,
+        "description" : "The API key",
+        "id" : "D65E03B1-5660-4030-B31C-F4B5A69535EE",
+        "label" : "API Key",
+        "name" : "secretApiKey",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  }
+]
