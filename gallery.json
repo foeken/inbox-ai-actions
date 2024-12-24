@@ -5,6 +5,16 @@
         "large" : true,
         "actions" : [
             {
+                "title" : "Assistant (OpenAI)",
+                "actions" : ["assistant.inboxai"],
+                "icon" : "bubble.left.and.text.bubble.right"
+            },
+            {
+                "title" : "Voice Mode (for any AI)",
+                "actions" : ["voiceMode.inboxai"],
+                "icon" : "text.bubble"
+            },
+            {
                 "title" : "Transcribe Text",
                 "actions" : ["transcribe.inboxai"],
                 "icon" : "message.badge.waveform"
@@ -12,7 +22,6 @@
             {
                 "title" : "Simple Email Processor",
                 "actions" : [
-                    "appleReminders.inboxai", 
                     "emailProcessor.inboxai"
                 ],
                 "icon" : "envelope.arrow.triangle.branch"

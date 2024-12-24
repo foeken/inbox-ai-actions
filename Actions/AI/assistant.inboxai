@@ -1,0 +1,199 @@
+[
+  {
+    "actions" : [
+      "3E868F4C-FD25-468E-BF02-897688CA4239",
+      "D3889625-134E-4846-841C-474E0EBE5C6A",
+      "7B0FD82B-C3BB-477D-9623-3C1F86713E2A",
+      "10000000-0000-0000-0000-000000000004",
+      "10000000-0000-0000-0000-000000000005",
+      "10000000-0000-0000-0000-000000000006",
+      "10000000-0000-0000-0000-000000000009",
+      "10000000-0000-0000-0000-000000000003",
+      "D3AC26EE-6E03-400F-AF82-5262B8AE59DE"
+    ],
+    "allowMultipleTurns" : true,
+    "description" : "Advanced Voice Mode",
+    "displayName" : "Assistant",
+    "forceConfigurable" : false,
+    "icon" : "bubble.left.and.text.bubble.right",
+    "id" : "4684F0E1-96FB-4698-8AFF-B7138903481D",
+    "identifier" : "assistant",
+    "instructions" : "",
+    "modalities" : [
+      "text",
+      "audio"
+    ],
+    "order" : 1,
+    "output" : "spoken",
+    "prompt" : "{{originalInput}}",
+    "systemPrompt" : "My x.com handle is @dreetje.\n\nToday is {{date.weekday}}, {{date.today}} {{time.now}}. The user is {{ settings.name }}.\n\nProcess the incoming command as best you can. Unless the user specifically asks for multiple actions, always pick the best action possible, unless multiple are needed to achieve the goal. Reply to any question you know with a normal message. Think carefully about what the user would want to achieve before acting. If you reply, be super concise.\n\nOnly execute actions, NEVER EVER narrate \/ comment on what you did, ONLY reply when asked a question or when things go wrong. NEVER state you 'use a specific action'.\nFast is fun, try to answer briefly and perform actions in a way that reduced waiting time.\n\nWhen you look at the screen, prefer a text-only screenshot first; use images only when you need more context (they are slower).\nWhen the user mentions 'this' or refers to specific text, get the selected text AND take a text-only look at their screen.\n\nWhen the user asks to look at their screen, always wait for the reply, before doing anything else.\n\nWhen the user asks for a specific thing you know the answer to, reply with the answer.\n\nFor play\/pause\/next commands, prefer to use system event keypresses.\n\nGenerally, when asked to do write something (ie. a reply), assume the user wants to have it pasted back at cursor, unless dealing with a specific things where a different action fits better (ie draft email)\n\nWhen an action does not work, you can sometimes try a different approach. For instance, if the user does not have an application, try going to the web version. Or if you get a osascript issue, retry with different syntax.\n\nWhen sending things to Tana, for normal text don't use a supertag, but these are available:\n- Todo: BT0I0eOGfO\n- Quote: mguziVZgp_\n\nNote: the command\/audio might be mistranscribed, make your best guess what the user meant, use your best judgement.\n\nEntities on Current Screen:\n{% for entity in screen.text | extractEntities %}- {{entity}}\n{% endfor %}",
+    "type" : "realtimeAI",
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "The prompt you want to send to this AI",
+        "id" : "A57BFCB3-0DA7-46E4-81F0-5828B3097348",
+        "label" : "",
+        "name" : "prompt",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ],
+    "waitTime" : null
+  },
+  {
+    "command" : "open \"mailto:{{ recipient | doubleQuoteEscape }}?subject={{ subject | percentEncode }}&body={{ body | percentEncode }}\"",
+    "description" : "Draft a new email",
+    "displayName" : "Draft Email",
+    "folderId" : "AA933D08-3148-46F3-82E3-D71276BDCCFD",
+    "forceConfigurable" : false,
+    "icon" : "envelope",
+    "id" : "3E868F4C-FD25-468E-BF02-897688CA4239",
+    "identifier" : "draftEmail",
+    "instructions" : "",
+    "order" : 5,
+    "type" : "terminalCommand",
+    "useSSH" : false,
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "Email address of the recipient",
+        "id" : "DA97292A-1D29-44AA-B37F-4E3615D6889E",
+        "label" : "Recipient",
+        "name" : "recipient",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : true,
+        "description" : "Subject of the email",
+        "id" : "8B6464D0-5F79-4DDF-892E-EA51B7AFEEF2",
+        "label" : "Subject",
+        "name" : "subject",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : true,
+        "description" : "Body of the email",
+        "id" : "47EE07A1-BE65-417E-88E3-2ED437B14862",
+        "label" : "Body",
+        "name" : "body",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  },
+  {
+    "description" : "",
+    "displayName" : "Computer Actions",
+    "forceConfigurable" : false,
+    "icon" : "folder",
+    "id" : "AA933D08-3148-46F3-82E3-D71276BDCCFD",
+    "identifier" : "computerActions",
+    "instructions" : "",
+    "order" : 4,
+    "type" : "folder",
+    "variables" : [
+
+    ]
+  },
+  {
+    "command" : "open \"{{ url }}\"",
+    "description" : "Open a browser on a specific (percent-encoded) url",
+    "displayName" : "Open Browser",
+    "folderId" : "AA933D08-3148-46F3-82E3-D71276BDCCFD",
+    "forceConfigurable" : false,
+    "icon" : "macwindow.and.cursorarrow",
+    "id" : "D3889625-134E-4846-841C-474E0EBE5C6A",
+    "identifier" : "openBrowser",
+    "instructions" : "",
+    "order" : 6,
+    "type" : "terminalCommand",
+    "useSSH" : false,
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "The URL to open for the user",
+        "id" : "D8A381B2-92DF-4683-A482-F5088FA53A3D",
+        "label" : "URL",
+        "name" : "url",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  },
+  {
+    "command" : "osascript {% for line in script | splitNewlines %}-e \"{{ line | doubleQuoteEscape }}\" {% endfor %}",
+    "description" : "Run an AppleScript using osascript",
+    "displayName" : "Run Apple Script",
+    "folderId" : "AA933D08-3148-46F3-82E3-D71276BDCCFD",
+    "forceConfigurable" : false,
+    "icon" : "applescript",
+    "id" : "7B0FD82B-C3BB-477D-9623-3C1F86713E2A",
+    "identifier" : "runAppleScript",
+    "instructions" : "",
+    "nextActionId" : "10000000-0000-0000-0000-000000000007",
+    "order" : 7,
+    "type" : "terminalCommand",
+    "useSSH" : true,
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "The AppleScript to run",
+        "id" : "409B4FE8-D8E7-485E-B64A-4501C7364191",
+        "label" : "Script",
+        "name" : "script",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  },
+  {
+    "description" : "Gets the current contents of the clipboard",
+    "displayName" : "Get Clipboard",
+    "forceConfigurable" : false,
+    "icon" : "doc.on.clipboard",
+    "id" : "10000000-0000-0000-0000-000000000009",
+    "identifier" : "getClipboard",
+    "instructions" : "",
+    "order" : 0,
+    "type" : "getClipboard",
+    "variables" : [
+
+    ]
+  },
+  {
+    "command" : "open -a \"{{ application | doubleQuoteEscape }}\"",
+    "description" : "Open any MacOS application",
+    "displayName" : "Open application",
+    "folderId" : "AA933D08-3148-46F3-82E3-D71276BDCCFD",
+    "forceConfigurable" : false,
+    "icon" : "macwindow.and.cursorarrow",
+    "id" : "D3AC26EE-6E03-400F-AF82-5262B8AE59DE",
+    "identifier" : "openApplication",
+    "instructions" : "",
+    "nextActionId" : "10000000-0000-0000-0000-000000000007",
+    "order" : 3,
+    "type" : "terminalCommand",
+    "useSSH" : false,
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "Use the name of the MacOS application in the OS (it is passed to open -a)",
+        "id" : "D51124AB-44F1-4B65-BDAD-A2B2594F0229",
+        "label" : "Application",
+        "name" : "application",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  }
+]
