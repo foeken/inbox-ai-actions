@@ -3,7 +3,7 @@
     "command" : "open -a \"{{ application | doubleQuoteEscape }}\"",
     "description" : "Open any MacOS application",
     "displayName" : "Open application",
-    "folderId" : "8CDE4C57-7328-4637-B416-773C368511C9",
+    "folderId" : "AA933D08-3148-46F3-82E3-D71276BDCCFD",
     "forceConfigurable" : false,
     "icon" : "macwindow.and.cursorarrow",
     "id" : "D3AC26EE-6E03-400F-AF82-5262B8AE59DE",

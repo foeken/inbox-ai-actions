@@ -1,57 +1,63 @@
 [
     {
-        "title" : "AI Actions",
-        "description" : "Ready built AI actions to help you get started.",
+        "title" : "Essential Starter Actions",
         "large" : true,
         "actions" : [
             {
-                "title" : "Assistant (OpenAI)",
+                "title" : "Assistant",
+                "description" : "Uses OpenAI's latest realtime API.",
                 "actions" : ["assistant.inboxai"],
                 "icon" : "bubble.left.and.text.bubble.right"
             },
             {
-                "title" : "Voice Mode (for any AI)",
+                "title" : "Voice Mode",
+                "description" : "Works with any AI Provider.",
                 "actions" : ["voiceMode.inboxai"],
                 "icon" : "text.bubble"
             },
             {
-                "title" : "Transcribe Text",
-                "actions" : ["transcribe.inboxai"],
-                "icon" : "message.badge.waveform"
-            },
-            {
                 "title" : "Simple Email Processor",
+                "description" : "Process incoming emails.",
                 "actions" : [
                     "emailProcessor.inboxai"
                 ],
                 "icon" : "envelope.arrow.triangle.branch"
+            }            
+        ]
+    },    
+    {
+        "title" : "Great for Voice and Screenshots",        
+        "actions" : [
+            {
+                "title" : "Research",
+                "actions" : ["research.inboxai"],
+                "icon" : "questionmark.bubble"
+            },
+            {
+                "title" : "Transcribe Text",                
+                "actions" : ["transcribe.inboxai"],
+                "icon" : "message.badge.waveform"
             }
         ]
     },
-    {        
-        "title" : "Apple Applications",
-        "description" : "Actions to help your AI interact with native Apple applications.",
+    {
+        "title" : "Notes and Tasks",
+        "description" : "Integrate your favorite note taking apps with Inbox AI.",
         "actions" : [
             {
                 "title" : "Apple Notes",
                 "actions" : ["appleNotes.inboxai"],
                 "icon" : "note.text.badge.plus"
-            },
+            },            
             {
                 "title" : "Apple Reminders",
                 "actions" : ["appleReminders.inboxai"],
                 "icon" : "list.bullet"
-            }
-        ]
-    },
-    {
-        "title" : "Note Taking & Task Management",
-        "description" : "Take notes and manage tasks using your favorite note taking apps.",
-        "actions" : [
+            },
             {
-                "title" : "Obsidian",
-                "actions" : ["obsidian.inboxai"],
-                "icon" : "note.text.badge.plus"
+                "title" : "Tana",
+                "actions" : ["tana.inboxai"],
+                "icon" : "list.bullet.indent"
             },
             {
                 "title" : "Notion",
@@ -59,10 +65,10 @@
                 "icon" : "note.text.badge.plus"
             },
             {
-                "title" : "Tana",
-                "actions" : ["tana.inboxai"],
-                "icon" : "list.bullet.indent"
-            },
+                "title" : "Obsidian",
+                "actions" : ["obsidian.inboxai"],
+                "icon" : "note.text.badge.plus"
+            },                      
             {
                 "title" : "Todoist",
                 "actions" : ["todoist.inboxai"],
@@ -82,121 +88,90 @@
                 "title" : "Slite",
                 "actions" : ["slite.inboxai"],
                 "icon" : "note.text.badge.plus"
-            },            
-            {
-                "title" : "Apple Notes",
-                "actions" : ["appleNotes.inboxai"],
-                "icon" : "note.text.badge.plus"
-            },            
-            {
-                "title" : "Apple Reminders",
-                "actions" : ["appleReminders.inboxai"],
-                "icon" : "list.bullet"
             }
         ]
-    },
-    {
-        "title" : "Calendar",
-        "description" : "Add events to your calendar.",
-        "actions" : [            
-            {
-                "title" : "Fantastical",
-                "actions" : ["fantastical.inboxai"],
-                "icon" : "calendar.badge.plus"
-            }            
-        ]
-    },
-    {        
-        "title" : "Websites",
-        "description" : "Open popular websites and search engines in your browser.",
-        "actions" : [
-            {                
-                "title" : "Ask ChatGPT",
-                "actions" : ["askChatgpt.inboxai"],
-                "icon" : "questionmark.bubble"
-            },
-            {
-                "title" : "Search Google",
-                "actions" : ["searchGoogle.inboxai"],
-                "icon" : "doc.text.magnifyingglass"
-            },
-            {
-                "title" : "Ask Claude",
-                "actions" : ["askClaude.inboxai"],
-                "icon" : "questionmark.bubble"
-            },
-            {
-                "title" : "Ask Perplexity",
-                "actions" : ["askPerplexity.inboxai"],
-                "icon" : "questionmark.bubble"
-            }            
-        ]
-    },
+    },       
     {
         "title" : "Computer Actions",
-        "description" : "Run applications and perform actions on your computer.",
+        "description" : "Allow your AI to perform actions on your computer.",
         "actions" : [
             {
                 "title" : "Open Application",
                 "actions" : ["openApplication.inboxai"],
-                "icon" : "macwindow.and.cursorarrow"
+                "icon" : "macwindow.and.cursorarrow",
+                "tool" : true
             },
             {
                 "title" : "Open Browser",
                 "actions" : ["openBrowser.inboxai"],
-                "icon" : "safari"
+                "icon" : "safari",
+                "tool" : true
             },
             {
                 "title" : "Draft Email",
                 "actions" : ["draftEmail.inboxai"],
-                "icon" : "envelope"
+                "icon" : "envelope",
+                "tool" : true
+            },
+            {
+                "title" : "Add to Fantastical",
+                "actions" : ["fantastical.inboxai"],
+                "icon" : "calendar.badge.plus",
+                "tool" : true
             },
             {                
                 "title" : "Run Apple Shortcut",
                 "actions" : ["runAppleShortcut.inboxai"],
-                "icon" : "command"
+                "icon" : "command",
+                "tool" : true
             },
             {
                 "title" : "Run AppleScript",
                 "actions" : ["runAppleScript.inboxai"],
-                "icon" : "applescript"
+                "icon" : "applescript",
+                "tool" : true
             },            
             {
                 "title" : "Call x-callback URLs",
                 "actions" : ["callXCallbackUrl.inboxai"],
-                "icon" : "square.and.arrow.up"
+                "icon" : "square.and.arrow.up",
+                "tool" : true
             }
         ]
     },    
     {
         "title" : "APIs",
-        "description" : "Useful APIs to help you get things done.",
+        "description" : "Give your AI access to these external services.",
         "actions" : [
             {
                 "title" : "EXA.ai",
                 "actions" : ["exa.inboxai"],
-                "icon" : "doc.text.magnifyingglass"
+                "icon" : "doc.text.magnifyingglass",
+                "tool" : true
             },
             {
                 "title" : "EventLink",
                 "actions" : ["eventlink.inboxai"],
-                "icon" : "calendar"
+                "icon" : "calendar",
+                "tool" : true
             }
         ]
     },
     {
         "title" : "Utilities",
-        "description" : "Useful utilities to help you get things done.",
+        "description" : "Useful utilities to help your AI get things done.",
         "actions" : [
             {
                 "title" : "Get HTTP Content",
                 "actions" : ["getHttpContent.inboxai"],
-                "icon" : "link"
+                "icon" : "link",
+                "tool" : true
             },
             {
                 "title" : "Output to File",
                 "actions" : ["outputToFile.inboxai"],
-                "icon" : "square.and.pencil"
+                "icon" : "square.and.pencil",
+                "tool" : true
             }
         ]
     }       

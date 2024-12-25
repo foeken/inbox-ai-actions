@@ -3,7 +3,7 @@
     "command" : "osascript {% for line in script | splitNewlines %}-e \"{{ line | doubleQuoteEscape }}\" {% endfor %}",
     "description" : "Run an AppleScript using osascript",
     "displayName" : "Run Apple Script",
-    "folderId" : "90B14339-54F0-4962-8322-A90A4BA86169",
+    "folderId" : "AA933D08-3148-46F3-82E3-D71276BDCCFD",
     "forceConfigurable" : false,
     "icon" : "applescript",
     "id" : "7B0FD82B-C3BB-477D-9623-3C1F86713E2A",

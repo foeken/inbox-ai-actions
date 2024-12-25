@@ -3,7 +3,7 @@
     "command" : "echo \"{{ text | doubleQuoteEscape }}\" > {{ dir.tmp }}\/{{run.id}} && echo $(shortcuts run \"{{ shortcut | doubleQuoteEscape }}\" -i {{ dir.tmp }}\/{{run.id}}) && rm {{ dir.tmp }}\/{{run.id}}",
     "description" : "Runs a specific Apple Shortcut",
     "displayName" : "Run Apple Shortcut",
-    "folderId" : "90B14339-54F0-4962-8322-A90A4BA86169",
+    "folderId" : "AA933D08-3148-46F3-82E3-D71276BDCCFD",
     "forceConfigurable" : false,
     "icon" : "command",
     "id" : "A2DCB45A-03B9-4BB8-A5D2-97C0FD63FE66",

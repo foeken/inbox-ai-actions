@@ -1,0 +1,157 @@
+[
+  {
+    "description" : "",
+    "displayName" : "Research",
+    "forceConfigurable" : false,
+    "icon" : "folder",
+    "id" : "A017BA42-8192-4A46-9389-06518E4124F0",
+    "identifier" : "research",
+    "instructions" : "",
+    "order" : 22,
+    "type" : "folder",
+    "variables" : [
+
+    ]
+  },
+  {
+    "actions" : [
+      "8FBFBA4C-C98C-44DB-91A6-CCD346155EFA",
+      "C1493D3E-8E29-402E-8EB8-81127E1311FA",
+      "AF881D4B-7249-40BB-94FB-4BEFE994844C",
+      "E11493B8-592E-4ED9-9AE9-15E2D1D6DEDB"
+    ],
+    "allowMultipleTurns" : false,
+    "description" : "Opens a browser to a site with more information",
+    "displayName" : "Look up information",
+    "folderId" : "A017BA42-8192-4A46-9389-06518E4124F0",
+    "forceConfigurable" : false,
+    "icon" : "brain",
+    "id" : "4DD90B1F-646F-4CBE-ADE6-713DB13CF100",
+    "identifier" : "lookUpInformation",
+    "instructions" : "",
+    "modalities" : [
+      "text"
+    ],
+    "order" : 1,
+    "output" : "ignored",
+    "prompt" : "Pick one or more of the best websites to get more information on this and open them.\n\nInput:\n{{originalInput}}",
+    "type" : "askAI",
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "The prompt you want to send to this AI",
+        "id" : "6F2A1A40-4870-4ADF-A4C2-197BB3F431B1",
+        "label" : "",
+        "name" : "prompt",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ],
+    "waitTime" : 15
+  },
+  {
+    "command" : "open \"https:\/\/chatgpt.com?q={{ query | percentEncode }}\"",
+    "description" : "Ask ChatGPT, opens a ChatGPT window for the user",
+    "displayName" : "Ask ChatGPT",
+    "folderId" : "A017BA42-8192-4A46-9389-06518E4124F0",
+    "forceConfigurable" : false,
+    "icon" : "questionmark.bubble",
+    "id" : "8FBFBA4C-C98C-44DB-91A6-CCD346155EFA",
+    "identifier" : "askChatgpt",
+    "instructions" : "",
+    "order" : 4,
+    "type" : "terminalCommand",
+    "useSSH" : false,
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "The question or start of conversation",
+        "id" : "DFF47445-708B-41A2-9A8C-E9B0E1C9FA3A",
+        "label" : "Query",
+        "name" : "query",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  },
+  {
+    "command" : "open \"https:\/\/claude.ai\/new?q={{ query | percentEncode }}\"",
+    "description" : "Ask Claude, opens a Claude window for the user",
+    "displayName" : "Ask Claude",
+    "folderId" : "A017BA42-8192-4A46-9389-06518E4124F0",
+    "forceConfigurable" : false,
+    "icon" : "questionmark.bubble",
+    "id" : "C1493D3E-8E29-402E-8EB8-81127E1311FA",
+    "identifier" : "askClaude",
+    "instructions" : "",
+    "order" : 5,
+    "type" : "terminalCommand",
+    "useSSH" : false,
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "The question or query",
+        "id" : "DFF47445-708B-41A2-9A8C-E9B0E1C9FA3A",
+        "label" : "Query",
+        "name" : "query",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  },
+  {
+    "command" : "open \"https:\/\/google.com?q={{ query | percentEncode }}\"",
+    "description" : "Search Google, opens a Google window for the user. Google is a search engine.",
+    "displayName" : "Search Google",
+    "folderId" : "A017BA42-8192-4A46-9389-06518E4124F0",
+    "forceConfigurable" : false,
+    "icon" : "doc.text.magnifyingglass",
+    "id" : "AF881D4B-7249-40BB-94FB-4BEFE994844C",
+    "identifier" : "searchGoogle",
+    "instructions" : "",
+    "order" : 2,
+    "type" : "terminalCommand",
+    "useSSH" : false,
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "The question or query",
+        "id" : "DFF47445-708B-41A2-9A8C-E9B0E1C9FA3A",
+        "label" : "Query",
+        "name" : "query",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  },
+  {
+    "command" : "open \"https:\/\/perplexity.ai?q={{ query | percentEncode }}\"",
+    "description" : "Ask Perplexity, opens a Perplexity window for the user. Perplexity is a search engine.",
+    "displayName" : "Ask Perplexity",
+    "folderId" : "A017BA42-8192-4A46-9389-06518E4124F0",
+    "forceConfigurable" : false,
+    "icon" : "questionmark.bubble",
+    "id" : "E11493B8-592E-4ED9-9AE9-15E2D1D6DEDB",
+    "identifier" : "askPerplexity",
+    "instructions" : "",
+    "order" : 7,
+    "type" : "terminalCommand",
+    "useSSH" : false,
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "The question or query",
+        "id" : "DFF47445-708B-41A2-9A8C-E9B0E1C9FA3A",
+        "label" : "Query",
+        "name" : "query",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  }
+]

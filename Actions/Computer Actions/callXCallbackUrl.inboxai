@@ -3,7 +3,7 @@
     "command" : "open \"shortcuts:\/\/x-callback-url\/run-shortcut?name={{ name | percentEncode }}&input=text&text={{ text | percentEncode }}\"",
     "description" : "Runs a x-callback-url",
     "displayName" : "Call x-callback-url",
-    "folderId" : "90B14339-54F0-4962-8322-A90A4BA86169",
+    "folderId" : "AA933D08-3148-46F3-82E3-D71276BDCCFD",
     "forceConfigurable" : false,
     "icon" : "square.and.arrow.up",
     "id" : "50C9ADE6-3B4B-4AB2-9CB5-33AE3189029E",

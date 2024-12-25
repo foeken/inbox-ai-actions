@@ -1,5 +1,5 @@
 [
-  {    
+  {
     "description" : "",
     "displayName" : "Apple Notes",
     "forceConfigurable" : false,
@@ -7,13 +7,38 @@
     "id" : "FBE77EE9-B85D-4B98-81B1-8F9F955C7B92",
     "identifier" : "appleNotes",
     "instructions" : "",
-    "order" : 42,
+    "order" : 13,
     "type" : "folder",
     "variables" : [
 
     ]
   },
-  {    
+  {
+    "actions" : [
+      "4CE759A0-1B8F-407F-A362-FFD2524538BF"
+    ],
+    "allowMultipleTurns" : false,
+    "description" : "Creates a new note",
+    "displayName" : "Create Note",
+    "folderId" : "FBE77EE9-B85D-4B98-81B1-8F9F955C7B92",
+    "forceConfigurable" : false,
+    "icon" : "brain",
+    "id" : "752C7E4B-9553-4C7F-88BD-02F70B15057D",
+    "identifier" : "createNote",
+    "instructions" : "",
+    "modalities" : [
+      "text"
+    ],
+    "order" : 0,
+    "output" : "ignored",
+    "prompt" : "Today is {{date.weekday}}, {{date.today}} {{time.now}}.\n\nExtract the content from the input below (and optionally the image) for insertion into into Apple Notes. Format it with a title first, and then the content. Do not prefix the title or content (so no Title:, or Content:).\n\nRead the assignment again: Extract content. In English.\n\nInput:\n{{ originalInput | process }}",
+    "type" : "askAI",
+    "variables" : [
+
+    ],
+    "waitTime" : 15
+  },
+  {
     "command" : "echo \"{{ input | doubleQuoteEscape }}\" > {{ dir.tmp }}\/{{run.id}} && shortcuts run \"{{ shortcut | default:\"Create Note\" | doubleQuoteEscape }}\" -i {{ dir.tmp }}\/{{run.id}} && rm {{ dir.tmp }}\/{{run.id}}",
     "description" : "Create a new note in Apple Notes",
     "displayName" : "Create Note",
@@ -23,7 +48,7 @@
     "id" : "4CE759A0-1B8F-407F-A362-FFD2524538BF",
     "identifier" : "createNote",
     "instructions" : "Download and Install the [Create Note](https:\/\/www.icloud.com\/shortcuts\/7d6c0e6860024e3f9437eb962912cdcf) Shortcut to get this to work.",
-    "order" : 21,
+    "order" : 2,
     "type" : "terminalCommand",
     "useSSH" : false,
     "variables" : [
@@ -50,7 +75,31 @@
     ]
   },
   {
-    "buildNumber" : "1",
+    "actions" : [
+      "511314A2-E648-4EFC-8B51-1DD950A0C8BE"
+    ],
+    "allowMultipleTurns" : false,
+    "description" : "Appends to an existing note",
+    "displayName" : "Append to Note",
+    "folderId" : "FBE77EE9-B85D-4B98-81B1-8F9F955C7B92",
+    "forceConfigurable" : false,
+    "icon" : "brain",
+    "id" : "E41FFFC1-442B-47E8-A9FB-90C0473DFA07",
+    "identifier" : "appendToNote",
+    "instructions" : "",
+    "modalities" : [
+      "text"
+    ],
+    "order" : 1,
+    "output" : "ignored",
+    "prompt" : "Today is {{date.weekday}}, {{date.today}} {{time.now}}.\n\nExtract the content from the input below (and optionally the image) for insertion into into Apple Notes. Format it with a title first, and then the content. Do not prefix the title or content (so no Title:, or Content:).\n\nRead the assignment again: Extract content. In English.\n\nInput:\n{{ originalInput | process }}",
+    "type" : "askAI",
+    "variables" : [
+
+    ],
+    "waitTime" : 15
+  },
+  {
     "command" : "echo \"{{ note | doubleQuoteEscape }}____{{ input | doubleQuoteEscape }}\" > {{ dir.tmp }}\/{{run.id}} && shortcuts run \"{{ shortcut | default:\"Append to Note\" | doubleQuoteEscape }}\" -i {{ dir.tmp }}\/{{run.id}} && rm {{ dir.tmp }}\/{{run.id}}",
     "description" : "Append to an existing note in Apple Notes",
     "displayName" : "Append to Note",
@@ -60,7 +109,7 @@
     "id" : "511314A2-E648-4EFC-8B51-1DD950A0C8BE",
     "identifier" : "appendToNote",
     "instructions" : "Download and Install the [Append to Note](https:\/\/www.icloud.com\/shortcuts\/783ff172fa90497fa5fd825331ccbf4b) Shortcut to get this to work.",
-    "order" : 22,
+    "order" : 3,
     "type" : "terminalCommand",
     "useSSH" : false,
     "variables" : [
@@ -75,21 +124,21 @@
         "value" : ""
       },
       {
-        "ai" : false,
-        "description" : "The name\/title of the note",
-        "id" : "1E0A7391-94FC-4BC5-874A-3DA43C534399",
-        "label" : "Note",
-        "name" : "note",
-        "required" : false,
-        "type" : "string",
-        "value" : ""
-      },
-      {
         "ai" : true,
         "description" : "The input to send to the Shortcut",
         "id" : "F88C3D3F-69C2-499A-8E41-52710070AC57",
         "label" : "Input",
         "name" : "input",
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : true,
+        "description" : "The name\/title of the note",
+        "id" : "1E0A7391-94FC-4BC5-874A-3DA43C534399",
+        "label" : "Note",
+        "name" : "note",
         "required" : true,
         "type" : "string",
         "value" : ""
