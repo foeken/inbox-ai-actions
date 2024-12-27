@@ -7,7 +7,7 @@
     "id" : "B9635D37-8551-42F0-A1C4-BAB835D5DD25",
     "identifier" : "tana",
     "instructions" : "",
-    "order" : 13,
+    "order" : 12,
     "type" : "folder",
     "variables" : [
 
@@ -41,7 +41,7 @@
   },
   {
     "description" : "Add a node to Tana.",
-    "displayName" : "Create Task (API)",
+    "displayName" : "Create Task(s) (API)",
     "folderId" : "B9635D37-8551-42F0-A1C4-BAB835D5DD25",
     "forceConfigurable" : false,
     "headers" : [
@@ -58,11 +58,11 @@
     ],
     "icon" : "checklist.unchecked",
     "id" : "DB190A51-89ED-4141-B320-5593E04C0D95",
-    "identifier" : "createTaskApi",
+    "identifier" : "createTaskSApi",
     "instructions" : "Uses the Tana Input API to add nodes. Optionally with your given Supertag and fills a source field.",
     "method" : "POST",
     "nextActionId" : "10000000-0000-0000-0000-000000000007",
-    "order" : 5,
+    "order" : 4,
     "payload" : "{\n  \"targetNodeId\": \"{{targetNodeId|default:\"INBOX\"}}\",\n  \"nodes\": [\n    {% for task in tasks %}{\n      \"name\": \"{{ task | jsonEscape }}\",\n      \"supertags\": [ {% if supertagId %}{\"id\": \"{{supertagId}}\"}{% endif %} ],\n      \"children\": [ {% if fieldId %}{ \"type\": \"field\", \"attributeId\": \"{{ fieldId }}\", \"children\": [{% if originalInput | match:\"message-id: <(.+?)>\" %}{ \"name\": \"message:&lt;{{ originalInput | match:\"message-id: <(.+?)>\" }}&gt;\"}{% endif %}] }{% endif %} ]\n    }{% if forloop.counter != forloop.length %},{% endif %}{% endfor %}      \n  ]\n}\n",
     "type" : "makeAPIRequest",
     "url" : "https:\/\/europe-west1-tagr-prod.cloudfunctions.net\/addToNodeV2",
@@ -120,39 +120,8 @@
     ]
   },
   {
-    "actions" : [
-      "D5EA418A-E4D1-438D-ABB9-44F52D91070A",
-      "10000000-0000-0000-0000-000000000004",
-      "10000000-0000-0000-0000-000000000005",
-      "10000000-0000-0000-0000-000000000006",
-      "D3889625-134E-4846-841C-474E0EBE5C6A"
-    ],
-    "allowMultipleTurns" : true,
-    "description" : "Discuss a Tana node",
-    "displayName" : "Discuss Node",
-    "folderId" : "B9635D37-8551-42F0-A1C4-BAB835D5DD25",
-    "forceConfigurable" : false,
-    "icon" : "brain",
-    "id" : "7E0CC5CE-4659-4617-A36B-E3031462392D",
-    "identifier" : "discussNode",
-    "instructions" : "",
-    "modalities" : [
-      "text",
-      "audio"
-    ],
-    "order" : 3,
-    "output" : "spoken",
-    "prompt" : "{{originalInput}}",
-    "systemPrompt" : "Today is {{date.weekday}}, {{date.today}} {{time.now}}. The user is {{ settings.name }}.\nYou can open \"hook:\/\/\" links in the browser.\n\nDo not share node Ids explicitly, your words are being read aloud and they are often long and not meaningful, just use them for API actions.\n\nEntities on Current Screen:\n{% for entity in screen.text | extractEntities %}- {{entity}}\n{% endfor %}",
-    "type" : "realtimeAI",
-    "variables" : [
-
-    ],
-    "waitTime" : null
-  },
-  {
     "description" : "Add a node to Tana",
-    "displayName" : "Create Node (API)",
+    "displayName" : "Create Node(s) (API)",
     "folderId" : "B9635D37-8551-42F0-A1C4-BAB835D5DD25",
     "forceConfigurable" : false,
     "headers" : [
@@ -169,25 +138,15 @@
     ],
     "icon" : "list.bullet.indent",
     "id" : "D5EA418A-E4D1-438D-ABB9-44F52D91070A",
-    "identifier" : "createNodeApi",
+    "identifier" : "createNodeSApi",
     "instructions" : "",
     "method" : "POST",
     "nextActionId" : "10000000-0000-0000-0000-000000000007",
-    "order" : 7,
-    "payload" : "{\n  \"targetNodeId\": \"{{targetNodeId|default:\"INBOX\"}}\",\n  \"nodes\": [{\n      \"name\": \"{{ content | jsonEscape }}\",\n      \"supertags\": [ {% if supertagId %}{\"id\": \"{{supertagId}}\"}{% endif %} ]}\n   ]\n}\n",
+    "order" : 6,
+    "payload" : "{\n  \"targetNodeId\": \"{{targetNodeId|default:\"INBOX\"}}\",\n  \"nodes\": [\n    {% for node in nodes %}{\n      \"name\": \"{{ node | jsonEscape }}\",\n      \"supertags\": [ {% if supertagId %}{\"id\": \"{{supertagId}}\"}{% endif %} ]\n    }{% if forloop.counter != forloop.length %},{% endif %}{% endfor %}\n  ]\n}\n\n",
     "type" : "makeAPIRequest",
     "url" : "https:\/\/europe-west1-tagr-prod.cloudfunctions.net\/addToNodeV2",
     "variables" : [
-      {
-        "ai" : true,
-        "description" : "The content of the node. No newlines supported.",
-        "id" : "5448018F-EF70-426A-BAA4-598221EADDB0",
-        "label" : "Content",
-        "name" : "content",
-        "required" : true,
-        "type" : "string",
-        "value" : ""
-      },
       {
         "ai" : false,
         "description" : "Your Tana Workspace API Key",
@@ -196,6 +155,16 @@
         "name" : "secretApiKey",
         "required" : true,
         "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : true,
+        "description" : "A list of nodes to add (no newlines supported)",
+        "id" : "5448018F-EF70-426A-BAA4-598221EADDB0",
+        "label" : "Nodes",
+        "name" : "nodes",
+        "required" : true,
+        "type" : "array",
         "value" : ""
       },
       {
@@ -210,7 +179,7 @@
       },
       {
         "ai" : true,
-        "description" : "Enter the supertag id for your node (Optional)",
+        "description" : "Enter the supertag id for your node (Optional, but applied to all nodes)",
         "id" : "573BB78D-F241-4496-B876-1706FB5935D9",
         "label" : "Supertag",
         "name" : "supertagId",
@@ -218,46 +187,6 @@
         "type" : "string",
         "value" : ""
       }
-    ]
-  },
-  {
-    "command" : "open \"{{ url }}\"",
-    "description" : "Open a browser on a specific (percent-encoded) url",
-    "displayName" : "Open Browser",
-    "folderId" : "AA933D08-3148-46F3-82E3-D71276BDCCFD",
-    "forceConfigurable" : false,
-    "icon" : "macwindow.and.cursorarrow",
-    "id" : "D3889625-134E-4846-841C-474E0EBE5C6A",
-    "identifier" : "openBrowser",
-    "instructions" : "",
-    "order" : 2,
-    "type" : "terminalCommand",
-    "useSSH" : false,
-    "variables" : [
-      {
-        "ai" : true,
-        "description" : "The URL to open for the user",
-        "id" : "D8A381B2-92DF-4683-A482-F5088FA53A3D",
-        "label" : "URL",
-        "name" : "url",
-        "required" : true,
-        "type" : "string",
-        "value" : ""
-      }
-    ]
-  },
-  {
-    "description" : "",
-    "displayName" : "Computer Actions",
-    "forceConfigurable" : false,
-    "icon" : "folder",
-    "id" : "AA933D08-3148-46F3-82E3-D71276BDCCFD",
-    "identifier" : "computerActions",
-    "instructions" : "",
-    "order" : 11,
-    "type" : "folder",
-    "variables" : [
-
     ]
   },
   {
@@ -283,7 +212,7 @@
     "instructions" : "This is a high-level action allowing the AI to use the API itself.",
     "method" : "POST",
     "nextActionId" : "10000000-0000-0000-0000-000000000007",
-    "order" : 9,
+    "order" : 8,
     "payload" : "{{ json }}",
     "type" : "makeAPIRequest",
     "url" : "https:\/\/europe-west1-tagr-prod.cloudfunctions.net\/addToNodeV2",
