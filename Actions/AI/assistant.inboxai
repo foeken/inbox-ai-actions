@@ -1,16 +1,15 @@
 [
   {
     "actions" : [
-      "3E868F4C-FD25-468E-BF02-897688CA4239",
-      "D3889625-134E-4846-841C-474E0EBE5C6A",
-      "7B0FD82B-C3BB-477D-9623-3C1F86713E2A",
-      "10000000-0000-0000-0000-000000000004",
-      "10000000-0000-0000-0000-000000000005",
-      "10000000-0000-0000-0000-000000000006",
-      "10000000-0000-0000-0000-000000000009",
-      "D3AC26EE-6E03-400F-AF82-5262B8AE59DE",
       "10000000-0000-0000-0000-000000000010",
       "10000000-0000-0000-0000-000000000011",
+      "3E868F4C-FD25-468E-BF02-897688CA4239",
+      "D3AC26EE-6E03-400F-AF82-5262B8AE59DE",
+      "10000000-0000-0000-0000-000000000009",
+      "10000000-0000-0000-0000-000000000005",
+      "10000000-0000-0000-0000-000000000004",
+      "10000000-0000-0000-0000-000000000006",
+      "10000000-0000-0000-0000-000000000012",
       "10000000-0000-0000-0000-000000000003"
     ],
     "allowMultipleTurns" : true,
@@ -28,12 +27,12 @@
     "order" : 0,
     "output" : "spoken",
     "prompt" : "{{originalInput}}",
-    "systemPrompt" : "Today is {{date.weekday}}, {{date.today}} {{time.now}}. The user is {{ settings.name }}.\n\nTry to speak fast, the user is listening to your voice.\n\nProcess the incoming command as best you can. Unless the user specifically asks for multiple actions, always pick the best action possible, unless multiple are needed to achieve the goal. Reply to any question you know with a normal message. Think carefully about what the user would want to achieve before acting. If you reply, be super concise.\n\nOnly execute actions, NEVER EVER narrate \/ comment on what you did, ONLY reply when asked a question or when things go wrong. NEVER state you 'use a specific action'.\nFast is fun, try to answer briefly and perform actions in a way that reduced waiting time.\n\nWhen you look at the screen, prefer a text-only screenshot first; use images only when you need more context (they are slower).\nWhen the user mentions 'this' or refers to specific text, get the selected text AND take a text-only look at their screen.\n\nWhen the user asks to look at their screen, always wait for the reply, before doing anything else.\n\nWhen the user asks for a specific thing you know the answer to, reply with the answer.\n\nFor play\/pause\/next commands, prefer to use system event keypresses.\n\nGenerally, when asked to do write something (ie. a reply), assume the user wants to have it pasted back at cursor, unless dealing with a specific things where a different action fits better (ie draft email)\n\nWhen an action does not work, you can sometimes try a different approach. For instance, if the user does not have an application, try going to the web version. Or if you get a osascript issue, retry with different syntax.\n\nNote: the command\/audio might be mistranscribed, make your best guess what the user meant, use your best judgement.\n\nYou can open \"hook:\/\/\" links in the browser, even email ones.\n\nNEVER mention complex IDs or URLs explicitly, your words are being read aloud and they are often long and not meaningful, just use them for API actions.\n\nALWAYS use the memories functions, when the users asks you to remember something, or when you feel something is worthwhile to remember.\n\nEntities on Current Screen:\n{% for entity in screen.text | extractEntities %}- {{entity}}\n{% endfor %}\n\nLong Term Memories:\n{% for memory in system.memories %}- {{memory}}\n{% endfor %}",
+    "systemPrompt" : "Today is {{date.weekday}}, {{date.today}} {{time.now}}. The user is {{ settings.name }}.\n\nProcess the incoming command as best you can. Reply to any question you know with a normal message. Think carefully about what the user would want to achieve before acting. If you reply, be super concise.\n\nOnly execute actions, NEVER EVER narrate \/ comment on what you did, ONLY reply when asked a question or when things go wrong. NEVER state you 'use a specific action'.\n\nFast is fun, try to answer briefly and perform actions in a way that reduced waiting time.\n\nWhen the user asks for a specific thing you know the answer to, reply with the answer.\n\nGenerally, when asked to do write something (ie. a reply), assume the user wants to have it pasted back at cursor, unless dealing with a specific things where a different action fits better (ie draft email)\n\nWhen an action does not work, you can sometimes try a different approach. For instance, if the user does not have an application, try going to the web version. Or if you get a osascript issue, retry with different syntax.\n\nYou can open \"hook:\/\/\" links, even email ones.\n\nALWAYS use the memories functions, when the users asks you to remember something, or when you feel something is worthwhile to remember.\n\nEntities on Current Screen:\n{% for entity in screen.text | extractEntities %}- {{entity}}\n{% endfor %}\n\nLong Term Memories:\n{% for memory in system.memories %}- {{memory}}\n{% endfor %}",
     "type" : "realtimeAI",
     "variables" : [
 
     ],
-    "waitTime" : 15
+    "waitTime" : null
   },
   {
     "command" : "open \"mailto:{{ recipient | doubleQuoteEscape }}?subject={{ subject | percentEncode }}&body={{ body | percentEncode }}\"",
@@ -45,7 +44,7 @@
     "id" : "3E868F4C-FD25-468E-BF02-897688CA4239",
     "identifier" : "draftEmail",
     "instructions" : "",
-    "order" : 0,
+    "order" : 1,
     "type" : "terminalCommand",
     "useSSH" : false,
     "variables" : [
@@ -55,6 +54,9 @@
         "id" : "DA97292A-1D29-44AA-B37F-4E3615D6889E",
         "label" : "Recipient",
         "name" : "recipient",
+        "options" : [
+
+        ],
         "required" : true,
         "type" : "string",
         "value" : ""
@@ -65,6 +67,9 @@
         "id" : "8B6464D0-5F79-4DDF-892E-EA51B7AFEEF2",
         "label" : "Subject",
         "name" : "subject",
+        "options" : [
+
+        ],
         "required" : true,
         "type" : "string",
         "value" : ""
@@ -75,6 +80,9 @@
         "id" : "47EE07A1-BE65-417E-88E3-2ED437B14862",
         "label" : "Body",
         "name" : "body",
+        "options" : [
+
+        ],
         "required" : true,
         "type" : "string",
         "value" : ""
@@ -89,63 +97,10 @@
     "id" : "AA933D08-3148-46F3-82E3-D71276BDCCFD",
     "identifier" : "computerActions",
     "instructions" : "",
-    "order" : 2,
+    "order" : 3,
     "type" : "folder",
     "variables" : [
 
-    ]
-  },
-  {
-    "command" : "open \"{{ url }}\"",
-    "description" : "Open a browser on a specific (percent-encoded) url",
-    "displayName" : "Open Browser",
-    "folderId" : "AA933D08-3148-46F3-82E3-D71276BDCCFD",
-    "forceConfigurable" : false,
-    "icon" : "macwindow.and.cursorarrow",
-    "id" : "D3889625-134E-4846-841C-474E0EBE5C6A",
-    "identifier" : "openBrowser",
-    "instructions" : "",
-    "order" : 1,
-    "type" : "terminalCommand",
-    "useSSH" : false,
-    "variables" : [
-      {
-        "ai" : true,
-        "description" : "The URL to open for the user",
-        "id" : "D8A381B2-92DF-4683-A482-F5088FA53A3D",
-        "label" : "URL",
-        "name" : "url",
-        "required" : true,
-        "type" : "string",
-        "value" : ""
-      }
-    ]
-  },
-  {
-    "command" : "osascript {% for line in script | splitNewlines %}-e \"{{ line | doubleQuoteEscape }}\" {% endfor %}",
-    "description" : "Run an AppleScript using osascript",
-    "displayName" : "Run Apple Script",
-    "folderId" : "AA933D08-3148-46F3-82E3-D71276BDCCFD",
-    "forceConfigurable" : false,
-    "icon" : "applescript",
-    "id" : "7B0FD82B-C3BB-477D-9623-3C1F86713E2A",
-    "identifier" : "runAppleScript",
-    "instructions" : "",
-    "nextActionId" : "10000000-0000-0000-0000-000000000007",
-    "order" : 2,
-    "type" : "terminalCommand",
-    "useSSH" : true,
-    "variables" : [
-      {
-        "ai" : true,
-        "description" : "The AppleScript to run",
-        "id" : "409B4FE8-D8E7-485E-B64A-4501C7364191",
-        "label" : "Script",
-        "name" : "script",
-        "required" : true,
-        "type" : "string",
-        "value" : ""
-      }
     ]
   },
   {
@@ -159,7 +114,7 @@
     "identifier" : "openApplication",
     "instructions" : "",
     "nextActionId" : "10000000-0000-0000-0000-000000000007",
-    "order" : 3,
+    "order" : 7,
     "type" : "terminalCommand",
     "useSSH" : false,
     "variables" : [
@@ -169,6 +124,9 @@
         "id" : "D51124AB-44F1-4B65-BDAD-A2B2594F0229",
         "label" : "Application",
         "name" : "application",
+        "options" : [
+
+        ],
         "required" : true,
         "type" : "string",
         "value" : ""
