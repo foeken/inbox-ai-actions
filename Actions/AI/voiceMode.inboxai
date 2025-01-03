@@ -24,9 +24,10 @@
     "modalities" : [
       "text"
     ],
-    "order" : 1,
+    "order" : 2,
     "output" : "spoken",
-    "prompt" : "{% if originalInput %}\nToday is {{date.weekday}}, {{date.today}} {{time.now}}. The user is {{ settings.name }}.\n\nProcess the incoming command as best you can. Unless the user specifically asks for multiple actions, always pick the best action possible, unless multiple are needed to achieve the goal. Reply to any question you know with a normal message. Think carefully about what the user would want to achieve before acting. If you reply, be super concise.\n\nOnly execute actions, NEVER EVER narrate \/ comment on what you did, ONLY reply when asked a question or when things go wrong. NEVER state you 'use a specific action'.\nFast is fun, try to answer briefly and perform actions in a way that reduced waiting time.\n\nWhen you look at the screen, prefer a text-only screenshot first; use images only when you need more context (they are slower).\nWhen the user mentions 'this' or refers to specific text, get the selected text AND take a text-only look at their screen.\n\nWhen the user asks to look at their screen, always wait for the reply, before doing anything else.\n\nWhen the user asks for a specific thing you know the answer to, reply with the answer.\n\nFor play\/pause\/next commands, prefer to use system event keypresses.\n\nGenerally, when asked to do write something (ie. a reply), assume the user wants to have it pasted back at cursor, unless dealing with a specific things where a different action fits better (ie draft email)\n\nWhen an action does not work, you can sometimes try a different approach. For instance, if the user does not have an application, try going to the web version. Or if you get a osascript issue, retry with different syntax.\n\nNote: the command\/audio might be mistranscribed, make your best guess what the user meant, use your best judgement.\n\nALWAYS use the memories functions, when the users asks you to remember something, or when you feel something is worthwhile to remember.\n\nEntities on Current Screen:\n{% for entity in screen.text | extractEntities %}- {{entity}}\n{% endfor %}\n\nLong Term Memories:\n{% for memory in system.memories %}- {{memory}}\n{% endfor %}\n\nCommand:\n{{originalInput}}\n{% endif %}",
+    "prompt" : "{% if originalInput %}\nThe user is {{ settings.name }}.\n\nCommand:\n{{originalInput}}\n{% endif %}",
+    "systemPrompt" : "Today is {{date.weekday}}, {{date.today}} {{time.now}}.\n\nProcess the incoming command as best you can. Unless the user specifically asks for multiple actions, always pick the best action possible, unless multiple are needed to achieve the goal. Reply to any question you know with a normal message. Think carefully about what the user would want to achieve before acting. If you reply, be super concise.\n\nOnly execute actions, NEVER EVER narrate \/ comment on what you did, ONLY reply when asked a question or when things go wrong. NEVER state you 'use a specific action'.\nFast is fun, try to answer briefly and perform actions in a way that reduced waiting time.\n\nWhen you look at the screen, prefer a text-only screenshot first; use images only when you need more context (they are slower).\nWhen the user mentions 'this' or refers to specific text, get the selected text AND take a text-only look at their screen.\n\nWhen the user asks to look at their screen, always wait for the reply, before doing anything else.\n\nWhen the user asks for a specific thing you know the answer to, reply with the answer.\n\nFor play\/pause\/next commands, prefer to use system event keypresses.\n\nGenerally, when asked to do write something (ie. a reply), assume the user wants to have it pasted back at cursor, unless dealing with a specific things where a different action fits better (ie draft email)\n\nWhen an action does not work, you can sometimes try a different approach. For instance, if the user does not have an application, try going to the web version. Or if you get a osascript issue, retry with different syntax.\n\nNote: the command\/audio might be mistranscribed, make your best guess what the user meant, use your best judgement.\n\nALWAYS use the memories functions, when the users asks you to remember something, or when you feel something is worthwhile to remember.\n\nEntities on Current Screen:\n{% for entity in screen.text | extractEntities %}- {{entity}}\n{% endfor %}\n\nLong Term Memories:\n{% for memory in system.memories %}- {{memory}}\n{% endfor %}",
     "type" : "askAI",
     "variables" : [
       {
@@ -35,6 +36,9 @@
         "id" : "CB3BE487-703A-4A5F-B273-F18BDC619A15",
         "label" : "",
         "name" : "prompt",
+        "options" : [
+
+        ],
         "required" : true,
         "type" : "string",
         "value" : ""
@@ -53,7 +57,7 @@
     "identifier" : "openApplication",
     "instructions" : "",
     "nextActionId" : "10000000-0000-0000-0000-000000000007",
-    "order" : 3,
+    "order" : 7,
     "type" : "terminalCommand",
     "useSSH" : false,
     "variables" : [
@@ -63,6 +67,9 @@
         "id" : "D51124AB-44F1-4B65-BDAD-A2B2594F0229",
         "label" : "Application",
         "name" : "application",
+        "options" : [
+
+        ],
         "required" : true,
         "type" : "string",
         "value" : ""
@@ -77,7 +84,7 @@
     "id" : "AA933D08-3148-46F3-82E3-D71276BDCCFD",
     "identifier" : "computerActions",
     "instructions" : "",
-    "order" : 2,
+    "order" : 3,
     "type" : "folder",
     "variables" : [
 
@@ -93,7 +100,7 @@
     "id" : "3E868F4C-FD25-468E-BF02-897688CA4239",
     "identifier" : "draftEmail",
     "instructions" : "",
-    "order" : 0,
+    "order" : 1,
     "type" : "terminalCommand",
     "useSSH" : false,
     "variables" : [
@@ -103,6 +110,9 @@
         "id" : "DA97292A-1D29-44AA-B37F-4E3615D6889E",
         "label" : "Recipient",
         "name" : "recipient",
+        "options" : [
+
+        ],
         "required" : true,
         "type" : "string",
         "value" : ""
@@ -113,6 +123,9 @@
         "id" : "8B6464D0-5F79-4DDF-892E-EA51B7AFEEF2",
         "label" : "Subject",
         "name" : "subject",
+        "options" : [
+
+        ],
         "required" : true,
         "type" : "string",
         "value" : ""
@@ -123,6 +136,9 @@
         "id" : "47EE07A1-BE65-417E-88E3-2ED437B14862",
         "label" : "Body",
         "name" : "body",
+        "options" : [
+
+        ],
         "required" : true,
         "type" : "string",
         "value" : ""
@@ -139,7 +155,7 @@
     "id" : "D3889625-134E-4846-841C-474E0EBE5C6A",
     "identifier" : "openBrowser",
     "instructions" : "",
-    "order" : 1,
+    "order" : 4,
     "type" : "terminalCommand",
     "useSSH" : false,
     "variables" : [
@@ -149,6 +165,9 @@
         "id" : "D8A381B2-92DF-4683-A482-F5088FA53A3D",
         "label" : "URL",
         "name" : "url",
+        "options" : [
+
+        ],
         "required" : true,
         "type" : "string",
         "value" : ""
@@ -166,7 +185,7 @@
     "identifier" : "runAppleScript",
     "instructions" : "",
     "nextActionId" : "10000000-0000-0000-0000-000000000007",
-    "order" : 2,
+    "order" : 6,
     "type" : "terminalCommand",
     "useSSH" : true,
     "variables" : [
@@ -176,6 +195,9 @@
         "id" : "409B4FE8-D8E7-485E-B64A-4501C7364191",
         "label" : "Script",
         "name" : "script",
+        "options" : [
+
+        ],
         "required" : true,
         "type" : "string",
         "value" : ""
