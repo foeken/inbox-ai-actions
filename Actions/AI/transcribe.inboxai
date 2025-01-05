@@ -1,24 +1,68 @@
 [
   {
+    "description" : "",
+    "displayName" : "Transcribe",
+    "forceConfigurable" : false,
+    "icon" : "folder",
+    "id" : "B5E855CD-3C00-44DB-A763-3A2E0FAD08AA",
+    "identifier" : "transcribe",
+    "instructions" : "",
+    "order" : 13,
+    "type" : "folder",
+    "variables" : [
+
+    ]
+  },
+  {
+    "description" : "Returns the original Whisper transcription",
+    "displayName" : "Transcribed",
+    "folderId" : "B5E855CD-3C00-44DB-A763-3A2E0FAD08AA",
+    "forceConfigurable" : false,
+    "icon" : "waveform.badge.mic",
+    "id" : "45C2877D-0FA1-4E10-92CB-5CA4DFE0BA1C",
+    "identifier" : "transcribed",
+    "instructions" : "",
+    "nextActionId" : "10000000-0000-0000-0000-000000000004",
+    "order" : 9,
+    "template" : "{# This only works when Whisper is enabled #}{{ originalInput }}",
+    "type" : "processText",
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "Description",
+        "id" : "38446378-43BF-41F4-9B23-F3EFC692494E",
+        "label" : "Label",
+        "name" : "NewVariable",
+        "options" : [
+
+        ],
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  },
+  {
     "actions" : [
 
     ],
     "allowMultipleTurns" : false,
     "description" : "",
-    "displayName" : "Transcribe",
+    "displayName" : "Transcribe and fix",
+    "folderId" : "B5E855CD-3C00-44DB-A763-3A2E0FAD08AA",
     "forceConfigurable" : false,
     "icon" : "message.badge.waveform",
     "id" : "FC60F7F8-F7D6-40FF-8826-77B5B546BBCA",
-    "identifier" : "transcribe",
+    "identifier" : "transcribeAndFix",
     "instructions" : "",
     "modalities" : [
       "text"
     ],
     "model" : "gpt-4o-mini",
     "nextActionId" : "10000000-0000-0000-0000-000000000004",
-    "order" : 3,
+    "order" : 11,
     "output" : "ignored",
-    "prompt" : "Rewrite the following text with grammar & spelling fixes, do not change the tone or words used. The input is transcribed using TTS, so can contain strange words, fix them using the entities you have, but never change their meaning, only if they are close\/sound like them.\n\nEntities:\n- Dinant\n\nInput\nI think uhm about the best way to move forward is is like so to ask dinoont\n\nOutput:\nI think the best way to move forward is to ask Dinant.\n\nEntities:\n{% for entity in screen.text | extractEntities %}- {{entity}}\n{% endfor %}\n\nInput:\n{{originalInput}}\n\nOutput:",
+    "prompt" : "Rewrite the following text with grammar & spelling fixes, do not change the tone or words used. The input is transcribed using TTS, so can contain strange words, fix them using the entities you have, but never change their meaning, only if they are close\/sound like them.\n\nEntities:\n- Dinant\n\nInput:\nI think uhm about the best way to move forward is is like so to ask dinoont\n\nOutput:\nI think the best way to move forward is to ask Dinant.\n\nEntities:\n{% for entity in screen.text | extractEntities %}- {{entity}}\n{% endfor %}\n\nInput:\n{{originalInput}}\n\nOutput:",
     "provider" : "OpenAI",
     "type" : "askAI",
     "variables" : [
@@ -28,6 +72,9 @@
         "id" : "4616C187-38EC-470E-BF37-5FB8F50AA44D",
         "label" : "",
         "name" : "prompt",
+        "options" : [
+
+        ],
         "required" : true,
         "type" : "string",
         "value" : ""
