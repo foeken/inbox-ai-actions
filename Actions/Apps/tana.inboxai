@@ -7,7 +7,7 @@
     "id" : "B9635D37-8551-42F0-A1C4-BAB835D5DD25",
     "identifier" : "tana",
     "instructions" : "",
-    "order" : 9,
+    "order" : 11,
     "type" : "folder",
     "variables" : [
 
@@ -16,7 +16,8 @@
   {
     "actions" : [
       "10000000-0000-0000-0000-000000000012",
-      "D5EA418A-E4D1-438D-ABB9-44F52D91070A"
+      "D5EA418A-E4D1-438D-ABB9-44F52D91070A",
+      "43C82EA7-C819-4D65-AE35-C87F944D79AE"
     ],
     "description" : "Allows your AI to use Tana through the Website and API",
     "displayName" : "Tana Plugin",
@@ -26,12 +27,81 @@
     "id" : "0F3FDCBF-88CE-42F4-A650-BA0FD04A22A6",
     "identifier" : "tanaPlugin",
     "instructions" : "",
-    "order" : 10,
+    "order" : 13,
     "script" : "{% if browser.url | match: 'app\\.tana\\.inc' %}\nfunction toggleNodeCheckbox(id) {\n    var el = document.querySelector('[id$=\"' + id + '|donecheck\"] button')\n    if(el) { el.click() } else { return \"Node not found or not a checkbox\" }\n}\n\nfunction expandNode(id) {\n     var el = document.querySelector('[data-id$=\"' + id + '\"][data-is-expanded=\"false\"] button[aria-label=\"Expand\"]')\n     if(el) { el.click() } else { return \"Node not found or already expanded\" }\n}\n\nfunction editNode(id, content) {\n    var el = document.querySelector('[data-id$=\"' + id + '\"] span[data-role=\"editable\"], [id=\"' + id + '\"] span[data-role=\"editable\"]')\n    if(el) { el.innerText = content ; el.blur() } else { return \"Node not found\" }\n}\n\nfunction collapseNode(id) {\n    var el = document.querySelector('[data-id$=\"' + id + '\"][data-is-expanded=\"true\"] button[aria-label=\"Collapse\"]')\n    if(el) { el.click() } else { return \"Node not found or already collapsed\" }\n}\n\nfunction zoomNode(id) {\n    var el = document.querySelector('[data-id$=\"' + id + '\"] span[role=\"button\"]')\n    if(el) { el.click() } else { return \"Node not found or already zoomed\" }\n}\n\nfunction getNodes() {\n    function buildTree(elements) {\n        var map = {};\n\n        \/\/ Helper function to find the first span with content\n        function getContent(el) {\n            var spans = Array.from(el.querySelectorAll('span'));\n            for (var i = 0; i < spans.length; i++) {\n                var text = spans[i].textContent.trim();\n                if (text) {\n                    return text; \/\/ Return the first non-empty content\n                }\n            }\n            return null; \/\/ Return null if no non-empty content is found\n        }\n\n        \/\/ Create nodes for all elements\n        elements.forEach(function(el) {\n            var id = el.id;\n\n            \/\/ Skip IDs starting with \"radix\" or \"SYS_PA02\"\n            if (id.startsWith(\"radix\") || id.startsWith(\"SYS_PA02\")) return;\n\n            var content = getContent(el); \/\/ Get the first span with content\n            if (content !== null) {\n                var idParts = id.split('|');\n                map[id] = {\n                    type: \"node\", \/\/ Add the type property\n                    id: idParts[idParts.length - 1], \/\/ Only the last part of the ID\n                    tree: id, \/\/ Full ID in `tree` key\n                    content: content,\n                    children: [],\n                    checkbox: false \/\/ Default to false\n                };\n            }\n        });\n\n        \/\/ Use querySelector to check for `|donecheck` IDs\n        Object.keys(map).forEach(function(id) {\n            var donecheckSelector = `[id=\"${id}|donecheck\"]`;\n            var el = document.querySelector(donecheckSelector);\n            if (el) {\n                var ariaChecked = el.getAttribute(\"aria-checked\");\n                map[id].checkbox = true;\n                map[id].checked = ariaChecked === \"true\";\n            }\n        });\n\n        var tree = [];\n\n        \/\/ Link children to their parents\n        elements.forEach(function(el) {\n            var id = el.id;\n\n            \/\/ Skip IDs starting with \"radix\" or \"SYS_PA02\"\n            if (id.startsWith(\"radix\") || id.startsWith(\"SYS_PA02\")) return;\n\n            var parts = id.split('|');\n            if (parts.length > 1) {\n                var parentId = parts.slice(0, -1).join('|');\n                if (map[parentId] && map[id]) {\n                    map[parentId].children.push(map[id]);\n                } else if (map[id]) {\n                    tree.push(map[id]); \/\/ Orphaned node with valid content, treat as root\n                }\n            } else {\n                \/\/ Single-part IDs matching the format and having content are treated as root nodes\n                var idPattern = \/^[A-Za-z0-9_-]{7,16}$\/; \/\/ Matches IDs without pipes\n                if (idPattern.test(id) && map[id]) {\n                    tree.push(map[id]);\n                }\n            }\n        });\n\n        return tree;\n    }\n\n    var elements = Array.from(document.querySelectorAll('div[id]'));\n    return buildTree(elements);\n}\n{% endif %}",
-    "systemPrompt" : "## Using Tana through the API\nYou have access to the \"Create Node\" API. With this function you can use the Tana API. Always prefer to use a SupertagId if you know a relevant one.\n\n## Using the Tana Website (through JavaScript)\nWhen a user is on the Tana website (https:\/\/app.tana.inc), you will have access to the following extra Javascript functions to execute using the Safari extension. These JavaScript functions only work on nodes visible on screen (use getNodes() for all visible nodes).\n\nALWAYS execute the \"getNodes()\" function first, to see the nodes on the screen. Remember this needs to be valid JavaScript. So call the functions using parameters \"getNodes()\"\n\n### Javascript: getNodes()\nThis function gets an overview of the nodes on the page, their IDs and hierarchy. It returns a tree. ALWAYS use this method as a starting point when a user is on the Tana site.\n\n### Javascript: toggleNodeCheckbox(nodeId)\nToggle the checkbox on a nodeId, can be used to finish \/ unfinish tasks and todos\n\n### Javascript: editNode(nodeId, content)\nSets the content of a nodeId. ONLY use this to edit a node. Use the API to add children to a node.\n\n### Javascript: expandNode(nodeId)\nExpands the node in the UI, showing its children.\n\n### Javascript: collapseNode(nodeId)\nCollapses the node in the UI, hiding its children.\n\n### Javascript: zoomNode(nodeId)\nZooms into the node in the UI, making it the top node.",
+    "systemPrompt" : "## Using Tana through the API\nYou have access to the \"Create Node\" API. With this function you can use the Tana API. Always prefer to use a SupertagId if you know a relevant one.\n\n## Using the Tana Website (through JavaScript)\nWhen a user is on the Tana website (https:\/\/app.tana.inc), you will have access to the following extra Javascript functions to execute using the Safari extension. These JavaScript functions only work on nodes visible on screen (use getNodes() for all visible nodes).\n\nALWAYS execute the \"getNodes()\" function first, to see the nodes on the screen. Remember this needs to be valid JavaScript. So call the functions using parameters \"getNodes()\"\n\n### Javascript: getNodes()\nThis function gets an overview of the nodes on the page, their IDs and hierarchy. It returns a tree. ALWAYS use this method as a starting point when a user is on the Tana site.\n\n### Javascript: toggleNodeCheckbox(nodeId)\nToggle the checkbox on a nodeId, can be used to finish \/ unfinish tasks and todos\n\n### Javascript: editNode(nodeId, content)\nSets the content of a nodeId. ONLY use this to edit a node on screen, you can also edit the node with the API, and add children using the API.\n\n### Javascript: expandNode(nodeId)\nExpands the node in the UI, showing its children.\n\n### Javascript: collapseNode(nodeId)\nCollapses the node in the UI, hiding its children.\n\n### Javascript: zoomNode(nodeId)\nZooms into the node in the UI, making it the top node.",
     "type" : "plugin",
     "variables" : [
 
+    ]
+  },
+  {
+    "description" : "Update the name (content) of a node in Tana",
+    "displayName" : "Update Node (API)",
+    "folderId" : "0F3FDCBF-88CE-42F4-A650-BA0FD04A22A6",
+    "forceConfigurable" : false,
+    "headers" : [
+      {
+        "id" : "0BBCD19C-12E1-4BDE-B754-BF7BF8C4CAC9",
+        "key" : "Content-Type",
+        "value" : "application\/json"
+      },
+      {
+        "id" : "D8895C27-9F76-4625-B1D1-D881CA4AFAB0",
+        "key" : "Authorization",
+        "value" : "Bearer {{secretApiKey}}"
+      }
+    ],
+    "icon" : "pencil.line",
+    "id" : "43C82EA7-C819-4D65-AE35-C87F944D79AE",
+    "identifier" : "updateNodeApi",
+    "instructions" : "",
+    "method" : "POST",
+    "nextActionId" : "10000000-0000-0000-0000-000000000007",
+    "order" : 1,
+    "payload" : "{\n  \"targetNodeId\": \"{{ targetNodeId | default:\"INBOX\" }}\",\n  \"setName\": \"{{ name | jsonEscape }}\"  \n}",
+    "type" : "makeAPIRequest",
+    "url" : "https:\/\/europe-west1-tagr-prod.cloudfunctions.net\/addToNodeV2",
+    "variables" : [
+      {
+        "ai" : false,
+        "description" : "Your Tana Workspace API Key",
+        "id" : "44463E85-CB39-496E-AF3C-A5868E563645",
+        "label" : "API Key",
+        "name" : "secretApiKey",
+        "options" : [
+
+        ],
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : true,
+        "description" : "The targetted node id",
+        "id" : "09A4C01D-6569-4D94-890C-FB73AACBAB10",
+        "label" : "nodeId",
+        "name" : "targetNodeId",
+        "options" : [
+
+        ],
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : true,
+        "description" : "The new content of the node",
+        "id" : "5448018F-EF70-426A-BAA4-598221EADDB0",
+        "label" : "Name",
+        "name" : "name",
+        "options" : [
+
+        ],
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
     ]
   },
   {
@@ -57,7 +127,7 @@
     "instructions" : "",
     "method" : "POST",
     "nextActionId" : "10000000-0000-0000-0000-000000000007",
-    "order" : 13,
+    "order" : 15,
     "payload" : "{\n  \"targetNodeId\": \"{{targetNodeId|default:\"INBOX\"}}\",\n  \"nodes\": [\n    {% for node in nodes %}{\n      \"name\": \"{{ node | jsonEscape }}\",\n      \"supertags\": [ {% if supertagId %}{\"id\": \"{{supertagId}}\"}{% endif %} ]\n    }{% if forloop.counter != forloop.length %},{% endif %}{% endfor %}\n  ]\n}\n\n",
     "type" : "makeAPIRequest",
     "url" : "https:\/\/europe-west1-tagr-prod.cloudfunctions.net\/addToNodeV2",
@@ -133,7 +203,10 @@
     "modalities" : [
       "text"
     ],
-    "order" : 11,
+    "modelConfiguration" : {
+
+    },
+    "order" : 14,
     "output" : "ignored",
     "prompt" : "Today is {{ date.weekday }}, {{ date.today }} {{ time.now }}.\n\nExtract all tasks for {{ settings.name }} from the input below (and optionally the image), assume the input is directed at the receiver of the tasks. \n\nIf you see a name that you assume is the requester, include that. Include the source of the task if you can figure that out (i.e Mail, Slack). Tasks are ALWAYS in English, and NEVER contain newlines.\n\nRead the assignment again: Extract tasks, requester, and source. In English, no newlines.\n\nExample tasks:\n- Perform x for y (via Slack)\n- Read x\n- Sign document x (via Mail)\n\nALWAYS extract tasks AND send a notification with the name of the task(s)\n\nInput:\n{{ originalInput | process }}",
     "type" : "askAI",
@@ -165,7 +238,7 @@
     "instructions" : "Uses the Tana Input API to add nodes. Optionally with your given Supertag and fills a source field.",
     "method" : "POST",
     "nextActionId" : "10000000-0000-0000-0000-000000000007",
-    "order" : 12,
+    "order" : 19,
     "payload" : "{\n  \"targetNodeId\": \"{{targetNodeId|default:\"INBOX\"}}\",\n  \"nodes\": [\n    {% for task in tasks %}{\n      \"name\": \"{{ task | jsonEscape }}\",\n      \"supertags\": [ {% if supertagId %}{\"id\": \"{{supertagId}}\"}{% endif %} ],\n      \"children\": [ {% if fieldId %}{ \"type\": \"field\", \"attributeId\": \"{{ fieldId }}\", \"children\": [{% if originalInput | match:\"message-id: <(.+?)>\" %}{ \"name\": \"message:&lt;{{ originalInput | match:\"message-id: <(.+?)>\" }}&gt;\"}{% endif %}] }{% endif %} ]\n    }{% if forloop.counter != forloop.length %},{% endif %}{% endfor %}      \n  ]\n}\n",
     "type" : "makeAPIRequest",
     "url" : "https:\/\/europe-west1-tagr-prod.cloudfunctions.net\/addToNodeV2",
