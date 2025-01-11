@@ -22,11 +22,11 @@
                     "emailProcessor.inboxai"
                 ],
                 "icon" : "envelope.arrow.triangle.branch"
-            }            
+            }
         ]
-    },    
+    },
     {
-        "title" : "Great for Voice and Screenshots",        
+        "title" : "Great for Voice and Screenshots",
         "actions" : [
             {
                 "title" : "Research",
@@ -34,7 +34,7 @@
                 "icon" : "questionmark.bubble"
             },
             {
-                "title" : "Transcribe Text",                
+                "title" : "Transcribe Text",
                 "actions" : ["transcribe.inboxai"],
                 "icon" : "message.badge.waveform"
             }
@@ -48,7 +48,7 @@
                 "title" : "Apple Notes",
                 "actions" : ["appleNotes.inboxai"],
                 "icon" : "note.text.badge.plus"
-            },            
+            },
             {
                 "title" : "Apple Reminders",
                 "actions" : ["appleReminders.inboxai"],
@@ -68,7 +68,7 @@
                 "title" : "Obsidian",
                 "actions" : ["obsidian.inboxai"],
                 "icon" : "note.text.badge.plus"
-            },                      
+            },
             {
                 "title" : "Todoist",
                 "actions" : ["todoist.inboxai"],
@@ -90,7 +90,7 @@
                 "icon" : "note.text.badge.plus"
             }
         ]
-    },       
+    },
     {
         "title" : "Computer Actions",
         "description" : "Allow your AI to perform actions on your computer.",
@@ -119,7 +119,7 @@
                 "icon" : "calendar.badge.plus",
                 "tool" : true
             },
-            {                
+            {
                 "title" : "Run Apple Shortcut",
                 "actions" : ["runAppleShortcut.inboxai"],
                 "icon" : "command",
@@ -130,7 +130,7 @@
                 "actions" : ["runAppleScript.inboxai"],
                 "icon" : "applescript",
                 "tool" : true
-            },            
+            },
             {
                 "title" : "Call x-callback URLs",
                 "actions" : ["callXCallbackUrl.inboxai"],
@@ -138,11 +138,17 @@
                 "tool" : true
             }
         ]
-    },    
+    },
     {
         "title" : "APIs",
         "description" : "Give your AI access to these external services.",
         "actions" : [
+            {
+                "title" : "Screenpipe",
+                "actions" : ["screenpipe.inboxai"],
+                "icon" : "clock.arrow.trianglehead.counterclockwise.rotate.90",
+                "tool" : true
+            },
             {
                 "title" : "EXA.ai",
                 "actions" : ["exa.inboxai"],
@@ -174,5 +180,5 @@
                 "tool" : true
             }
         ]
-    }       
+    }
 ]

@@ -1,0 +1,76 @@
+[
+  {
+    "description" : "",
+    "displayName" : "Screenpipe",
+    "forceConfigurable" : false,
+    "icon" : "folder",
+    "id" : "E29ECB1F-AA86-492D-ACAE-1E6E653FB615",
+    "identifier" : "screenpipe",
+    "instructions" : "",
+    "order" : 17,
+    "type" : "folder",
+    "variables" : [
+
+    ]
+  },
+  {
+    "description" : "Search the history of computer usage for this user using",
+    "displayName" : "Search Computer History",
+    "folderId" : "E29ECB1F-AA86-492D-ACAE-1E6E653FB615",
+    "forceConfigurable" : true,
+    "headers" : [
+
+    ],
+    "icon" : "clock.arrow.trianglehead.counterclockwise.rotate.90",
+    "id" : "FADF39ED-B0F9-42EB-86C2-6467B06C5989",
+    "identifier" : "searchComputerHistory",
+    "instructions" : "Download [Screenpipe](https:\/\/screenpi.pe\/) and configure the recorder for this API to work",
+    "method" : "GET",
+    "nextActionId" : "10000000-0000-0000-0000-000000000007",
+    "order" : 18,
+    "payload" : "",
+    "type" : "makeAPIRequest",
+    "url" : "http:\/\/localhost:3030\/search?q={{query}}&content_type=ocr&limit={{limit | default: 10}}&offset{{offset | default: 0}}",
+    "variables" : [
+      {
+        "ai" : true,
+        "description" : "A single word search query",
+        "id" : "2637057B-5157-4D8C-8800-858F48CB2E21",
+        "label" : "Query",
+        "name" : "query",
+        "options" : [
+
+        ],
+        "required" : false,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : true,
+        "description" : "Max items to return per page (default is 10)",
+        "id" : "246EF495-5F56-4CBE-AE2C-FB939A73DE56",
+        "label" : "Limit",
+        "name" : "limit",
+        "options" : [
+
+        ],
+        "required" : false,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : true,
+        "description" : "Current page (default: 0)",
+        "id" : "06926D5C-7CC9-45D6-9005-7AA7F0B79909",
+        "label" : "Label",
+        "name" : "offset",
+        "options" : [
+
+        ],
+        "required" : false,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  }
+]
