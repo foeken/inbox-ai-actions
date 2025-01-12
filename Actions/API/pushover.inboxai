@@ -1,0 +1,93 @@
+[
+  {
+    "description" : "",
+    "displayName" : "Pushover",
+    "forceConfigurable" : false,
+    "icon" : "folder",
+    "id" : "B29A3A0D-804B-4B6B-B88B-7565336EB7C6",
+    "identifier" : "pushover",
+    "instructions" : "",
+    "order" : 19,
+    "type" : "folder",
+    "variables" : [
+
+    ]
+  },
+  {
+    "description" : "Send a notification",
+    "displayName" : "Send Notification",
+    "folderId" : "B29A3A0D-804B-4B6B-B88B-7565336EB7C6",
+    "forceConfigurable" : false,
+    "headers" : [
+      {
+        "id" : "A372DFBB-9DAD-4F8D-8014-6A7432421051",
+        "key" : "Content-Type",
+        "value" : "application\/x-www-form-urlencoded"
+      }
+    ],
+    "icon" : "bell.badge",
+    "id" : "361F3EF2-BFFE-4CE3-B63E-7938A5A5668B",
+    "identifier" : "sendNotification",
+    "instructions" : "Sends Push Notifications to iOS, Android, or Desktop devices using [Pushover](https:\/\/pushover.net)",
+    "method" : "POST",
+    "nextActionId" : "10000000-0000-0000-0000-000000000007",
+    "order" : 21,
+    "payload" : "token={{secretAppToken}}&user={{secretUserToken}}&title={{title | default: \"Inbox AI\" | percentEncode }}&message={{message | percentEncode}}\n",
+    "type" : "makeAPIRequest",
+    "url" : "https:\/\/api.pushover.net\/1\/messages.json ",
+    "variables" : [
+      {
+        "ai" : false,
+        "description" : "Your Pushover user token",
+        "id" : "83F6A329-BAEA-4FF0-B41E-D211E943AC48",
+        "label" : "User Token",
+        "name" : "secretUserToken",
+        "options" : [
+
+        ],
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : false,
+        "description" : "Your Pushover application token",
+        "id" : "947584F4-3F8D-4415-BC63-0FE4B4F43C6D",
+        "label" : "Application Token",
+        "name" : "secretAppToken",
+        "options" : [
+
+        ],
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : true,
+        "description" : "Title of the notification",
+        "id" : "7C23EC27-A482-4B6E-A90A-2C0F2911683B",
+        "label" : "Title",
+        "name" : "title",
+        "options" : [
+
+        ],
+        "required" : false,
+        "type" : "string",
+        "value" : ""
+      },
+      {
+        "ai" : true,
+        "description" : "Content of the notification",
+        "id" : "F3D1D15D-BC7E-47D6-A7A5-70F92D113C06",
+        "label" : "Message",
+        "name" : "message",
+        "options" : [
+
+        ],
+        "required" : true,
+        "type" : "string",
+        "value" : ""
+      }
+    ]
+  }
+]

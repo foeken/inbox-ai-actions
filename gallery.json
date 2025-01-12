@@ -144,6 +144,12 @@
         "description" : "Give your AI access to these external services.",
         "actions" : [
             {
+                "title" : "Pushover",
+                "actions" : ["pushover.inboxai"],
+                "icon" : "bell.badge",
+                "tool" : true
+            },
+            {
                 "title" : "Screenpipe",
                 "actions" : ["screenpipe.inboxai"],
                 "icon" : "clock.arrow.trianglehead.counterclockwise.rotate.90",
