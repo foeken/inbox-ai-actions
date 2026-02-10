@@ -14,7 +14,7 @@
     ]
   },
   {
-    "description" : "Returns the original Whisper transcription",
+    "description" : "Returns the original transcription",
     "displayName" : "Transcribe",
     "folderId" : "B5E855CD-3C00-44DB-A763-3A2E0FAD08AA",
     "forceConfigurable" : false,
@@ -24,7 +24,7 @@
     "instructions" : "",
     "nextActionId" : "10000000-0000-0000-0000-000000000004",
     "order" : 9,
-    "template" : "{# This only works when Whisper is enabled #}{{ originalInput }}",
+    "template" : "{{ originalInput }}",
     "type" : "processText",
     "variables" : [
       {
