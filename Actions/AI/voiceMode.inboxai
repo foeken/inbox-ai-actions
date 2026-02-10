@@ -43,7 +43,7 @@
         "value" : ""
       }
     ],
-    "waitTime" : 15
+    "waitTime" : -1
   },
   {
     "command" : "open \"mailto:{{ recipient | doubleQuoteEscape }}?subject={{ subject | percentEncode }}&body={{ body | percentEncode }}\"",
