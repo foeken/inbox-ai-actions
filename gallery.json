@@ -24,7 +24,7 @@
                 "icon" : "envelope.arrow.triangle.branch"
             },
             {
-                "title" : "Realtime",
+                "title" : "Realtime Mode",
                 "description" : "Advanced Voice Mode",
                 "actions" : ["realtime.inboxai"],
                 "icon" : "bubble.left.and.text.bubble.right"
