@@ -1,18 +1,26 @@
 [
   {
     "actions" : [
-      "10000000-0000-0000-0000-000000000003",
-      "10000000-0000-0000-0000-000000000004",
-      "10000000-0000-0000-0000-000000000005",
-      "10000000-0000-0000-0000-000000000006",
-      "3E868F4C-FD25-468E-BF02-897688CA4239",
-      "10000000-0000-0000-0000-000000000009",
+      "20000000-0000-0000-0000-000000000011",
+      "20000000-0000-0000-0000-000000000012",
+      "20000000-0000-0000-0000-000000000013",
+      "20000000-0000-0000-0000-000000000014",
+      "20000000-0000-0000-0000-000000000015",
+      "20000000-0000-0000-0000-000000000016",
+      "20000000-0000-0000-0000-000000000017",
+      "30000000-0000-0000-0000-000000000001",
+      "30000000-0000-0000-0000-000000000002",
+      "30000000-0000-0000-0000-000000000003",
       "10000000-0000-0000-0000-000000000010",
       "10000000-0000-0000-0000-000000000011",
-      "D3AC26EE-6E03-400F-AF82-5262B8AE59DE",
-      "10000000-0000-0000-0000-000000000012"
+      "10000000-0000-0000-0000-000000000004",
+      "10000000-0000-0000-0000-000000000002",
+      "10000000-0000-0000-0000-000000000009",
+      "10000000-0000-0000-0000-000000000006",
+      "10000000-0000-0000-0000-000000000005"
     ],
-    "allowMultipleTurns" : true,
+    "allowMultipleTurns" : false,
+    "deleted" : false,
     "description" : "Voice Mode for any AI Model",
     "displayName" : "Voice Mode",
     "forceConfigurable" : false,
@@ -23,11 +31,15 @@
     "modalities" : [
       "text"
     ],
-    "order" : 2,
+    "modelConfiguration" : {
+
+    },
+    "order" : 20,
     "output" : "spoken",
     "prompt" : "{% if originalInput %}\nThe user is {{ settings.name }}.\n\nCommand:\n{{originalInput}}\n{% endif %}",
-    "systemPrompt" : "Today is {{date.weekday}}, {{date.today}} {{time.now}}.\n\nProcess the incoming command as best you can. Reply to any question you know with a normal message. Think carefully about what the user would want to achieve before acting. If you reply, be super concise.\n\nOnly execute actions, NEVER EVER narrate \/ comment on what you did, ONLY reply when asked a question or when things go wrong. NEVER state you 'use a specific action'.\n\nFast is fun, try to answer briefly and perform actions in a way that reduced waiting time.\n\nWhen the user asks for a specific thing you know the answer to, reply with the answer.\n\nGenerally, when asked to do write something (ie. a reply), assume the user wants to have it pasted back at cursor, unless dealing with a specific things where a different action fits better (ie draft email)\n\nWhen an action does not work, you can sometimes try a different approach. For instance, if the user does not have an application, try going to the web version. Or if you get a osascript issue, retry with different syntax.\n\nYou can open \"hook:\/\/\" links, even email ones.\n\nALWAYS use the memories functions, when the users asks you to remember something, or when you feel something is worthwhile to remember.\n\nEntities on Current Screen:\n{% for entity in screen.text | extractEntities %}- {{entity}}\n{% endfor %}\n\nLong Term Memories:\n{% for memory in system.memories %}- {{memory}}\n{% endfor %}",
+    "systemPrompt" : "Today is {{date.weekday}}, {{date.today}} {{time.now}}.\n\nProcess the incoming command as best you can. Reply to any question you know with a normal message. Think carefully about what the user would want to achieve before acting. If you reply, be super concise.\n\nOnly execute actions, NEVER EVER narrate \/ comment on what you did, ONLY reply when asked a question or when things go wrong. NEVER state you 'use a specific action'.\n\nFast is fun, try to answer briefly and perform actions in a way that reduced waiting time.\n\nWhen the user asks for a specific thing you know the answer to, reply with the answer.\n\nGenerally, when asked to do write something (ie. a reply), assume the user wants to have it pasted back at cursor, unless dealing with a specific things where a different action fits better (ie draft email)\n\nWhen an action does not work, you can sometimes try a different approach. For instance, if the user does not have an application, try going to the web version. Or if you get a osascript issue, retry with different syntax.\n\nALWAYS use the memories functions, when the users asks you to remember something, or when you feel something is worthwhile to remember.\n\nEntities on Current Screen:\n{% for entity in screen.text | extractEntities %}- {{entity}}\n{% endfor %}\n\nLong Term Memories:\n{% for memory in system.memories %}- {{memory}}\n{% endfor %}",
     "type" : "askAI",
+    "updatedAt" : 792525381.79761004,
     "variables" : [
       {
         "ai" : true,
@@ -44,104 +56,5 @@
       }
     ],
     "waitTime" : -1
-  },
-  {
-    "command" : "open \"mailto:{{ recipient | doubleQuoteEscape }}?subject={{ subject | percentEncode }}&body={{ body | percentEncode }}\"",
-    "description" : "Draft a new email",
-    "displayName" : "Draft Email",
-    "folderId" : "AA933D08-3148-46F3-82E3-D71276BDCCFD",
-    "forceConfigurable" : false,
-    "icon" : "envelope",
-    "id" : "3E868F4C-FD25-468E-BF02-897688CA4239",
-    "identifier" : "draftEmail",
-    "instructions" : "",
-    "order" : 1,
-    "type" : "terminalCommand",
-    "useSSH" : false,
-    "variables" : [
-      {
-        "ai" : true,
-        "description" : "Email address of the recipient",
-        "id" : "DA97292A-1D29-44AA-B37F-4E3615D6889E",
-        "label" : "Recipient",
-        "name" : "recipient",
-        "options" : [
-
-        ],
-        "required" : true,
-        "type" : "string",
-        "value" : ""
-      },
-      {
-        "ai" : true,
-        "description" : "Subject of the email",
-        "id" : "8B6464D0-5F79-4DDF-892E-EA51B7AFEEF2",
-        "label" : "Subject",
-        "name" : "subject",
-        "options" : [
-
-        ],
-        "required" : true,
-        "type" : "string",
-        "value" : ""
-      },
-      {
-        "ai" : true,
-        "description" : "Body of the email",
-        "id" : "47EE07A1-BE65-417E-88E3-2ED437B14862",
-        "label" : "Body",
-        "name" : "body",
-        "options" : [
-
-        ],
-        "required" : true,
-        "type" : "string",
-        "value" : ""
-      }
-    ]
-  },
-  {
-    "description" : "",
-    "displayName" : "Computer Actions",
-    "forceConfigurable" : false,
-    "icon" : "folder",
-    "id" : "AA933D08-3148-46F3-82E3-D71276BDCCFD",
-    "identifier" : "computerActions",
-    "instructions" : "",
-    "order" : 3,
-    "type" : "folder",
-    "variables" : [
-
-    ]
-  },
-  {
-    "command" : "open -a \"{{ application | doubleQuoteEscape }}\"",
-    "description" : "Open any MacOS application",
-    "displayName" : "Open application",
-    "folderId" : "AA933D08-3148-46F3-82E3-D71276BDCCFD",
-    "forceConfigurable" : false,
-    "icon" : "macwindow.and.cursorarrow",
-    "id" : "D3AC26EE-6E03-400F-AF82-5262B8AE59DE",
-    "identifier" : "openApplication",
-    "instructions" : "",
-    "nextActionId" : "10000000-0000-0000-0000-000000000007",
-    "order" : 7,
-    "type" : "terminalCommand",
-    "useSSH" : false,
-    "variables" : [
-      {
-        "ai" : true,
-        "description" : "Use the name of the MacOS application in the OS (it is passed to open -a)",
-        "id" : "D51124AB-44F1-4B65-BDAD-A2B2594F0229",
-        "label" : "Application",
-        "name" : "application",
-        "options" : [
-
-        ],
-        "required" : true,
-        "type" : "string",
-        "value" : ""
-      }
-    ]
   }
 ]

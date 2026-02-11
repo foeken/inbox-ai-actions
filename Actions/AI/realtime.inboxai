@@ -1,0 +1,133 @@
+[
+  {
+    "actions" : [
+      "10000000-0000-0000-0000-000000000010",
+      "10000000-0000-0000-0000-000000000011",
+      "10000000-0000-0000-0000-000000000005",
+      "10000000-0000-0000-0000-000000000004",
+      "10000000-0000-0000-0000-000000000006",
+      "10000000-0000-0000-0000-000000000009",
+      "20000000-0000-0000-0000-000000000011",
+      "20000000-0000-0000-0000-000000000012",
+      "20000000-0000-0000-0000-000000000013",
+      "20000000-0000-0000-0000-000000000014",
+      "20000000-0000-0000-0000-000000000015",
+      "20000000-0000-0000-0000-000000000016",
+      "20000000-0000-0000-0000-000000000017",
+      "72607945-3375-48FB-BED1-C0BEFBEAAC39",
+      "30000000-0000-0000-0000-000000000001",
+      "30000000-0000-0000-0000-000000000002"
+    ],
+    "allowMultipleTurns" : true,
+    "deleted" : false,
+    "description" : "Advanced Voice Mode",
+    "displayName" : "Realtime",
+    "forceConfigurable" : false,
+    "icon" : "bubble.left.and.text.bubble.right",
+    "id" : "4684F0E1-96FB-4698-8AFF-B7138903481D",
+    "identifier" : "realtime",
+    "instructions" : "",
+    "modalities" : [
+      "text",
+      "audio"
+    ],
+    "modelConfiguration" : {
+
+    },
+    "order" : 2,
+    "output" : "spoken",
+    "prompt" : "{{originalInput}}",
+    "systemPrompt" : "Today is {{date.weekday}}, {{date.today}} {{time.now}}. The user is {{ settings.name }}.\n\nAlways speak English.\n\nProcess the incoming command as best you can. Reply to any question you know with a normal message. Think carefully about what the user would want to achieve before acting. If you reply, be super concise.\n\nOnly execute actions, NEVER EVER narrate \/ comment on what you did, ONLY reply when asked a question or when things go wrong. NEVER state you 'use a specific action'.\n\nFast is fun, try to answer briefly and perform actions in a way that reduced waiting time.\n\nWhen the user asks for a specific thing you know the answer to, reply with the answer.\n\nGenerally, when asked to do write something (ie. a reply), assume the user wants to have it pasted back at cursor, unless dealing with a specific things where a different action fits better (ie draft email)\n\nWhen an action does not work, you can sometimes try a different approach. For instance, if the user does not have an application, try going to the web version. Or if you get a osascript issue, retry with different syntax.\n\nYou can open \"hook:\/\/\" links, even email ones.\n\nALWAYS use the memories functions, when the users asks you to remember something, or when you feel something is worthwhile to remember.\n\nEntities on Current Screen:\n{% for entity in screen.text | extractEntities %}- {{entity}}\n{% endfor %}\n\nLong Term Memories:\n{% for memory in system.memories %}- {{memory}}\n{% endfor %}",
+    "type" : "realtimeAI",
+    "updatedAt" : 792525404.35724998,
+    "variables" : [
+
+    ],
+    "waitTime" : -1
+  },
+  {
+    "apiKey" : "1c8e5a06-f036-400b-a678-5f4fe2cf5b65",
+    "deleted" : false,
+    "description" : "MCP Server",
+    "displayName" : "Beeper",
+    "forceConfigurable" : false,
+    "headers" : {
+
+    },
+    "icon" : "svg:PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjYuMzg3NyAxNy4wNTMyIDI5LjU2MDUgMzcuMDk1NiIgd2lkdGg9IjI0LjY2MTlweCIgaGVpZ2h0PSIyOS4yODZweCI+CiAgPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik02LjM4NzcgMjcuNDg2NEM2LjM4NzcgMjEuNzYyNiAxMS4wMDY1IDE3LjA1MzIgMTYuODQ0MiAxNy4wNTMySDI1LjQ5MThDMzEuMjY2NyAxNy4wNTMyIDM1Ljk0ODIgMjEuNzExNCAzNS45NDgyIDI3LjQ4NjRDMzUuOTQxNCAzMC41OTY2IDM0LjU4MyAzMy4yNzU3IDMyLjY5MjQgMzUuMDU3NkwzMC43MTEzIDM3LjAzMTlDMzMuNTk2NCAzOC43MTUxIDM1LjkyNDMgNDEuMzU2IDM1LjkyNDMgNDQuOTM3MUMzNS45MjQzIDUwLjI5OTYgMzEuNTc3MiA1NC4xNDg4IDI2LjIxNDcgNTQuMTQ4OEgxMS42MDQzVjM2LjUyNDhDOC41MTU5OCAzNC43MjI1IDYuMzg3NyAzMS4zNTE5IDYuMzg3NyAyNy40ODY0Wk0xNi44NDQyIDE5Ljk1MTNDMTIuNjE4NiAxOS45NTEzIDkuMjg1NzkgMjMuMzQ3NSA5LjI4NTc5IDI3LjQ4NjRDOS4yODU3OSAzMS42MjUyIDEyLjYxODYgMzUuMDIxNCAxNi44NDQyIDM1LjAyMTRIMjAuNDQ0NEwxOC40NDE5IDQ1LjE0NjZMMzAuNjU2OSAzMi45OTVDMzIuMDU2MiAzMS42OTA4IDMzLjA1MDEgMjkuNzE4MSAzMy4wNTAxIDI3LjQ4NjRDMzMuMDUwMSAyMy4yODQxIDI5LjYwODcgMTkuOTA2IDI1LjQ5MTggMTkuOTUxM0gxNi44NDQyWiIgc3R5bGU9IiIvPgo8L3N2Zz4=",
+    "id" : "72607945-3375-48FB-BED1-C0BEFBEAAC39",
+    "identifier" : "beeper",
+    "instructions" : "",
+    "isEnabled" : true,
+    "order" : 16,
+    "serverInstructions" : "Access to all chats and messages across networks using Beeper Desktop. Can be used to find, get, send, and manage messages and chats.",
+    "tools" : [
+      {
+        "description" : "Focus Beeper Desktop and optionally navigate to a specific chat, message, or pre-fill draft text and attachment.",
+        "inputSchema" : "eyJyZXF1aXJlZCI6W10sInR5cGUiOiJvYmplY3QiLCJwcm9wZXJ0aWVzIjp7ImNoYXRJRCI6eyJ0eXBlIjoic3RyaW5nIiwiZGVzY3JpcHRpb24iOiJPcHRpb25hbCBCZWVwZXIgY2hhdCBJRCAob3IgbG9jYWwgY2hhdCBJRCkgdG8gZm9jdXMgYWZ0ZXIgb3BlbmluZyB0aGUgYXBwLiBJZiBvbWl0dGVkLCBvbmx5IG9wZW5zXC9mb2N1c2VzIHRoZSBhcHAuIn0sIm1lc3NhZ2VJRCI6eyJ0eXBlIjoic3RyaW5nIiwiZGVzY3JpcHRpb24iOiJPcHRpb25hbCBtZXNzYWdlIElELiBKdW1wcyB0byB0aGF0IG1lc3NhZ2UgaW4gdGhlIGNoYXQgd2hlbiBvcGVuaW5nLiJ9LCJkcmFmdFRleHQiOnsiZGVzY3JpcHRpb24iOiJPcHRpb25hbCBkcmFmdCB0ZXh0IHRvIHBvcHVsYXRlIGluIHRoZSBtZXNzYWdlIGlucHV0IGZpZWxkLiIsInR5cGUiOiJzdHJpbmcifSwiZHJhZnRBdHRhY2htZW50UGF0aCI6eyJ0eXBlIjoic3RyaW5nIiwiZGVzY3JpcHRpb24iOiJPcHRpb25hbCBkcmFmdCBhdHRhY2htZW50IHBhdGggdG8gcG9wdWxhdGUgaW4gdGhlIG1lc3NhZ2UgaW5wdXQgZmllbGQuIn19fQ==",
+        "name" : "focus_app"
+      },
+      {
+        "description" : "Search for chats, participant name matches in groups, and the first page of messages in one call. Use this when the user asks for a specific chat, group, or person.",
+        "inputSchema" : "eyJ0eXBlIjoib2JqZWN0IiwicmVxdWlyZWQiOlsicXVlcnkiXSwicHJvcGVydGllcyI6eyJxdWVyeSI6eyJkZXNjcmlwdGlvbiI6IlVzZXItdHlwZWQgc2VhcmNoIHRleHQuIExpdGVyYWwgd29yZCBtYXRjaGluZyAoTk9UIHNlbWFudGljKS4iLCJ0eXBlIjoic3RyaW5nIn19fQ==",
+        "name" : "search"
+      },
+      {
+        "description" : "List connected accounts on this device.",
+        "inputSchema" : "eyJ0eXBlIjoib2JqZWN0IiwicmVxdWlyZWQiOltdLCJwcm9wZXJ0aWVzIjp7fX0=",
+        "name" : "get_accounts"
+      },
+      {
+        "description" : "Get chat details: metadata, participants (limited), last activity.",
+        "inputSchema" : "eyJwcm9wZXJ0aWVzIjp7Im1heFBhcnRpY2lwYW50Q291bnQiOnsiZGVzY3JpcHRpb24iOiJNYXhpbXVtIG51bWJlciBvZiBwYXJ0aWNpcGFudHMgdG8gcmV0dXJuLiBVc2UgLTEgZm9yIGFsbDsgb3RoZXJ3aXNlIDDigJM1MDAuIERlZmF1bHRzIHRvIGFsbCAoLTEpLiIsInR5cGUiOiJpbnRlZ2VyIn0sImNoYXRJRCI6eyJ0eXBlIjoic3RyaW5nIiwiZGVzY3JpcHRpb24iOiJVbmlxdWUgaWRlbnRpZmllciBvZiB0aGUgY2hhdC4ifX0sInJlcXVpcmVkIjpbImNoYXRJRCJdLCJ0eXBlIjoib2JqZWN0In0=",
+        "name" : "get_chat"
+      },
+      {
+        "description" : "Archive or unarchive a chat.",
+        "inputSchema" : "eyJwcm9wZXJ0aWVzIjp7ImNoYXRJRCI6eyJ0eXBlIjoic3RyaW5nIiwiZGVzY3JpcHRpb24iOiJVbmlxdWUgaWRlbnRpZmllciBvZiB0aGUgY2hhdC4ifSwiYXJjaGl2ZWQiOnsiZGVzY3JpcHRpb24iOiJUcnVlIHRvIGFyY2hpdmUsIGZhbHNlIHRvIHVuYXJjaGl2ZSIsInR5cGUiOiJib29sZWFuIn19LCJ0eXBlIjoib2JqZWN0IiwicmVxdWlyZWQiOlsiY2hhdElEIl19",
+        "name" : "archive_chat"
+      },
+      {
+        "description" : "Search chats by title\/network or participants using Beeper Desktop's renderer algorithm. Optional 'scope'.",
+        "inputSchema" : "eyJ0eXBlIjoib2JqZWN0IiwicmVxdWlyZWQiOltdLCJwcm9wZXJ0aWVzIjp7InNjb3BlIjp7ImRlc2NyaXB0aW9uIjoiU2VhcmNoIHNjb3BlOiAndGl0bGVzJyBtYXRjaGVzIHRpdGxlICsgbmV0d29yazsgJ3BhcnRpY2lwYW50cycgbWF0Y2hlcyBwYXJ0aWNpcGFudCBuYW1lcy4iLCJlbnVtIjpbInRpdGxlcyIsInBhcnRpY2lwYW50cyJdLCJ0eXBlIjoic3RyaW5nIn0sInF1ZXJ5Ijp7ImRlc2NyaXB0aW9uIjoiTGl0ZXJhbCB0b2tlbiBzZWFyY2ggKG5vbi1zZW1hbnRpYykuIFVzZSBzaW5nbGUgd29yZHMgdXNlcnMgdHlwZSAoZS5nLiwgXCJkaW5uZXJcIikuIFdoZW4gbXVsdGlwbGUgd29yZHMgcHJvdmlkZWQsIEFMTCBtdXN0IG1hdGNoLiBDYXNlLWluc2Vuc2l0aXZlLiIsInR5cGUiOiJzdHJpbmcifSwiaW5jbHVkZU11dGVkIjp7InR5cGUiOiJib29sZWFuIiwiZGVzY3JpcHRpb24iOiJJbmNsdWRlIGNoYXRzIG1hcmtlZCBhcyBNdXRlZCBieSB0aGUgdXNlciwgd2hpY2ggYXJlIHVzdWFsbHkgbGVzcyBpbXBvcnRhbnQuIERlZmF1bHQ6IHRydWUuIFNldCB0byBmYWxzZSBpZiB0aGUgdXNlciB3YW50cyBhIG1vcmUgcmVmaW5lZCBzZWFyY2guIn0sImluYm94Ijp7ImRlc2NyaXB0aW9uIjoiRmlsdGVyIGJ5IGluYm94IHR5cGU6IFwicHJpbWFyeVwiIChub24tYXJjaGl2ZWQsIG5vbi1sb3ctcHJpb3JpdHkpLCBcImxvdy1wcmlvcml0eVwiLCBvciBcImFyY2hpdmVcIi4gSWYgbm90IHNwZWNpZmllZCwgc2hvd3MgYWxsIGNoYXRzLiIsImVudW0iOlsicHJpbWFyeSIsImxvdy1wcmlvcml0eSIsImFyY2hpdmUiXSwidHlwZSI6InN0cmluZyJ9LCJsaW1pdCI6eyJ0eXBlIjoiaW50ZWdlciIsImRlc2NyaXB0aW9uIjoiU2V0IHRoZSBtYXhpbXVtIG51bWJlciBvZiBjaGF0cyB0byByZXRyaWV2ZS4gVmFsaWQgcmFuZ2U6IDEtMjAwLCBkZWZhdWx0IGlzIDUwIn0sImN1cnNvciI6eyJ0eXBlIjoic3RyaW5nIiwiZGVzY3JpcHRpb24iOiJPcGFxdWUgcGFnaW5hdGlvbiBjdXJzb3I7IGRvIG5vdCBpbnNwZWN0LiBVc2UgdG9nZXRoZXIgd2l0aCAnZGlyZWN0aW9uJy4ifSwiYWNjb3VudElEcyI6eyJpdGVtcyI6eyJ0eXBlIjoic3RyaW5nIiwiZGVzY3JpcHRpb24iOiJBY2NvdW50IElEIHRoaXMgcmVzb3VyY2UgYmVsb25ncyB0by4ifSwidHlwZSI6ImFycmF5IiwiZGVzY3JpcHRpb24iOiJQcm92aWRlIGFuIGFycmF5IG9mIGFjY291bnQgSURzIHRvIGZpbHRlciBjaGF0cyBmcm9tIHNwZWNpZmljIG1lc3NhZ2luZyBhY2NvdW50cyBvbmx5In0sImxhc3RBY3Rpdml0eUJlZm9yZSI6eyJkZXNjcmlwdGlvbiI6IlByb3ZpZGUgYW4gSVNPIGRhdGV0aW1lIHN0cmluZyB0byBvbmx5IHJldHJpZXZlIGNoYXRzIHdpdGggbGFzdCBhY3Rpdml0eSBiZWZvcmUgdGhpcyB0aW1lIiwiZm9ybWF0IjoiZGF0ZS10aW1lIiwidHlwZSI6InN0cmluZyJ9LCJ0eXBlIjp7InR5cGUiOiJzdHJpbmciLCJlbnVtIjpbInNpbmdsZSIsImdyb3VwIiwiYW55Il0sImRlc2NyaXB0aW9uIjoiU3BlY2lmeSB0aGUgdHlwZSBvZiBjaGF0cyB0byByZXRyaWV2ZTogdXNlIFwic2luZ2xlXCIgZm9yIGRpcmVjdCBtZXNzYWdlcywgXCJncm91cFwiIGZvciBncm91cCBjaGF0cywgb3IgXCJhbnlcIiB0byBnZXQgYWxsIHR5cGVzIn0sInVucmVhZE9ubHkiOnsiZGVzY3JpcHRpb24iOiJTZXQgdG8gdHJ1ZSB0byBvbmx5IHJldHJpZXZlIGNoYXRzIHRoYXQgaGF2ZSB1bnJlYWQgbWVzc2FnZXMiLCJ0eXBlIjoiYm9vbGVhbiJ9LCJsYXN0QWN0aXZpdHlBZnRlciI6eyJkZXNjcmlwdGlvbiI6IlByb3ZpZGUgYW4gSVNPIGRhdGV0aW1lIHN0cmluZyB0byBvbmx5IHJldHJpZXZlIGNoYXRzIHdpdGggbGFzdCBhY3Rpdml0eSBhZnRlciB0aGlzIHRpbWUiLCJ0eXBlIjoic3RyaW5nIiwiZm9ybWF0IjoiZGF0ZS10aW1lIn0sImRpcmVjdGlvbiI6eyJkZXNjcmlwdGlvbiI6IlBhZ2luYXRpb24gZGlyZWN0aW9uIHVzZWQgd2l0aCAnY3Vyc29yJzogJ2JlZm9yZScgZmV0Y2hlcyBvbGRlciByZXN1bHRzLCAnYWZ0ZXInIGZldGNoZXMgbmV3ZXIgcmVzdWx0cy4gRGVmYXVsdHMgdG8gJ2JlZm9yZScgd2hlbiBvbmx5ICdjdXJzb3InIGlzIHByb3ZpZGVkLiIsImVudW0iOlsiYWZ0ZXIiLCJiZWZvcmUiXSwidHlwZSI6InN0cmluZyJ9fX0=",
+        "name" : "search_chats"
+      },
+      {
+        "description" : "Set a reminder for a chat at a specific time.",
+        "inputSchema" : "eyJ0eXBlIjoib2JqZWN0IiwicmVxdWlyZWQiOlsiY2hhdElEIiwicmVtaW5kZXIiXSwicHJvcGVydGllcyI6eyJyZW1pbmRlciI6eyJkZXNjcmlwdGlvbiI6IlJlbWluZGVyIGNvbmZpZ3VyYXRpb24iLCJwcm9wZXJ0aWVzIjp7ImRpc21pc3NPbkluY29taW5nTWVzc2FnZSI6eyJ0eXBlIjoiYm9vbGVhbiIsImRlc2NyaXB0aW9uIjoiQ2FuY2VsIHJlbWluZGVyIGlmIHNvbWVvbmUgbWVzc2FnZXMgaW4gdGhlIGNoYXQifSwicmVtaW5kQXRNcyI6eyJkZXNjcmlwdGlvbiI6IlVuaXggdGltZXN0YW1wIGluIG1pbGxpc2Vjb25kcyB3aGVuIHJlbWluZGVyIHNob3VsZCB0cmlnZ2VyIiwidHlwZSI6Im51bWJlciJ9fSwicmVxdWlyZWQiOlsicmVtaW5kQXRNcyJdLCJ0eXBlIjoib2JqZWN0In0sImNoYXRJRCI6eyJkZXNjcmlwdGlvbiI6IlVuaXF1ZSBpZGVudGlmaWVyIG9mIHRoZSBjaGF0LiIsInR5cGUiOiJzdHJpbmcifX19",
+        "name" : "set_chat_reminder"
+      },
+      {
+        "description" : "Clear a chat reminder.",
+        "inputSchema" : "eyJwcm9wZXJ0aWVzIjp7ImNoYXRJRCI6eyJ0eXBlIjoic3RyaW5nIiwiZGVzY3JpcHRpb24iOiJVbmlxdWUgaWRlbnRpZmllciBvZiB0aGUgY2hhdC4ifX0sInR5cGUiOiJvYmplY3QiLCJyZXF1aXJlZCI6WyJjaGF0SUQiXX0=",
+        "name" : "clear_chat_reminder"
+      },
+      {
+        "description" : "List messages from a specific chat with pagination support.",
+        "inputSchema" : "eyJwcm9wZXJ0aWVzIjp7ImRpcmVjdGlvbiI6eyJkZXNjcmlwdGlvbiI6IlBhZ2luYXRpb24gZGlyZWN0aW9uIHVzZWQgd2l0aCAnY3Vyc29yJzogJ2JlZm9yZScgZmV0Y2hlcyBvbGRlciByZXN1bHRzLCAnYWZ0ZXInIGZldGNoZXMgbmV3ZXIgcmVzdWx0cy4gRGVmYXVsdHMgdG8gJ2JlZm9yZScgd2hlbiBvbmx5ICdjdXJzb3InIGlzIHByb3ZpZGVkLiIsInR5cGUiOiJzdHJpbmciLCJlbnVtIjpbImFmdGVyIiwiYmVmb3JlIl19LCJjdXJzb3IiOnsiZGVzY3JpcHRpb24iOiJPcGFxdWUgcGFnaW5hdGlvbiBjdXJzb3I7IGRvIG5vdCBpbnNwZWN0LiBVc2UgdG9nZXRoZXIgd2l0aCAnZGlyZWN0aW9uJy4iLCJ0eXBlIjoic3RyaW5nIn0sImNoYXRJRCI6eyJ0eXBlIjoic3RyaW5nIiwiZGVzY3JpcHRpb24iOiJVbmlxdWUgaWRlbnRpZmllciBvZiB0aGUgY2hhdC4ifX0sInR5cGUiOiJvYmplY3QiLCJyZXF1aXJlZCI6WyJjaGF0SUQiXX0=",
+        "name" : "list_messages"
+      },
+      {
+        "description" : "Search messages across chats using Beeper's message index.\n- When to use: find messages by text and\/or filters (chatIDs, accountIDs, chatType, media type filters, sender, date ranges).\n- CRITICAL: Query is LITERAL WORD MATCHING, NOT semantic search! Only finds messages containing these EXACT words.\n  • ✅ RIGHT: query=\"dinner\" or query=\"sick\" or query=\"error\" (single words users type)\n  • ❌ WRONG: query=\"dinner plans tonight\" or query=\"health issues\" (phrases\/concepts)\n  • The query matches ALL words provided (in any order). Example: query=\"flight booking\" finds messages with both \"flight\" AND \"booking\".\n- Performance: provide chatIDs\/accountIDs when known. Omitted 'query' returns results based on filters only. Partial matches enabled; 'excludeLowPriority' defaults to true.\n- Workflow tip: To search messages in specific conversations: 1) Use find-chats to get chatIDs, 2) Use search-messages with those chatIDs.\n- IMPORTANT: Chat names vary widely. ASK the user for clarification:\n  • \"Which chat do you mean by family?\" (could be \"The Smiths\", \"Mom Dad Kids\", etc.)\n  • \"What's the name of your work chat?\" (could be \"Team\", company name, project name)\n  • \"Who are the participants?\" (use scope=\"participants\" in search-chats)\nReturns: matching messages and referenced chats.",
+        "inputSchema" : "eyJ0eXBlIjoib2JqZWN0IiwicmVxdWlyZWQiOltdLCJwcm9wZXJ0aWVzIjp7InF1ZXJ5Ijp7ImRlc2NyaXB0aW9uIjoiTGl0ZXJhbCB3b3JkIHNlYXJjaCAoTk9UIHNlbWFudGljKS4gRmluZHMgbWVzc2FnZXMgY29udGFpbmluZyB0aGVzZSBFWEFDVCB3b3JkcyBpbiBhbnkgb3JkZXIuIFVzZSBzaW5nbGUgd29yZHMgdXNlcnMgYWN0dWFsbHkgdHlwZSwgbm90IGNvbmNlcHRzIG9yIHBocmFzZXMuIEV4YW1wbGU6IHVzZSBcImRpbm5lclwiIG5vdCBcImRpbm5lciBwbGFuc1wiLCB1c2UgXCJzaWNrXCIgbm90IFwiaGVhbHRoIGlzc3Vlc1wiLiBJZiBvbWl0dGVkLCByZXR1cm5zIHJlc3VsdHMgZmlsdGVyZWQgb25seSBieSBvdGhlciBwYXJhbWV0ZXJzLiIsInR5cGUiOiJzdHJpbmcifSwiY3Vyc29yIjp7ImRlc2NyaXB0aW9uIjoiT3BhcXVlIHBhZ2luYXRpb24gY3Vyc29yOyBkbyBub3QgaW5zcGVjdC4gVXNlIHRvZ2V0aGVyIHdpdGggJ2RpcmVjdGlvbicuIiwidHlwZSI6InN0cmluZyJ9LCJsaW1pdCI6eyJkZXNjcmlwdGlvbiI6Ik1heGltdW0gbnVtYmVyIG9mIG1lc3NhZ2VzIHRvIHJldHVybi4iLCJ0eXBlIjoiaW50ZWdlciJ9LCJkYXRlQmVmb3JlIjp7ImRlc2NyaXB0aW9uIjoiT25seSBpbmNsdWRlIG1lc3NhZ2VzIHdpdGggdGltZXN0YW1wIHN0cmljdGx5IGJlZm9yZSB0aGlzIElTTyA4NjAxIGRhdGV0aW1lIChlLmcuLCAnMjAyNC0wNy0zMVQyMzo1OTo1OVonIG9yICcyMDI0LTA3LTMxVDIzOjU5OjU5KzAyOjAwJykuIiwiZm9ybWF0IjoiZGF0ZS10aW1lIiwidHlwZSI6InN0cmluZyJ9LCJkYXRlQWZ0ZXIiOnsidHlwZSI6InN0cmluZyIsImRlc2NyaXB0aW9uIjoiT25seSBpbmNsdWRlIG1lc3NhZ2VzIHdpdGggdGltZXN0YW1wIHN0cmljdGx5IGFmdGVyIHRoaXMgSVNPIDg2MDEgZGF0ZXRpbWUgKGUuZy4sICcyMDI0LTA3LTAxVDAwOjAwOjAwWicgb3IgJzIwMjQtMDctMDFUMDA6MDA6MDArMDI6MDAnKS4iLCJmb3JtYXQiOiJkYXRlLXRpbWUifSwiZXhjbHVkZUxvd1ByaW9yaXR5Ijp7InR5cGUiOiJib29sZWFuIiwiZGVzY3JpcHRpb24iOiJFeGNsdWRlIG1lc3NhZ2VzIG1hcmtlZCBMb3cgUHJpb3JpdHkgYnkgdGhlIHVzZXIuIERlZmF1bHQ6IHRydWUuIFNldCB0byBmYWxzZSB0byBpbmNsdWRlIGFsbC4ifSwiY2hhdFR5cGUiOnsidHlwZSI6InN0cmluZyIsImVudW0iOlsiZ3JvdXAiLCJzaW5nbGUiXSwiZGVzY3JpcHRpb24iOiJGaWx0ZXIgYnkgY2hhdCB0eXBlOiAnZ3JvdXAnIGZvciBncm91cCBjaGF0cywgJ3NpbmdsZScgZm9yIDE6MSBjaGF0cy4ifSwibWVkaWFUeXBlcyI6eyJ0eXBlIjoiYXJyYXkiLCJkZXNjcmlwdGlvbiI6IkZpbHRlciBtZXNzYWdlcyBieSBtZWRpYSB0eXBlcy4gVXNlIFsnYW55J10gZm9yIGFueSBtZWRpYSB0eXBlLCBvciBzcGVjaWZ5IGV4YWN0IHR5cGVzIGxpa2UgWyd2aWRlbycsICdpbWFnZSddLiBPbWl0IGZvciBubyBtZWRpYSBmaWx0ZXJpbmcuIiwiaXRlbXMiOnsiZW51bSI6WyJhbnkiLCJ2aWRlbyIsImltYWdlIiwibGluayIsImZpbGUiXSwidHlwZSI6InN0cmluZyJ9fSwiZGlyZWN0aW9uIjp7InR5cGUiOiJzdHJpbmciLCJkZXNjcmlwdGlvbiI6IlBhZ2luYXRpb24gZGlyZWN0aW9uIHVzZWQgd2l0aCAnY3Vyc29yJzogJ2JlZm9yZScgZmV0Y2hlcyBvbGRlciByZXN1bHRzLCAnYWZ0ZXInIGZldGNoZXMgbmV3ZXIgcmVzdWx0cy4gRGVmYXVsdHMgdG8gJ2JlZm9yZScgd2hlbiBvbmx5ICdjdXJzb3InIGlzIHByb3ZpZGVkLiIsImVudW0iOlsiYWZ0ZXIiLCJiZWZvcmUiXX0sInNlbmRlciI6eyJkZXNjcmlwdGlvbiI6IkZpbHRlciBieSBzZW5kZXI6ICdtZScgKG1lc3NhZ2VzIHNlbnQgYnkgdGhlIGF1dGhlbnRpY2F0ZWQgdXNlciksICdvdGhlcnMnIChtZXNzYWdlcyBzZW50IGJ5IG90aGVycyksIG9yIGEgc3BlY2lmaWMgdXNlciBJRCBzdHJpbmcgKHVzZXIuaWQpLiIsImFueU9mIjpbeyJ0eXBlIjoic3RyaW5nIiwiZW51bSI6WyJtZSIsIm90aGVycyJdLCJkZXNjcmlwdGlvbiI6IkZpbHRlciBieSBzZW5kZXI6ICdtZScgKG1lc3NhZ2VzIHNlbnQgYnkgdGhlIGF1dGhlbnRpY2F0ZWQgdXNlciksICdvdGhlcnMnIChtZXNzYWdlcyBzZW50IGJ5IG90aGVycyksIG9yIGEgc3BlY2lmaWMgdXNlciBJRCBzdHJpbmcgKHVzZXIuaWQpLiJ9LHsidHlwZSI6InN0cmluZyJ9XX0sImFjY291bnRJRHMiOnsidHlwZSI6ImFycmF5IiwiZGVzY3JpcHRpb24iOiJMaW1pdCBzZWFyY2ggdG8gc3BlY2lmaWMgYWNjb3VudCBJRHMuIiwiaXRlbXMiOnsiZGVzY3JpcHRpb24iOiJBY2NvdW50IElEIHRoaXMgcmVzb3VyY2UgYmVsb25ncyB0by4iLCJ0eXBlIjoic3RyaW5nIn19LCJjaGF0SURzIjp7ImRlc2NyaXB0aW9uIjoiTGltaXQgc2VhcmNoIHRvIHNwZWNpZmljIGNoYXQgSURzLiIsInR5cGUiOiJhcnJheSIsIml0ZW1zIjp7InR5cGUiOiJzdHJpbmcifX0sImluY2x1ZGVNdXRlZCI6eyJkZXNjcmlwdGlvbiI6IkluY2x1ZGUgbWVzc2FnZXMgaW4gY2hhdHMgbWFya2VkIGFzIE11dGVkIGJ5IHRoZSB1c2VyLCB3aGljaCBhcmUgdXN1YWxseSBsZXNzIGltcG9ydGFudC4gRGVmYXVsdDogdHJ1ZS4gU2V0IHRvIGZhbHNlIGlmIHRoZSB1c2VyIHdhbnRzIGEgbW9yZSByZWZpbmVkIHNlYXJjaC4iLCJ0eXBlIjoiYm9vbGVhbiJ9fX0=",
+        "name" : "search_messages"
+      },
+      {
+        "description" : "Send a text message to a specific chat. Supports replying to existing messages. Returns the sent message ID and a deeplink to the chat",
+        "inputSchema" : "eyJ0eXBlIjoib2JqZWN0IiwicmVxdWlyZWQiOlsiY2hhdElEIl0sInByb3BlcnRpZXMiOnsidGV4dCI6eyJkZXNjcmlwdGlvbiI6IlRleHQgY29udGVudCBvZiB0aGUgbWVzc2FnZSB5b3Ugd2FudCB0byBzZW5kLiBZb3UgbWF5IHVzZSBtYXJrZG93bi4iLCJ0eXBlIjoic3RyaW5nIn0sInJlcGx5VG9NZXNzYWdlSUQiOnsidHlwZSI6InN0cmluZyIsImRlc2NyaXB0aW9uIjoiUHJvdmlkZSBhIG1lc3NhZ2UgSUQgdG8gc2VuZCB0aGlzIGFzIGEgcmVwbHkgdG8gYW4gZXhpc3RpbmcgbWVzc2FnZSJ9LCJjaGF0SUQiOnsiZGVzY3JpcHRpb24iOiJVbmlxdWUgaWRlbnRpZmllciBvZiB0aGUgY2hhdC4iLCJ0eXBlIjoic3RyaW5nIn19fQ==",
+        "name" : "send_message"
+      },
+      {
+        "description" : "Search for documentation for how to use the client to interact with the API.\nThe tool will return an array of Markdown-formatted documentation pages.",
+        "inputSchema" : "eyJyZXF1aXJlZCI6WyJxdWVyeSIsImxhbmd1YWdlIl0sInByb3BlcnRpZXMiOnsicXVlcnkiOnsidHlwZSI6InN0cmluZyIsImRlc2NyaXB0aW9uIjoiVGhlIHF1ZXJ5IHRvIHNlYXJjaCBmb3IuIn0sImxhbmd1YWdlIjp7InR5cGUiOiJzdHJpbmciLCJlbnVtIjpbImh0dHAiLCJweXRob24iLCJnbyIsInR5cGVzY3JpcHQiLCJ0ZXJyYWZvcm0iLCJydWJ5IiwiamF2YSIsImtvdGxpbiJdLCJkZXNjcmlwdGlvbiI6IlRoZSBsYW5ndWFnZSBmb3IgdGhlIFNESyB0byBzZWFyY2ggZm9yLiJ9fSwidHlwZSI6Im9iamVjdCJ9",
+        "name" : "search_docs"
+      }
+    ],
+    "type" : "mcpServer",
+    "updatedAt" : 792525275.77600503,
+    "url" : "http:\/\/localhost:23373\/v0\/mcp",
+    "variables" : [
+
+    ]
+  }
+]

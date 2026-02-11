@@ -24,6 +24,12 @@
                 "icon" : "envelope.arrow.triangle.branch"
             },
             {
+                "title" : "Realtime",
+                "description" : "Advanced Voice Mode",
+                "actions" : ["realtime.inboxai"],
+                "icon" : "bubble.left.and.text.bubble.right"
+            },
+            {
                 "title" : "Assistant",
                 "description" : "Uses OpenAI's latest realtime API.",
                 "actions" : ["assistant.inboxai"],
