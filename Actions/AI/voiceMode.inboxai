@@ -19,7 +19,7 @@
       "10000000-0000-0000-0000-000000000006",
       "10000000-0000-0000-0000-000000000005"
     ],
-    "allowMultipleTurns" : false,
+    "allowMultipleTurns" : true,
     "deleted" : false,
     "description" : "Voice Mode for any AI Model",
     "displayName" : "Voice Mode",
