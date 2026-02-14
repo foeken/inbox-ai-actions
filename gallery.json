@@ -180,12 +180,6 @@
                 "tool" : true
             },
             {
-                "title" : "Screenpipe",
-                "actions" : ["screenpipe.inboxai"],
-                "icon" : "clock.arrow.trianglehead.counterclockwise.rotate.90",
-                "tool" : true
-            },
-            {
                 "title" : "EXA.ai",
                 "actions" : ["exa.inboxai"],
                 "icon" : "doc.text.magnifyingglass",
